@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Appium Roku Driver",
   "author": "Corneliu Duplachi",
+  "repository": "dlenroc/appium-roku-driver",
   "keywords": [
     "roku",
     "appium",
@@ -15,6 +16,9 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "prepare": "npm run build"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "appium": {
     "driverName": "roku",
