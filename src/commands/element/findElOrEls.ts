@@ -24,8 +24,6 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
       return this.getElOrEls('css selector', `[${tag}="${cssEscape(selector)}"]`, multiple, parent);
     case 'tag name':
       return this.getElOrEls('css selector', cssEscape(selector), multiple, parent);
-    case 'element-id':
-      return this.getElOrEls('xpath', base64.decode(selector), multiple, parent);
   }
 
   const self = this;
@@ -43,13 +41,20 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
   switch (strategy) {
     case 'css selector':
       this.logger.info(`Search by css: "${selector}"`);
-      return findBy(multiple, {
-        find: () => parentElement.cssSelect(selector),
-        finds: () => parentElement.cssSelectAll(selector),
+      return await findBy(multiple, {
+        find: () => parentElement.cssSelect(selector, this.implicitWaitMs / 1000),
+        finds: () => parentElement.cssSelectAll(selector, this.implicitWaitMs / 1000),
       });
     case 'xpath':
       this.logger.info(`Search by xpath: "${selector}"`);
-      return findBy(multiple, {
+      return await findBy(multiple, {
+        find: () => parentElement.xpathSelect(selector, this.implicitWaitMs / 1000),
+        finds: () => parentElement.xpathSelectAll(selector, this.implicitWaitMs / 1000),
+      });
+    case 'element-id':
+      this.logger.info(`Search by element: "${selector}"`);
+      selector = base64.decode(selector)
+      return await findBy(multiple, {
         find: () => parentElement.xpathSelect(selector),
         finds: () => parentElement.xpathSelectAll(selector),
       });
@@ -57,12 +62,12 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
       this.logger.errorAndThrow(new this.errors.NoSuchElementError());
   }
 
-  function findBy<multiple extends boolean>(multiple: multiple, { find, finds }): Promise<multiple extends true ? XMLElement[] : XMLElement> {
+  async function findBy<multiple extends boolean>(multiple: multiple, { find, finds }): Promise<multiple extends true ? XMLElement[] : XMLElement> {
     if (multiple) {
-      return finds();
+      return await finds();
     }
 
-    const element = find();
+    const element = await find();
     if (!element) {
       throw new self.errors.NoSuchElementError();
     }
