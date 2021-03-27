@@ -176,6 +176,13 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [getCurrentContext](src/commands/context/getCurrentContext.ts) | [here](https://appium.io/docs/en/commands/context/get-context/)  | Get current context    |
 | [setContext](src/commands/context/setContext.ts)               | [here](https://appium.io/docs/en/commands/context/set-context/)  | Set context            |
 
+### Events
+
+| Command                                                                                                                                           | Ref                                                                  | Description                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------- |
+| [getLogEvents](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/event.js#L23)   | [here](http://appium.io/docs/en/commands/session/events/get-events/) | Get events stored in appium server |
+| [logCustomEvent](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/event.js#L12) | [here](http://appium.io/docs/en/commands/session/events/log-event/)  | Store a custom event               |
+
 ### Element
 
 | Command                                                        | Ref                                                                                | Description                                    |
@@ -203,11 +210,12 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Interaction
 
-| Command                                                      | Ref                                                                 | Description                                   |
-| ------------------------------------------------------------ | ------------------------------------------------------------------- | --------------------------------------------- |
-| [execute](src/commands/interaction/execute.ts)               | [here](http://appium.io/docs/en/commands/mobile-command/)           | Execute a command                             |
-| [performActions](src/commands/interaction/performActions.ts) | [here](http://appium.io/docs/en/commands/interactions/actions/)     | Perform a chain or multiple chains of actions |
-| [setUrl](src/commands/interaction/setUrl.ts)                 | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/) | Open an deep link                             |
+| Command                                                                                                                                                  | Ref                                                                 | Description                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
+| [execute](src/commands/interaction/execute.ts)                                                                                                           | [here](http://appium.io/docs/en/commands/mobile-command/)           | Execute a command                                    |
+| [executeDriverScript](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/execute.js#L26) | [here](http://appium.io/docs/en/commands/session/execute-driver/)   | Run a WebdriverIO script against the current session |
+| [performActions](src/commands/interaction/performActions.ts)                                                                                             | [here](http://appium.io/docs/en/commands/interactions/actions/)     | Perform a chain or multiple chains of actions        |
+| [setUrl](src/commands/interaction/setUrl.ts)                                                                                                             | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/) | Open an deep link                                    |
 
 ### Keyboard
 
@@ -215,6 +223,13 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | ----------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------ |
 | [hideKeyboard](src/commands/keyboard/hideKeyboard.ts)       | [here](http://appium.io/docs/en/commands/device/keys/hide-keyboard/)     | Hide keyboard                        |
 | [isKeyboardShown](src/commands/keyboard/isKeyboardShown.ts) | [here](http://appium.io/docs/en/commands/device/keys/is-keyboard-shown/) | Whether or not the keyboard is shown |
+
+### Logs
+
+| Command                                                                                                                                      | Ref                                                                   | Description                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------- |
+| [getLog](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/log.js#L23)      | [here](http://appium.io/docs/en/commands/session/logs/get-log/)       | Get the log for a given log type |
+| [getLogTypes](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/log.js#L18) | [here](http://appium.io/docs/en/commands/session/logs/get-log-types/) | Get available log types          |
 
 ### Screen
 
@@ -234,7 +249,24 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Session
 
-| Command                                                | Ref                                                       | Description             |
-| ------------------------------------------------------ | --------------------------------------------------------- | ----------------------- |
-| [createSession](src/commands/session/createSession.ts) | [here](http://appium.io/docs/en/commands/session/create/) | Create a new session    |
-| [deleteSession](src/commands/session/deleteSession.ts) | [here](http://appium.io/docs/en/commands/session/delete/) | End the running session |
+| Command                                                                                                                                          | Ref                                                                                                                                 | Description                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [createSession](src/commands/session/createSession.ts)                                                                                           | [here](http://appium.io/docs/en/commands/session/create/)                                                                           | Create a new session                               |
+| [deleteSession](src/commands/session/deleteSession.ts)                                                                                           | [here](http://appium.io/docs/en/commands/session/delete/)                                                                           | End the running session                            |
+| [getSession](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L95)  | [here](http://appium.io/docs/en/commands/session/get/)                                                                              | Retrieve the capabilities of the specified session |
+| [getSessions](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L82) | [here](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/docs/mjsonwp/protocol-methods.md) | Retrieve a list of currently active sessions       |
+
+### Settings
+
+| Command                                                                                                                                             | Ref                                                                                                                 | Description              |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| [getSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve device settings |
+| [updateSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update device settings   |
+
+### Timeouts
+
+| Command                                                                                                                                           | Ref                                                                       | Description                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [getTimeouts](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L47)  | [here](https://www.w3.org/TR/webdriver/#get-timeouts)                     | Get timeouts                                                              |
+| [implicitWait](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L63) | [here](http://appium.io/docs/en/commands/session/timeouts/implicit-wait/) | Set the amount of time the driver should wait when searching for elements |
+| [timeouts](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L12)     | [here](http://appium.io/docs/en/commands/session/timeouts/timeouts/)      | Set `command`/`implicit` timeout                                          |

@@ -11,6 +11,7 @@ declare module 'appium-base-driver' {
     protected opts: Record<string, string>;
     protected caps: Record<string, string>;
     protected desiredCapConstraints: Record<string, any>;
+    protected implicitWaitMs: number;
 
     constructor(opts?: Record<string, any>, shouldValidateCaps?: boolean);
 
