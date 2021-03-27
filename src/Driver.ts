@@ -35,7 +35,6 @@ import { setValue } from './commands/element/setValue';
 import { setValueImmediate } from './commands/element/setValueImmediate';
 import { submit } from './commands/element/submit';
 import { waitForCondition } from './commands/helpers/waitForCondition';
-import { withContext } from './commands/helpers/withContext';
 import { execute } from './commands/interaction/execute';
 import { performActions } from './commands/interaction/performActions';
 import { setUrl } from './commands/interaction/setUrl';
@@ -117,7 +116,6 @@ export class Driver extends BaseDriver {
 
   // Helpers
   protected waitForCondition = waitForCondition;
-  protected withContext = withContext;
 
   // Configurations
   protected locatorStrategies = ['id', 'tag name', 'css selector', 'xpath'];
