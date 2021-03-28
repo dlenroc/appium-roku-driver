@@ -72,6 +72,31 @@ driver.queryAppState('12');
 
 Note that most commands only work with SceneGrapth based sideloaded channel.
 
+### State manipulating
+
+If the channel logic depends on the values in the registry, then we can manipulate its state via the settings api.
+
+```js
+// Clear section
+driver.updateSettings({
+  section: null,
+});
+
+// Remove a key from section
+driver.updateSettings({
+  section: {
+    key: null,
+  },
+});
+
+// Add/Update a key value from section
+driver.updateSettings({
+  section: {
+    key: 'value',
+  },
+});
+```
+
 ### Additional Commands
 
 Any methods from [node-roku](https://github.com/dlenroc/node-roku) can be called using a script in the following format `<component>:<method>`.
@@ -224,6 +249,13 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [hideKeyboard](src/commands/keyboard/hideKeyboard.ts)       | [here](http://appium.io/docs/en/commands/device/keys/hide-keyboard/)     | Hide keyboard                        |
 | [isKeyboardShown](src/commands/keyboard/isKeyboardShown.ts) | [here](http://appium.io/docs/en/commands/device/keys/is-keyboard-shown/) | Whether or not the keyboard is shown |
 
+### Registry
+
+| Command                                                   | Ref                                                                                                                 | Description       |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [getSettings](src/commands/registry/getSettings.ts)       | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve registry |
+| [updateSettings](src/commands/registry/updateSettings.ts) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update registry   |
+
 ### Logs
 
 | Command                                                                                                                                      | Ref                                                                   | Description                      |
@@ -255,13 +287,6 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [deleteSession](src/commands/session/deleteSession.ts)                                                                                           | [here](http://appium.io/docs/en/commands/session/delete/)                                                                           | End the running session                            |
 | [getSession](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L95)  | [here](http://appium.io/docs/en/commands/session/get/)                                                                              | Retrieve the capabilities of the specified session |
 | [getSessions](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L82) | [here](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/docs/mjsonwp/protocol-methods.md) | Retrieve a list of currently active sessions       |
-
-### Settings
-
-| Command                                                                                                                                             | Ref                                                                                                                 | Description              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| [getSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve device settings |
-| [updateSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update device settings   |
 
 ### Timeouts
 
