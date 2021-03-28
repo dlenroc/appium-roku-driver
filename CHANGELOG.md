@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.2.0...v0.2.1) (2021-03-28)
+
+
+### Bug Fixes
+
+* args for `execute` command ([4dcc891](https://www.github.com/dlenroc/appium-roku-driver/commit/4dcc891e790513b5683828a51bede694ed63ba52))
+
 ## [0.2.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.1.1...v0.2.0) (2021-03-27)
 
 
