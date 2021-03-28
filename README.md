@@ -251,10 +251,10 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Registry
 
-| Command                                                                                                                                             | Ref                                                                                                                 | Description         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| [getSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve registries |
-| [updateSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update registries   |
+| Command                                                                                                                                             | Ref                                                                                                                 | Description       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [getSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve registry |
+| [updateSettings](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update registry   |
 
 ### Logs
 
