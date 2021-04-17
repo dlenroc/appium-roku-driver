@@ -99,9 +99,9 @@ driver.updateSettings({
 
 ### Additional Commands
 
-Any methods from [node-roku](https://github.com/dlenroc/node-roku) can be called using a script in the following format `<component>:<method>`.
+Any methods from [node-roku](https://github.com/dlenroc/node-roku/tree/main/packages/roku#readme) can be called using a script in the following format `<component>:<method>`.
 
-The following components are available: [ecp](https://github.com/dlenroc/node-roku#ecp), [debugServer](https://github.com/dlenroc/node-roku#debugserver), [developerServer](https://github.com/dlenroc/node-roku#developerserver), and [odc](https://github.com/dlenroc/node-roku#odc).
+The following components are available: [ecp](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme), [debugServer](https://github.com/dlenroc/node-roku/blob/main/packages/debug-server#readme), [developerServer](https://github.com/dlenroc/node-roku/blob/main/packages/developer-server#readme), and [odc](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme).
 
 ```js
 // without args
