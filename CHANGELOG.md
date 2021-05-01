@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.3.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.3.0...v0.3.1) (2021-05-01)
+
+
+### Bug Fixes
+
+* application reset ([74e0b86](https://www.github.com/dlenroc/appium-roku-driver/commit/74e0b866c205bd408566aa96832a57722bfc9ad2))
+* key release support ([6c01234](https://www.github.com/dlenroc/appium-roku-driver/commit/6c012344c83090cae4c4b37e5a97433a89dbf021))
+
 ## [0.3.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.2.0...v0.3.0) (2021-03-28)
 
 
