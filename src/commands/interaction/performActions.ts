@@ -47,7 +47,26 @@ const Keys: Record<string, Key> = {
 
 export async function performActions(this: Driver, action: Action | Action[]): Promise<void> {
   if (Array.isArray(action)) {
+    // Map all keyDown + all keyUp to a keyPress sequence - WebDriverIO sends keys this way
+    if (action.length > 2 && action.length % 2 == 0) {
+      const centerIndex = action.length / 2;
+      const optimizedActions: Action[] = [];
+
+      for (let i = 0; i < centerIndex; i++) {
+        if (action[i].type === 'keyDown' && action[centerIndex + i].type === 'keyUp' && action[i].value === action[centerIndex + i].value) {
+          optimizedActions.push({ type: 'keyPress', value: action[i].value });
+        } else {
+          break;
+        }
+      }
+
+      if (optimizedActions.length === centerIndex) {
+        return await this.performActions(optimizedActions);
+      }
+    }
+
     for (let i = 0, n = action.length; i < n; i++) {
+      // Map (key/pointer)Down and (key/pointer)Up combination to keyPress
       if (action[i + 1]) {
         if (action[i].type === 'pointerDown' && action[i + 1].type === 'pointerUp') {
           i++;
@@ -72,8 +91,10 @@ export async function performActions(this: Driver, action: Action | Action[]): P
     case 'key':
       return await this.performActions(action.actions);
     case 'keyDown':
+      this.pressedKey = action.value;
       return await this.roku.ecp.keydown(Keys[action.value] || (action.value as Key));
     case 'keyUp':
+      this.pressedKey = null;
       return await this.roku.ecp.keyup(Keys[action.value] || (action.value as Key));
     case 'keyPress':
       return await this.roku.ecp.keypress(Keys[action.value] || (action.value as Key));
