@@ -1,6 +1,6 @@
 {
   "name": "@dlenroc/appium-roku-driver",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Appium Roku Driver",
   "author": "Corneliu Duplachi",
   "repository": "dlenroc/appium-roku-driver",
