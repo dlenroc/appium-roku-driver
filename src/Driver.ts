@@ -146,6 +146,13 @@ export class Driver extends BaseDriver {
       isString: true,
       presence: false,
     },
+    context: {
+      presence: false,
+      inclusion: [
+        'ECP',
+        'ODC'
+      ]
+    }
   };
 
   static newMethodMap = {
