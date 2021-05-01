@@ -1,6 +1,6 @@
+import { createHash } from 'crypto';
 import { SDK } from '@dlenroc/roku';
 import { promises as fs } from 'fs';
-import JSZip from 'jszip';
 import { Driver } from '../../Driver';
 
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
@@ -12,52 +12,30 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
 
   const apps = await this.roku.ecp.queryApps();
   let app = apps.find((app) => app.id === 'dev');
+  let options: Record<string, any> = { odc_enable: true };
 
   if (this.opts.fastReset || this.opts.fullReset) {
-    this.logger.info('Clear channel registry/cache');
-
-    if (app) {
-      await this.closeApp();
-    }
-
-    await this.roku.debugServer.clearLaunchCache();
-    await this.roku.debugServer.generateDeveloperKey();
+    options.odc_clear_registry = true;
   }
 
   if (app) {
-    const zip = await JSZip.loadAsync(await fs.readFile(appPath));
-    const manifest = await zip.file('manifest').async('string');
-    const title = manifest.match(/^title\s*=(.+)/m)?.[1]?.trim();
-    const major = +manifest.match(/^major_version\s*=(.+)/m)?.[1]?.trim();
-    const minor = +manifest.match(/^minor_version\s*=(.+)/m)?.[1]?.trim();
-    const build = +manifest.match(/^build_version\s*=(.+)/m)?.[1]?.trim();
-    const version = `${major}.${minor}.${build}`;
-    const isAlreadyInstalled = app.name === title && app.version === version;
+    const source = await fs.readFile(appPath);
+    const md5 = createHash('md5').update(source).digest('hex');
 
-    this.logger.info(`Candidate: ${title} (${version})`);
-    this.logger.info(`Actual: ${app.name} (${app.version})`);
-
-    if (!isAlreadyInstalled) {
+    if (!this.opts.skipUninstall || !app.name.endsWith(`| ${md5}`)) {
+      this.logger.info('Remove channel');
+      await this.removeApp('dev');
       app = null;
-    } else {
-      if (!this.opts.skipUninstall) {
-        this.logger.info('Remove channel');
-
-        app = null;
-        await this.removeApp('dev');
-      }
     }
   }
 
-  if (app && this.opts.skipUninstall) {
-    this.logger.info('Launch channel');
-
-    await this.launchApp();
-  } else {
+  if (!app) {
     this.logger.info('Install channel');
-
     await this.installApp(appPath);
   }
+
+  this.logger.info('Launch channel');
+  await this.activateApp('dev', options);
 
   return session;
 }
