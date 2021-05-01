@@ -6,14 +6,18 @@ import { Driver } from '../../Driver';
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
 
-  const { ip, username, password, app: appPath, context } = this.caps;
+  const { ip, username, password, app: appPath, context, registry } = this.caps;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
-  this.roku.document.context = context as 'ECP' | 'ODC' || this.roku.document.context
+  this.roku.document.context = (context as 'ECP' | 'ODC') || this.roku.document.context;
 
   const apps = await this.roku.ecp.queryApps();
   let app = apps.find((app) => app.id === 'dev');
   let options: Record<string, any> = { odc_enable: true };
+
+  if (registry) {
+    options.odc_registry = JSON.stringify(registry);
+  }
 
   if (this.opts.fastReset || this.opts.fullReset) {
     options.odc_clear_registry = true;
