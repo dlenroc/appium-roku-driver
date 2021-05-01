@@ -29,13 +29,12 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@dlenroc/roku": "^1.0.0",
+    "@dlenroc/roku": "^1.2.0",
     "appium-base-driver": "^8.0.0-beta.6",
     "appium-support": "^2.51.0",
     "asyncbox": "^2.8.0",
     "base-64": "^1.0.0",
-    "cssesc": "^3.0.0",
-    "jszip": "^3.6.0"
+    "cssesc": "^3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.2.0",
