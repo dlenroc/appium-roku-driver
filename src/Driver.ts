@@ -37,6 +37,7 @@ import { submit } from './commands/element/submit';
 import { waitForCondition } from './commands/helpers/waitForCondition';
 import { execute } from './commands/interaction/execute';
 import { performActions } from './commands/interaction/performActions';
+import { releaseActions } from './commands/interaction/releaseActions';
 import { setUrl } from './commands/interaction/setUrl';
 import { hideKeyboard } from './commands/keyboard/hideKeyboard';
 import { isKeyboardShown } from './commands/keyboard/isKeyboardShown';
@@ -52,6 +53,8 @@ import { createSession } from './commands/session/createSession';
 import { deleteSession } from './commands/session/deleteSession';
 
 export class Driver extends BaseDriver {
+  protected pressedKey: string;
+
   public roku: SDK;
   public errors = errors;
   public logger = logger.getLogger('RokuDriver');
@@ -63,6 +66,7 @@ export class Driver extends BaseDriver {
   // Interaction
   public execute = execute;
   public performActions = performActions;
+  public releaseActions = releaseActions;
   public setUrl = setUrl;
 
   // Context
@@ -141,6 +145,13 @@ export class Driver extends BaseDriver {
     username: {
       isString: true,
       presence: false,
+    },
+  };
+
+  static newMethodMap = {
+    '/session/:sessionId/actions': {
+      POST: { command: 'performActions', payloadParams: { required: ['actions'] } },
+      DELETE: { command: 'releaseActions' },
     },
   };
 }
