@@ -6,9 +6,10 @@ import { Driver } from '../../Driver';
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
 
-  const { ip, username, password, app: appPath } = this.caps;
+  const { ip, username, password, app: appPath, context } = this.caps;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
+  this.roku.document.context = context as 'ECP' | 'ODC' || this.roku.document.context
 
   const apps = await this.roku.ecp.queryApps();
   let app = apps.find((app) => app.id === 'dev');
