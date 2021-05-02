@@ -57,9 +57,9 @@ The following location strategies are supported: `id`, `tag name`, `css selector
 
 ### Contexts
 
-- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku#ecp) is a context which finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
+- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context which finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
 
-- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku#odc) is a context which finds elements more slowly, but sees all attributes (with primitive types) and reports coordinates relative to the viewport.
+- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context which finds elements more slowly, but sees all attributes (with primitive types) and reports coordinates relative to the viewport.
 
 ### Channels
 
@@ -242,6 +242,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [execute](src/commands/interaction/execute.ts)                                                                                                           | [here](http://appium.io/docs/en/commands/mobile-command/)           | Execute a command                                    |
 | [executeDriverScript](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/execute.js#L26) | [here](http://appium.io/docs/en/commands/session/execute-driver/)   | Run a WebdriverIO script against the current session |
 | [performActions](src/commands/interaction/performActions.ts)                                                                                             | [here](http://appium.io/docs/en/commands/interactions/actions/)     | Perform a chain or multiple chains of actions        |
+| [releaseActions](src/commands/interaction/releaseActions.ts)                                                                                             | [here](https://www.w3.org/TR/webdriver/#release-actions)            | Release all the keys that are currently depressed    |
 | [setUrl](src/commands/interaction/setUrl.ts)                                                                                                             | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/) | Open an deep link                                    |
 
 ### Keyboard
