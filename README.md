@@ -170,12 +170,13 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 | Capability                            | Required |  Type   | Description                                                                                                                     |
 | ------------------------------------- | :------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------- |
-| `appium:platformName`                 |    +     | string  | Must be `roku`                                                                                                                  |
+| `platformName`                        |    +     | string  | Must be `roku`                                                                                                                  |
 | `appium:automationName`               |    +     | string  | Must be `roku`                                                                                                                  |
-| `appium:app`                          |    +     | string  | The absolute local path to channel.                                                                                             |
-| `appium:noReset`                      |    -     | boolean | Do not stop app, do not clear app data, and do not uninstall app.                                                               |
+| `appium:deviceName`                   |   +/-    | String  | Helps webdriver clients understand that they are dealing with appium                                                            |
+| `appium:app`                          |    +     | string  | The absolute local path to channel                                                                                              |
+| `appium:noReset`                      |    -     | boolean | Do not stop app, do not clear app data, and do not uninstall app                                                                |
 | `appium:fullReset`                    |    -     | boolean | Stop app, clear app data and uninstall app before session starts and after test                                                 |
-| `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`.                                                |
+| `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |
 | `appium:newCommandTimeout`            |    -     | number  | How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session |
 
 ## Commands
