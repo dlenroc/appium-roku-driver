@@ -155,6 +155,10 @@ export class Driver extends BaseDriver {
       isObject: true,
       presence: false,
     },
+    arguments: {
+      isObject: true,
+      presence: false,
+    },
   };
 
   static newMethodMap = {

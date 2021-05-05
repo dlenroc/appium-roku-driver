@@ -158,13 +158,14 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ## Roku
 
-| Capability        | Required |  Type  | Description                                                                                                                            |
-| ----------------- | :------: | :----: | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `appium:ip`       |    +     | string | The IP address of the target device                                                                                                    |
-| `appium:password` |    +     | string | Password for the [development environment](https://developer.roku.com/en-gb/docs/developer-program/getting-started/developer-setup.md) |
-| `appium:username` |    -     | string | Username for the [development environment](https://developer.roku.com/en-gb/docs/developer-program/getting-started/developer-setup.md) |
-| `appium:context`  |    -     | string | Sets the [context](#contexts) to be used, default `ECP`                                                                                |
-| `appium:registry` |    -     | object | Pre-fills the registry with the specified sections/keys                                                                                |
+| Capability         | Required |  Type  | Description                                                                                                                            |
+| ------------------ | :------: | :----: | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `appium:ip`        |    +     | string | The IP address of the target device                                                                                                    |
+| `appium:password`  |    +     | string | Password for the [development environment](https://developer.roku.com/en-gb/docs/developer-program/getting-started/developer-setup.md) |
+| `appium:username`  |    -     | string | Username for the [development environment](https://developer.roku.com/en-gb/docs/developer-program/getting-started/developer-setup.md) |
+| `appium:context`   |    -     | string | Sets the [context](#contexts) to be used, default `ECP`                                                                                |
+| `appium:registry`  |    -     | object | Pre-fills the registry with the specified sections/keys                                                                                |
+| `appium:arguments` |    -     | object | Parameters to be passed to the main method                                                                                             |
 
 ### Appium
 
