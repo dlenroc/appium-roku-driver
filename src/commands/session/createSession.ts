@@ -6,7 +6,7 @@ import { Driver } from '../../Driver';
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
 
-  const { ip, username, password, app: appPath, context, registry } = this.caps;
+  const { ip, username, password, app: appPath, context, registry, arguments: args } = this.caps;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = (context as 'ECP' | 'ODC') || this.roku.document.context;
@@ -40,7 +40,7 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
   }
 
   this.logger.info('Launch channel');
-  await this.activateApp('dev', options);
+  await this.activateApp('dev', Object.assign(options, args || {}));
 
   return session;
 }
