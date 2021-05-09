@@ -31,16 +31,16 @@
   "dependencies": {
     "@dlenroc/roku": "^1.2.0",
     "appium-base-driver": "^8.0.0-beta.6",
-    "appium-support": "^2.51.0",
+    "appium-support": "^2.53.0",
     "asyncbox": "^2.8.0",
     "base-64": "^1.0.0",
     "cssesc": "^3.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@types/base-64": "^0.1.3",
-    "rollup": "^2.42.1",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@types/base-64": "^1.0.0",
+    "rollup": "^2.47.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   }
 }
