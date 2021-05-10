@@ -212,6 +212,12 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [setValueImmediate](src/commands/element/setValueImmediate.ts) | -                                                                                  | Replace the value of the given element         |
 | [submit](src/commands/element/submit.ts)                       | [here](http://appium.io/docs/en/commands/element/other/submit/)                    | Submit entered text                            |
 
+### Files
+
+| Command                                    | Ref                                                                | Description                                   |
+| ------------------------------------------ | ------------------------------------------------------------------ | --------------------------------------------- |
+| [pullFile](src/commands/files/pullFile.ts) | [here](https://appium.io/docs/en/commands/device/files/pull-file/) | Retrieve a file from the device's file system |
+
 ### Interaction
 
 | Command                                                                                                                                                  | Ref                                                                 | Description                                          |
