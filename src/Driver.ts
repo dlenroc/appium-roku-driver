@@ -41,8 +41,6 @@ import { releaseActions } from './commands/interaction/releaseActions';
 import { setUrl } from './commands/interaction/setUrl';
 import { hideKeyboard } from './commands/keyboard/hideKeyboard';
 import { isKeyboardShown } from './commands/keyboard/isKeyboardShown';
-import { getSettings } from './commands/registry/getSettings';
-import { updateSettings } from './commands/registry/updateSettings';
 import { getPageSource } from './commands/screen/getPageSource';
 import { getScreenshot } from './commands/screen/getScreenshot';
 import { getWindowRect } from './commands/screen/getWindowRect';
@@ -87,10 +85,6 @@ export class Driver extends BaseDriver {
   // Keyboard
   public hideKeyboard = hideKeyboard;
   public isKeyboardShown = isKeyboardShown;
-
-  // Registries
-  public getSettings = getSettings;
-  public updateSettings = updateSettings;
 
   // App
   public activateApp = activateApp;

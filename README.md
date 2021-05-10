@@ -72,31 +72,6 @@ driver.queryAppState('12');
 
 Note that most commands only work with SceneGrapth based sideloaded channel.
 
-### State manipulating
-
-If the channel logic depends on the values in the registry, then we can manipulate its state via the settings api.
-
-```js
-// Clear section
-driver.updateSettings({
-  section: null,
-});
-
-// Remove a key from section
-driver.updateSettings({
-  section: {
-    key: null,
-  },
-});
-
-// Add/Update a key value from section
-driver.updateSettings({
-  section: {
-    key: 'value',
-  },
-});
-```
-
 ### Additional Commands
 
 Any methods from [node-roku](https://github.com/dlenroc/node-roku/tree/main/packages/roku#readme) can be called using a script in the following format `<component>:<method>`.
@@ -254,12 +229,12 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [hideKeyboard](src/commands/keyboard/hideKeyboard.ts)       | [here](http://appium.io/docs/en/commands/device/keys/hide-keyboard/)     | Hide keyboard                        |
 | [isKeyboardShown](src/commands/keyboard/isKeyboardShown.ts) | [here](http://appium.io/docs/en/commands/device/keys/is-keyboard-shown/) | Whether or not the keyboard is shown |
 
-### Registry
+### Settings
 
-| Command                                                   | Ref                                                                                                                 | Description       |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| [getSettings](src/commands/registry/getSettings.ts)       | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve registry |
-| [updateSettings](src/commands/registry/updateSettings.ts) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update registry   |
+| Command                                                                                                                                             | Ref                                                                                                                 | Description       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [getSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve settings |
+| [updateSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update settings   |
 
 ### Logs
 
