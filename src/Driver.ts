@@ -35,6 +35,7 @@ import { setValue } from './commands/element/setValue';
 import { setValueImmediate } from './commands/element/setValueImmediate';
 import { submit } from './commands/element/submit';
 import { pullFile } from './commands/files/pullFile';
+import { pushFile } from './commands/files/pushFile';
 import { waitForCondition } from './commands/helpers/waitForCondition';
 import { execute } from './commands/interaction/execute';
 import { performActions } from './commands/interaction/performActions';
@@ -121,6 +122,7 @@ export class Driver extends BaseDriver {
 
   // Files
   public pullFile = pullFile;
+  public pushFile = pushFile;
 
   // Helpers
   protected waitForCondition = waitForCondition;
