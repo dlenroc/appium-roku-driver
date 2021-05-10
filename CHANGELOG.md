@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.3.1...v0.4.0) (2021-05-10)
+
+
+### Features
+
+* `arguments` capability ([39dca64](https://www.github.com/dlenroc/appium-roku-driver/commit/39dca64cce6b3dea838cf1c5f2510a5d5afd2e12))
+* `context` capability ([e6f6007](https://www.github.com/dlenroc/appium-roku-driver/commit/e6f6007afb6ed13b51610bd6ca51907e94bd624d))
+* `pullFile` command ([248ba82](https://www.github.com/dlenroc/appium-roku-driver/commit/248ba8246b171085b88f6218a084854a3f3be650))
+* `pullFolder` command ([ed7bfb9](https://www.github.com/dlenroc/appium-roku-driver/commit/ed7bfb9b6440a97f92915cf9415006a974074b19))
+* `pushFile` command ([13ce0bf](https://www.github.com/dlenroc/appium-roku-driver/commit/13ce0bf3f6b7606e592eef5973e44878fcf9c5cf))
+* `registry` capability ([268d64b](https://www.github.com/dlenroc/appium-roku-driver/commit/268d64bb6008d35282d11f501d9cb1a21c2fb962))
+
+
+### Bug Fixes
+
+* incorrect use of the Settings API ([e9e256e](https://www.github.com/dlenroc/appium-roku-driver/commit/e9e256eb6d6187cf5dcb2a1694594998967f0ded))
+
 ### [0.3.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.3.0...v0.3.1) (2021-05-01)
 
 
