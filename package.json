@@ -34,7 +34,8 @@
     "appium-support": "^2.53.0",
     "asyncbox": "^2.8.0",
     "base-64": "^1.0.0",
-    "cssesc": "^3.0.0"
+    "cssesc": "^3.0.0",
+    "jszip": "^3.6.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",

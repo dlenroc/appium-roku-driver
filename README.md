@@ -214,10 +214,11 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Files
 
-| Command                                    | Ref                                                                | Description                                        |
-| ------------------------------------------ | ------------------------------------------------------------------ | -------------------------------------------------- |
-| [pullFile](src/commands/files/pullFile.ts) | [here](https://appium.io/docs/en/commands/device/files/pull-file/) | Retrieve a file from the device's file system      |
-| [pushFile](src/commands/files/pushFile.ts) | [here](https://appium.io/docs/en/commands/device/files/push-file/) | Place a file onto the device in a particular place |
+| Command                                        | Ref                                                                 | Description                                        |
+| ---------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------- |
+| [pullFile](src/commands/files/pullFile.ts)     | [here](https://appium.io/docs/en/commands/device/files/pull-file/)  | Retrieve a file from the device's file system      |
+| [pullFolder](src/commands/files/pullFolder.ts) | [here](http://appium.io/docs/en/commands/device/files/pull-folder/) | Retrieve a folder from the device's file system    |
+| [pushFile](src/commands/files/pushFile.ts)     | [here](https://appium.io/docs/en/commands/device/files/push-file/)  | Place a file onto the device in a particular place |
 
 ### Interaction
 
