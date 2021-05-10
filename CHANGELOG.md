@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.4.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.4.0...v0.4.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* background state in `queryAppState` ([8890658](https://www.github.com/dlenroc/appium-roku-driver/commit/8890658951976da3bb57b014871c961a72012db6))
+
 ## [0.4.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.3.1...v0.4.0) (2021-05-10)
 
 
