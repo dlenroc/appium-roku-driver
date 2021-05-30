@@ -4,22 +4,16 @@ Roku Driver is a WebDriver that allows to test channels using any compatible cli
 
 ## Installation
 
-Install `Appium 2` (if not installed).
-
-```sh
-npm install -g appium@next
-```
-
 Install `roku` driver.
 
 ```sh
-appium driver install --source npm @dlenroc/appium-roku-driver
+npx appium@next driver install --source npm @dlenroc/appium-roku-driver
 ```
 
-Run Appium.
+Run Appium Server.
 
 ```sh
-appium
+npx appium@next server
 
 # Output:
 #   Appium REST http interface listener started on 0.0.0.0:4723
@@ -33,7 +27,7 @@ Thanks to the [Appium](https://github.com/appium/appium) and [WebDriver](https:/
 
 ### Initialization
 
-Like other drivers, roku-driver by default uses the so-called `fast reset` algorithm, in which registries are cleared before each test, and a full reinstallation occurs only if the name or version of the channel is different from the one already installed.
+Like other drivers, roku-driver by default uses the so-called `fast reset` algorithm, in which registries are cleared before each test, and a full reinstallation occurs only if channel differ from the one already installed.
 
 Can be tunned using `noReset`, `fullReset` capabilities.
 
@@ -131,7 +125,7 @@ Below are the key codes and their equivalents in the roku remote.
 
 If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://www.npmjs.com/package/@appium/relaxed-caps-plugin) can be used to get rid of them.
 
-## Roku
+### Roku
 
 | Capability         | Required |  Type  | Description                                                                                                                            |
 | ------------------ | :------: | :----: | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -154,6 +148,12 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `appium:fullReset`                    |    -     | boolean | Stop app, clear app data and uninstall app before session starts and after test                                                 |
 | `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |
 | `appium:newCommandTimeout`            |    -     | number  | How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session |
+
+## Setting
+
+| Name                      | Type   | Description                                                                                               |
+| ------------------------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| elementResponseAttributes | string | Comma-separated list of element attribute names that will be available in page source and related actions |
 
 ## Commands
 
