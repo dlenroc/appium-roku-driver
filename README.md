@@ -240,10 +240,10 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Settings
 
-| Command                                                                                                                                             | Ref                                                                                                                 | Description       |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| [getSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L12)   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve settings |
-| [updateSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L5) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update settings   |
+| Command                                                                                                                                           | Ref                                                                                                                 | Description       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [getSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L12) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve settings |
+| [updateSettings](src/commands/settings/updateSettings.ts)                                                                                         | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update settings   |
 
 ### Logs
 
