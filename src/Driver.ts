@@ -55,7 +55,6 @@ import { deleteSession } from './commands/session/deleteSession';
 import { updateSettings } from './commands/settings/updateSettings';
 
 export class Driver extends BaseDriver {
-  protected fields?: Record<string, string[]>;
   protected pressedKey: string;
 
   public roku: SDK;
