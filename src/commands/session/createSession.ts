@@ -10,6 +10,7 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
 
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = (context as 'ECP' | 'ODC') || this.roku.document.context;
+  await this.updateSettings(await this.getSettings());
 
   const apps = await this.roku.ecp.queryApps();
   let app = apps.find((app) => app.id === 'dev');

@@ -52,6 +52,7 @@ import { isLocked } from './commands/screensaver/isLocked';
 import { unlock } from './commands/screensaver/unlock';
 import { createSession } from './commands/session/createSession';
 import { deleteSession } from './commands/session/deleteSession';
+import { updateSettings } from './commands/settings/updateSettings';
 
 export class Driver extends BaseDriver {
   protected pressedKey: string;
@@ -63,6 +64,9 @@ export class Driver extends BaseDriver {
   // Session
   public createSession: OmitFirstArg<typeof createSession> = createSession.bind(this, this.createSession.bind(this));
   public deleteSession: OmitFirstArg<typeof deleteSession> = deleteSession.bind(this, this.deleteSession.bind(this));
+
+  // Setting
+  public updateSettings: OmitFirstArg<typeof updateSettings> = updateSettings.bind(this, this.updateSettings.bind(this));
 
   // Interaction
   public execute = execute;
