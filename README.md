@@ -53,7 +53,7 @@ The following location strategies are supported: `id`, `tag name`, `css selector
 
 - `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context which finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
 
-- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context which finds elements more slowly, but sees all attributes and reports coordinates relative to the viewport (may be faster than ECP if `elementResponseAttributes` setting is used).
+- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context that sees all attributes and reports coordinates relative to the viewport (can be tunned using `elementResponseAttributes` setting).
 
 ### Channels
 
@@ -148,6 +148,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `appium:fullReset`                    |    -     | boolean | Stop app, clear app data and uninstall app before session starts and after test                                                 |
 | `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |
 | `appium:newCommandTimeout`            |    -     | number  | How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session |
+| `appium:settings[<key>]`              |    -     |   any   | Update [driver settings](#setting) on session creation                                                                          |
 
 ## Setting
 
