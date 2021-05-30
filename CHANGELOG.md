@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.4.1...v0.5.0) (2021-05-30)
+
+
+### Features
+
+* `elementResponseAttributes` setting ([ba30505](https://www.github.com/dlenroc/appium-roku-driver/commit/ba30505d68903c43e5eb83ab79a557a21f688f24))
+
 ### [0.4.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.4.0...v0.4.1) (2021-05-10)
 
 
