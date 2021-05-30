@@ -53,7 +53,7 @@ The following location strategies are supported: `id`, `tag name`, `css selector
 
 - `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context which finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
 
-- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context which finds elements more slowly, but sees all attributes (with primitive types) and reports coordinates relative to the viewport (can be speedup using `elementResponseAttributes` setting).
+- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context which finds elements more slowly, but sees all attributes and reports coordinates relative to the viewport (may be faster than ECP if `elementResponseAttributes` setting is used).
 
 ### Channels
 
