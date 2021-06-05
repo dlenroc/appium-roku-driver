@@ -1,7 +1,12 @@
-import { createHash } from 'crypto';
 import { SDK } from '@dlenroc/roku';
+import cacache, { CacheObject } from 'cacache';
+import { createHash } from 'crypto';
 import { promises as fs } from 'fs';
+import fetch from 'make-fetch-happen';
+import { resolve } from 'path';
 import { Driver } from '../../Driver';
+
+const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // ms
 
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
@@ -17,15 +22,31 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
   let options: Record<string, any> = { odc_enable: true };
 
   if (registry) {
-    options.odc_registry = JSON.stringify(registry);
+    options.odc_registry = registry;
   }
 
   if (this.opts.fastReset || this.opts.fullReset) {
     options.odc_clear_registry = true;
   }
 
+  let source: Buffer;
+  if (/^https?:\/\//.test(appPath)) {
+    const timestamp = Date.now();
+    const cachePath = resolve(this.opts.tmpDir, 'roku-driver-cache');
+    const response = await fetch(appPath, { cachePath });
+    if (!response.ok) {
+      throw new this.errors.SessionNotCreatedError(`Failed to download "${appPath}" -> ${response.status} ${response.statusText}`);
+    }
+
+    source = await response.buffer();
+
+    // @ts-ignore
+    await cacache.verify(cachePath, { filter: (entry: CacheObject) => timestamp < entry.time + CACHED_APPS_MAX_AGE });
+  } else {
+    source = await fs.readFile(appPath);
+  }
+
   if (app) {
-    const source = await fs.readFile(appPath);
     const md5 = createHash('md5').update(source).digest('hex');
 
     if (!this.opts.skipUninstall || !app.name.endsWith(`| ${md5}`)) {
@@ -37,7 +58,8 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
 
   if (!app) {
     this.logger.info('Install channel');
-    await this.installApp(appPath);
+    const patchedApp = await this.roku.odc.extend(source);
+    await this.roku.developerServer.install(patchedApp);
   }
 
   this.logger.info('Launch channel');
