@@ -32,7 +32,7 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
   let source: Buffer;
   if (/^https?:\/\//.test(appPath)) {
     const timestamp = Date.now();
-    const cachePath = resolve(this.opts.tmpDir, 'roku-driver-cache');
+    const cachePath = resolve(this.opts.tmpDir, 'appium-roku-driver');
     const response = await fetch(appPath, { cachePath });
     if (!response.ok) {
       throw new this.errors.SessionNotCreatedError(`Failed to download "${appPath}" -> ${response.status} ${response.statusText}`);
