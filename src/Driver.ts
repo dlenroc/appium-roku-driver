@@ -17,6 +17,11 @@ import { terminateApp } from './commands/app/terminateApp';
 import { getContexts } from './commands/context/getContexts';
 import { getCurrentContext } from './commands/context/getCurrentContext';
 import { setContext } from './commands/context/setContext';
+import { getAlertText } from './commands/dialog/getAlertText';
+import { isAlertShown } from './commands/dialog/isAlertShown';
+import { postAcceptAlert } from './commands/dialog/postAcceptAlert';
+import { postDismissAlert } from './commands/dialog/postDismissAlert';
+import { setAlertText } from './commands/dialog/setAlertText';
 import { active } from './commands/element/active';
 import { clear } from './commands/element/clear';
 import { click } from './commands/element/click';
@@ -78,6 +83,13 @@ export class Driver extends BaseDriver {
   public getContexts = getContexts;
   public getCurrentContext = getCurrentContext;
   public setContext = setContext;
+
+  // Dialog
+  public getAlertText = getAlertText;
+  public isAlertShown = isAlertShown;
+  public postAcceptAlert = postAcceptAlert;
+  public postDismissAlert = postDismissAlert;
+  public setAlertText = setAlertText;
 
   // Screensaver
   public isLocked = isLocked;
@@ -168,6 +180,9 @@ export class Driver extends BaseDriver {
   };
 
   static newMethodMap = {
+    '/session/:sessionId/alert': {
+      GET: { command: 'isAlertShown' },
+    },
     '/session/:sessionId/actions': {
       POST: { command: 'performActions', payloadParams: { required: ['actions'] } },
       DELETE: { command: 'releaseActions' },
