@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.5.0...v0.6.0) (2021-06-12)
+
+
+### Features
+
+* `alert` commands ([f198302](https://www.github.com/dlenroc/appium-roku-driver/commit/f1983026fac3972e836738894aecac63505c6766))
+* url in `app` capability ([10ca982](https://www.github.com/dlenroc/appium-roku-driver/commit/10ca9824e361bf109c9ee462063db6f3c26c7131))
+
+
+### Bug Fixes
+
+* custom keyboard/dialog components ([4d307c4](https://www.github.com/dlenroc/appium-roku-driver/commit/4d307c43e6ade0bd5e457aa330df5eb7f545f596))
+
 ## [0.5.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.4.1...v0.5.0) (2021-05-30)
 
 
