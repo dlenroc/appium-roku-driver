@@ -181,6 +181,16 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | [getCurrentContext](src/commands/context/getCurrentContext.ts) | [here](https://appium.io/docs/en/commands/context/get-context/)  | Get current context    |
 | [setContext](src/commands/context/setContext.ts)               | [here](https://appium.io/docs/en/commands/context/set-context/)  | Set context            |
 
+### Dialog
+
+| Command                                                     | Ref                                                         | Description                      |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------- |
+| [getAlertText](src/commands/dialog/getAlertText.ts)         | [here](https://www.w3.org/TR/webdriver/#get-alert-text)     | Get dialog text                  |
+| [isAlertShown](src/commands/dialog/isAlertShown.ts)         | [here](https://webdriver.io/docs/api/chromium/#isalertopen) | Check if dialog is open          |
+| [postAcceptAlert](src/commands/dialog/postAcceptAlert.ts)   | [here](https://www.w3.org/TR/webdriver/#accept-alert)       | Accept dialog using first button |
+| [postDismissAlert](src/commands/dialog/postDismissAlert.ts) | [here](https://www.w3.org/TR/webdriver/#dismiss-alert)      | Dismiss dialog using `Back` key  |
+| [setAlertText](src/commands/dialog/setAlertText.ts)         | [here](https://www.w3.org/TR/webdriver/#send-alert-text)    | Fill dialog with text            |
+
 ### Events
 
 | Command                                                                                                                                           | Ref                                                                  | Description                        |
