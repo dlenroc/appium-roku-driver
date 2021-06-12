@@ -1,5 +1,4 @@
 import { Driver } from '../../Driver';
-import { isAlertShown } from './isAlertShown';
 
 export async function setAlertText(this: Driver, text: string): Promise<void> {
   if (!(await this.isAlertShown())) {
