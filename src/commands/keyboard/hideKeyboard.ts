@@ -1,8 +1,8 @@
 import { Driver } from '../../Driver';
 
 export async function hideKeyboard(this: Driver): Promise<void> {
-  const keyboard = await this.getElOrEls('xpath', '//*[self::Keyboard or self::MiniKeyboard or self::PinPad]');
-  const submitButton = keyboard.xpathSelect('./ancestor-or-self::*[self::Dialog or self::KeyboardDialog or self::PinDialog or self::ProgressDialog]//ButtonGroup');
+  const keyboard = await this.getElOrEls('xpath', '//*[substring(name(), string-length(name()) - string-length("Keyboard") + 1) = "Keyboard" or substring(name(), string-length(name()) - string-length("PinPad") + 1) = "PinPad"]');
+  const submitButton = keyboard.xpathSelect('./ancestor-or-self::*[substring(name(), string-length(name()) - string-length("Dialog") + 1) = "Dialog"]//*[substring(name(), string-length(name()) - string-length("Button") + 1) = "Button"]');
 
   if (submitButton) {
     await submitButton.select();
