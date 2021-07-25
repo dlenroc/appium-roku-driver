@@ -11,7 +11,7 @@ const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // ms
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
 
-  const { ip, username, password, app: appPath, context, registry, arguments: args } = this.caps;
+  const { ip, username, password, app: appPath, context, registry, entryPoint, arguments: args } = this.caps;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = (context as 'ECP' | 'ODC') || this.roku.document.context;
@@ -23,6 +23,10 @@ export async function createSession(this: Driver, createSession?: any, jsonwpDes
 
   if (registry) {
     options.odc_registry = registry;
+  }
+
+  if (entryPoint) {
+    options.odc_entry_point = entryPoint;
   }
 
   if (this.opts.fastReset || this.opts.fullReset) {

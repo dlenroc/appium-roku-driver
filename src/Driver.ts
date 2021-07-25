@@ -177,6 +177,11 @@ export class Driver extends BaseDriver {
       isObject: true,
       presence: false,
     },
+    entryPoint: {
+      isString: true,
+      presence: false,
+      inclusion: ['channel', 'screensaver', 'screensaver-settings'],
+    }
   };
 
   static newMethodMap = {
