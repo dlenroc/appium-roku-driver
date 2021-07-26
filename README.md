@@ -1,6 +1,6 @@
 # Appium Roku Driver · [![NPM Version](https://img.shields.io/npm/v/@dlenroc/appium-roku-driver?cacheSeconds=86400)](https://www.npmjs.com/package/@dlenroc/appium-roku-driver) ![Node.js Version](https://img.shields.io/node/v/@dlenroc/appium-roku-driver) [![Node.js CI](https://github.com/dlenroc/appium-roku-driver/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/dlenroc/appium-roku-driver/actions/workflows/nodejs.yml)
 
-Roku Driver is a WebDriver that allows to test channels using any compatible client.
+Roku Driver is a WebDriver that allows testing channels/screensavers using any compatible client.
 
 ## Installation
 
@@ -27,7 +27,7 @@ Thanks to the [Appium](https://github.com/appium/appium) and [WebDriver](https:/
 
 ### Initialization
 
-Like other drivers, roku-driver by default uses the so-called `fast reset` algorithm, in which registries are cleared before each test, and a full reinstallation occurs only if channel differ from the one already installed.
+Like other drivers, roku-driver by default uses the so-called `fast reset` algorithm, in which registries are cleared before each test, and a full reinstallation occurs only if the channel differs from the one already installed.
 
 Can be tunned using `noReset`, `fullReset` capabilities.
 
@@ -51,7 +51,7 @@ The following location strategies are supported: `id`, `tag name`, `css selector
 
 ### Contexts
 
-- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context which finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
+- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context that finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
 
 - `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context that sees all attributes and reports coordinates relative to the viewport (can be tunned using `elementResponseAttributes` setting).
 
@@ -64,7 +64,7 @@ driver.queryAppState('dev');
 driver.queryAppState('12');
 ```
 
-Note that most commands only work with SceneGrapth based sideloaded channel.
+Note that most commands only work with SceneGrapth based sideloaded channels.
 
 ### Additional Commands
 
@@ -135,7 +135,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `appium:context`    |    -     | string | Sets the [context](#contexts) to be used, default `ECP`                                                                                |
 | `appium:registry`   |    -     | object | Pre-fills the registry with the specified sections/keys                                                                                |
 | `appium:arguments`  |    -     | object | Parameters to be passed to the main method                                                                                             |
-| `appium:entryPoint` |    -     | object | Specifies the channel entry point, possible values are `channel`, `screensaver`, `screensaver-settings`                                |
+| `appium:entryPoint` |    -     | string | Specifies the channel entry point, possible values are `channel`, `screensaver`, `screensaver-settings`                                |
 
 ### Appium
 
