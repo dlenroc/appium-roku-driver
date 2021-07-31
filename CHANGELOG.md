@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.6.0...v0.7.0) (2021-07-26)
+
+
+### Features
+
+* `entryPoint` capability ([6e3e51b](https://www.github.com/dlenroc/appium-roku-driver/commit/6e3e51b18924bc327a103a3cf6256e2e8f3db139))
+
 ## [0.6.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.5.0...v0.6.0) (2021-06-12)
 
 
