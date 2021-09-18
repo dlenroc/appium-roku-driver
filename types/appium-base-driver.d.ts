@@ -1,4 +1,4 @@
-declare module 'appium-base-driver' {
+declare module '@appium/base-driver' {
   type OmitFirstArg<F> = F extends (x: any, ...args: infer P) => infer R ? (...args: P) => R : never;
 
   export function routeConfiguringFunction(driver: BaseDriver): any;
@@ -97,7 +97,7 @@ declare module 'appium-base-driver' {
     | 'UnknownMethodError'
     | 'UnsupportedOperationError'
     | 'ProxyRequestError',
-    { new (...args: any[]): Error }
+    { new(...args: any[]): Error }
   >;
 
   export type SelectorStrategy = 'id' | 'tag name' | 'css selector' | 'xpath' | any;

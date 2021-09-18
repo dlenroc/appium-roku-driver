@@ -1,5 +1,5 @@
+import { Element, SelectorStrategy } from '@appium/base-driver';
 import { Element as XMLElement } from '@dlenroc/roku';
-import { Element, SelectorStrategy } from 'appium-base-driver';
 import { util } from 'appium-support';
 import base64 from 'base-64';
 import cssEscape from 'cssesc';

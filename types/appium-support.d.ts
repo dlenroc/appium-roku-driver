@@ -1,5 +1,5 @@
 declare module 'appium-support' {
-  import { Element } from 'appium-base-driver';
+  import { Element } from '@appium/base-driver';
 
   namespace logger {
     function getLogger(
