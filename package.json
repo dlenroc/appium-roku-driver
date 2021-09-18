@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@appium/base-driver": "^8.1.1",
+    "@appium/support": "^2.54.2",
     "@dlenroc/roku": "^1.2.0",
-    "appium-support": "^2.54.1",
     "asyncbox": "^2.9.1",
     "base-64": "^1.0.0",
     "cacache": "^15.3.0",

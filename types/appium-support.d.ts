@@ -1,4 +1,4 @@
-declare module 'appium-support' {
+declare module '@appium/support' {
   import { Element } from '@appium/base-driver';
 
   namespace logger {

@@ -1,6 +1,6 @@
 import { Element } from '@appium/base-driver';
+import { util } from '@appium/support';
 import { Key } from '@dlenroc/roku';
-import { util } from 'appium-support';
 import { longSleep } from 'asyncbox';
 import { Driver } from '../../Driver';
 

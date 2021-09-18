@@ -2,8 +2,8 @@
 /// <reference path='../types/appium-base-driver.d.ts'/>
 
 import { BaseDriver, errors, OmitFirstArg } from '@appium/base-driver';
+import { logger } from '@appium/support';
 import { SDK } from '@dlenroc/roku';
-import { logger } from 'appium-support';
 import { activateApp } from './commands/app/activateApp';
 import { background } from './commands/app/background';
 import { closeApp } from './commands/app/closeApp';
