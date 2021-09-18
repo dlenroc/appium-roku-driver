@@ -1,29 +1,16 @@
 # Appium Roku Driver · [![NPM Version](https://img.shields.io/npm/v/@dlenroc/appium-roku-driver?cacheSeconds=86400)](https://www.npmjs.com/package/@dlenroc/appium-roku-driver) ![Node.js Version](https://img.shields.io/node/v/@dlenroc/appium-roku-driver) [![Node.js CI](https://github.com/dlenroc/appium-roku-driver/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/dlenroc/appium-roku-driver/actions/workflows/nodejs.yml)
 
-Roku Driver is a WebDriver that allows testing channels/screensavers using any compatible client.
+Roku Driver is a WebDriver that allows testing channels/screensavers using any webdriver client.
 
 ## Installation
 
-Install `roku` driver.
-
 ```sh
-npx appium@next driver install --source npm @dlenroc/appium-roku-driver
-```
-
-Run Appium Server.
-
-```sh
-npx appium@next server
-
-# Output:
-#   Appium REST http interface listener started on 0.0.0.0:4723
-#   Available drivers:
-#     - roku@<version> (automationName 'Roku')
+appium driver install --source npm @dlenroc/appium-roku-driver
 ```
 
 ## Documentation
 
-Thanks to the [Appium](https://github.com/appium/appium) and [WebDriver](https://www.w3.org/TR/webdriver/) protocol, this driver works just like other similar drivers, but there are still a couple of things that are worth mentioning.
+Thanks to the [Appium](https://github.com/appium/appium) and [WebDriver](https://www.w3.org/TR/webdriver/) protocol, this driver works just like other web drivers, but there are a couple of things worth mentioning.
 
 ### Initialization
 
@@ -37,7 +24,7 @@ The following location strategies are supported: `id`, `tag name`, `css selector
 
 ### Deep linking
 
-- `input` - Sends custom events to the current application.
+- `input` - Sends a custom event to the launched channel.
 
   ```js
   driver.url('roku://input?<key>=<value>');
@@ -194,10 +181,10 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Events
 
-| Command                                                                                                                                           | Ref                                                                  | Description                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------- |
-| [getLogEvents](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/event.js#L23)   | [here](http://appium.io/docs/en/commands/session/events/get-events/) | Get events stored in appium server |
-| [logCustomEvent](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/event.js#L12) | [here](http://appium.io/docs/en/commands/session/events/log-event/)  | Store a custom event               |
+| Command                                                                                                                                     | Ref                                                                  | Description                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------- |
+| [getLogEvents](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/event.js#L23)   | [here](http://appium.io/docs/en/commands/session/events/get-events/) | Get events stored in appium server |
+| [logCustomEvent](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/event.js#L12) | [here](http://appium.io/docs/en/commands/session/events/log-event/)  | Store a custom event               |
 
 ### Element
 
@@ -234,13 +221,13 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Interaction
 
-| Command                                                                                                                                                  | Ref                                                                 | Description                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
-| [execute](src/commands/interaction/execute.ts)                                                                                                           | [here](http://appium.io/docs/en/commands/mobile-command/)           | Execute a command                                    |
-| [executeDriverScript](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/execute.js#L26) | [here](http://appium.io/docs/en/commands/session/execute-driver/)   | Run a WebdriverIO script against the current session |
-| [performActions](src/commands/interaction/performActions.ts)                                                                                             | [here](http://appium.io/docs/en/commands/interactions/actions/)     | Perform a chain or multiple chains of actions        |
-| [releaseActions](src/commands/interaction/releaseActions.ts)                                                                                             | [here](https://www.w3.org/TR/webdriver/#release-actions)            | Release all the keys that are currently depressed    |
-| [setUrl](src/commands/interaction/setUrl.ts)                                                                                                             | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/) | Open an deep link                                    |
+| Command                                                                                                                                            | Ref                                                                 | Description                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
+| [execute](src/commands/interaction/execute.ts)                                                                                                     | [here](http://appium.io/docs/en/commands/mobile-command/)           | Execute a command                                    |
+| [executeDriverScript](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/execute.js#L26) | [here](http://appium.io/docs/en/commands/session/execute-driver/)   | Run a WebdriverIO script against the current session |
+| [performActions](src/commands/interaction/performActions.ts)                                                                                       | [here](http://appium.io/docs/en/commands/interactions/actions/)     | Perform a chain or multiple chains of actions        |
+| [releaseActions](src/commands/interaction/releaseActions.ts)                                                                                       | [here](https://www.w3.org/TR/webdriver/#release-actions)            | Release all the keys that are currently depressed    |
+| [setUrl](src/commands/interaction/setUrl.ts)                                                                                                       | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/) | Open an deep link                                    |
 
 ### Keyboard
 
@@ -251,17 +238,17 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Settings
 
-| Command                                                                                                                                           | Ref                                                                                                                 | Description       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| [getSettings](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/settings.js#L12) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve settings |
-| [updateSettings](src/commands/settings/updateSettings.ts)                                                                                         | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update settings   |
+| Command                                                                                                                                     | Ref                                                                                                                 | Description       |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [getSettings](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/settings.js#L12) | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#retrieve-device-settings) | Retrieve settings |
+| [updateSettings](src/commands/settings/updateSettings.ts)                                                                                   | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md#update-device-settings)   | Update settings   |
 
 ### Logs
 
-| Command                                                                                                                                      | Ref                                                                   | Description                      |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------- |
-| [getLog](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/log.js#L23)      | [here](http://appium.io/docs/en/commands/session/logs/get-log/)       | Get the log for a given log type |
-| [getLogTypes](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/lib/basedriver/commands/log.js#L18) | [here](http://appium.io/docs/en/commands/session/logs/get-log-types/) | Get available log types          |
+| Command                                                                                                                                | Ref                                                                   | Description                      |
+| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------- |
+| [getLog](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/log.js#L23)      | [here](http://appium.io/docs/en/commands/session/logs/get-log/)       | Get the log for a given log type |
+| [getLogTypes](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/log.js#L18) | [here](http://appium.io/docs/en/commands/session/logs/get-log-types/) | Get available log types          |
 
 ### Screen
 
@@ -281,17 +268,17 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 
 ### Session
 
-| Command                                                                                                                                          | Ref                                                                                                                                 | Description                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| [createSession](src/commands/session/createSession.ts)                                                                                           | [here](http://appium.io/docs/en/commands/session/create/)                                                                           | Create a new session                               |
-| [deleteSession](src/commands/session/deleteSession.ts)                                                                                           | [here](http://appium.io/docs/en/commands/session/delete/)                                                                           | End the running session                            |
-| [getSession](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L95)  | [here](http://appium.io/docs/en/commands/session/get/)                                                                              | Retrieve the capabilities of the specified session |
-| [getSessions](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/session.js#L82) | [here](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/docs/mjsonwp/protocol-methods.md) | Retrieve a list of currently active sessions       |
+| Command                                                                                                                                    | Ref                                                                                                                                 | Description                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [createSession](src/commands/session/createSession.ts)                                                                                     | [here](http://appium.io/docs/en/commands/session/create/)                                                                           | Create a new session                               |
+| [deleteSession](src/commands/session/deleteSession.ts)                                                                                     | [here](http://appium.io/docs/en/commands/session/delete/)                                                                           | End the running session                            |
+| [getSession](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/session.js#L100) | [here](http://appium.io/docs/en/commands/session/get/)                                                                              | Retrieve the capabilities of the specified session |
+| [getSessions](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/session.js#L87) | [here](https://github.com/appium/appium-base-driver/blob/5521888b0fe3496ce21238cece05c6bb16244f93/docs/mjsonwp/protocol-methods.md) | Retrieve a list of currently active sessions       |
 
 ### Timeouts
 
-| Command                                                                                                                                           | Ref                                                                       | Description                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [getTimeouts](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L47)  | [here](https://www.w3.org/TR/webdriver/#get-timeouts)                     | Get timeouts                                                              |
-| [implicitWait](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L63) | [here](http://appium.io/docs/en/commands/session/timeouts/implicit-wait/) | Set the amount of time the driver should wait when searching for elements |
-| [timeouts](https://github.com/appium/appium-base-driver/blob/d44b4eb7e1d6e7aeeb045a7885bae790b5f19fba/lib/basedriver/commands/timeout.js#L12)     | [here](http://appium.io/docs/en/commands/session/timeouts/timeouts/)      | Set `command`/`implicit` timeout                                          |
+| Command                                                                                                                                     | Ref                                                                       | Description                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [getTimeouts](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/timeout.js#L47)  | [here](https://www.w3.org/TR/webdriver/#get-timeouts)                     | Get timeouts                                                              |
+| [implicitWait](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/timeout.js#L63) | [here](http://appium.io/docs/en/commands/session/timeouts/implicit-wait/) | Set the amount of time the driver should wait when searching for elements |
+| [timeouts](https://github.com/appium/appium/blob/@appium/base-driver@8.1.1/packages/base-driver/lib/basedriver/commands/timeout.js#L12)     | [here](http://appium.io/docs/en/commands/session/timeouts/timeouts/)      | Set `command`/`implicit` timeout                                          |

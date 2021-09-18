@@ -29,22 +29,22 @@
     "mainClass": "Driver"
   },
   "dependencies": {
+    "@appium/base-driver": "^8.1.1",
+    "@appium/support": "^2.54.2",
     "@dlenroc/roku": "^1.2.0",
-    "appium-base-driver": "^8.0.0-beta.6",
-    "appium-support": "^2.53.0",
-    "asyncbox": "^2.8.0",
+    "asyncbox": "^2.9.1",
     "base-64": "^1.0.0",
-    "cacache": "^15.2.0",
+    "cacache": "^15.3.0",
     "cssesc": "^3.0.0",
-    "jszip": "^3.6.0",
-    "make-fetch-happen": "^9.0.2"
+    "jszip": "^3.7.1",
+    "make-fetch-happen": "^9.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@types/base-64": "^1.0.0",
-    "@types/cacache": "^15.0.0",
-    "rollup": "^2.47.0",
+    "@types/cacache": "^15.0.1",
+    "rollup": "^2.56.3",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.3"
   }
 }

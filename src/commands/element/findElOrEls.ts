@@ -1,6 +1,6 @@
+import { Element, SelectorStrategy } from '@appium/base-driver';
+import { util } from '@appium/support';
 import { Element as XMLElement } from '@dlenroc/roku';
-import { Element, SelectorStrategy } from 'appium-base-driver';
-import { util } from 'appium-support';
 import base64 from 'base-64';
 import cssEscape from 'cssesc';
 import { Driver } from '../../Driver';
@@ -29,7 +29,6 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
   const self = this;
 
   if (!parent) {
-    this.logger.info(`Render app-ui`);
     await this.roku.document.render();
   }
 
@@ -40,19 +39,16 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
 
   switch (strategy) {
     case 'css selector':
-      this.logger.info(`Search by css: "${selector}"`);
       return await findBy(multiple, {
         find: () => parentElement.cssSelect(selector, this.implicitWaitMs / 1000),
         finds: () => parentElement.cssSelectAll(selector, this.implicitWaitMs / 1000),
       });
     case 'xpath':
-      this.logger.info(`Search by xpath: "${selector}"`);
       return await findBy(multiple, {
         find: () => parentElement.xpathSelect(selector, this.implicitWaitMs / 1000),
         finds: () => parentElement.xpathSelectAll(selector, this.implicitWaitMs / 1000),
       });
     case 'element-id':
-      this.logger.info(`Search by element: "${selector}"`);
       selector = base64.decode(selector)
       return await findBy(multiple, {
         find: () => parentElement.xpathSelect(selector),
