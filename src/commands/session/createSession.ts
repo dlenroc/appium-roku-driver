@@ -1,3 +1,4 @@
+import { BaseDriver } from '@appium/base-driver';
 import { App, SDK } from '@dlenroc/roku';
 import cacache, { CacheObject } from 'cacache';
 import { createHash } from 'crypto';
@@ -8,8 +9,8 @@ import { Driver } from '../../Driver';
 
 const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // ms
 
-export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
-  const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
+export async function createSession(this: Driver, createSession: BaseDriver['createSession'], jwpCaps: Record<string, any>, jwpReqCaps: Record<string, any>, w3cCaps: Record<string, any>): Promise<[string, any]> {
+  const session = await createSession(jwpCaps, jwpReqCaps, w3cCaps);
 
   const { ip, username, password, app: appPath, context, registry, entryPoint, arguments: args } = this.caps as any;
 
