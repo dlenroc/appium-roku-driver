@@ -6,12 +6,8 @@ export async function setUrl(this: Driver, url: string): Promise<void> {
   const { host, pathname, searchParams } = new URL(url);
   const app = pathname.slice(1) as AppId;
 
-  let params: undefined | Record<string, string>;
+  let params: Record<string, string> = {};
   for (const [key, value] of searchParams) {
-    if (!params) {
-      params = {};
-    }
-
     params[key] = value;
   }
 

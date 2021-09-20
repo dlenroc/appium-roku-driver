@@ -89,30 +89,30 @@ export async function performActions(this: Driver, action: Action | Action[]): P
 
   switch (action.type) {
     case 'key':
-      return await this.performActions(action.actions);
+      return await this.performActions(action.actions!!);
     case 'keyDown':
       this.pressedKey = action.value;
-      return await this.roku.ecp.keydown(Keys[action.value] || (action.value as Key));
+      return await this.roku.ecp.keydown(Keys[action.value!!] || (action.value as Key));
     case 'keyUp':
-      this.pressedKey = null;
-      return await this.roku.ecp.keyup(Keys[action.value] || (action.value as Key));
+      this.pressedKey = undefined;
+      return await this.roku.ecp.keyup(Keys[action.value!!] || (action.value as Key));
     case 'keyPress':
-      return await this.roku.ecp.keypress(Keys[action.value] || (action.value as Key));
+      return await this.roku.ecp.keypress(Keys[action.value!!] || (action.value as Key));
     case 'input':
-      for (const key of action.value) {
+      for (const key of action.value!!) {
         await this.roku.ecp.keypress(key as Key);
       }
     case 'pointer':
-      return await this.performActions(action.actions);
+      return await this.performActions(action.actions!!);
     case 'pointerMove':
-      const element = await this.getElOrEls('element-id', util.unwrapElement(action.origin));
+      const element = await this.getElOrEls('element-id', util.unwrapElement(action.origin!!));
       return await element.focus();
     case 'pointerDown':
       return await this.roku.ecp.keydown('Select');
     case 'pointerUp':
       return await this.roku.ecp.keyup('Select');
     case 'pause':
-      return await longSleep(action.duration);
+      return await longSleep(action.duration!!);
     default:
       throw new this.errors.NotYetImplementedError(action.type);
   }
