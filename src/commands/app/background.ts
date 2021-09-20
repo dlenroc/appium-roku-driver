@@ -1,7 +1,9 @@
+/// <reference path='../../../types/asyncbox.d.ts'/>
+
 import { longSleep } from 'asyncbox';
 import { Driver } from '../../Driver';
 
-export async function background(this: Driver, seconds?: number): Promise<void> {
+export async function background(this: Driver, seconds: number | null): Promise<void> {
   const activeApp = await this.roku.ecp.queryActiveApp();
   const app = activeApp.app;
 

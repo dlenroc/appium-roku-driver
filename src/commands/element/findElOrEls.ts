@@ -39,28 +39,29 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
 
   switch (strategy) {
     case 'css selector':
-      return await findBy(multiple, {
+      return findBy(multiple, {
         find: () => parentElement.cssSelect(selector, this.implicitWaitMs / 1000),
         finds: () => parentElement.cssSelectAll(selector, this.implicitWaitMs / 1000),
       });
     case 'xpath':
-      return await findBy(multiple, {
+      return findBy(multiple, {
         find: () => parentElement.xpathSelect(selector, this.implicitWaitMs / 1000),
         finds: () => parentElement.xpathSelectAll(selector, this.implicitWaitMs / 1000),
       });
     case 'element-id':
-      selector = base64.decode(selector)
-      return await findBy(multiple, {
-        find: () => parentElement.xpathSelect(selector),
-        finds: () => parentElement.xpathSelectAll(selector),
+      selector = base64.decode(selector);
+      return findBy(multiple, {
+        find: async () => parentElement.xpathSelect(selector),
+        finds: async () => parentElement.xpathSelectAll(selector),
       });
     default:
-      this.logger.errorAndThrow(new this.errors.NoSuchElementError());
+      return this.logger.errorAndThrow(new this.errors.NoSuchElementError());
   }
 
-  async function findBy<multiple extends boolean>(multiple: multiple, { find, finds }): Promise<multiple extends true ? XMLElement[] : XMLElement> {
+  async function findBy<T extends boolean = false>(multiple: T | undefined, { find, finds }: { find: () => Promise<XMLElement | null>; finds: () => Promise<XMLElement[]> }): Promise<T extends true ? XMLElement[] : XMLElement> {
     if (multiple) {
-      return await finds();
+      // @ts-ignore
+      return finds();
     }
 
     const element = await find();
@@ -68,6 +69,7 @@ export async function getElOrEls<T extends boolean = false>(this: Driver, strate
       throw new self.errors.NoSuchElementError();
     }
 
+    // @ts-ignore
     return element;
   }
 }

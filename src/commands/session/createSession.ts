@@ -1,4 +1,4 @@
-import { SDK } from '@dlenroc/roku';
+import { App, SDK } from '@dlenroc/roku';
 import cacache, { CacheObject } from 'cacache';
 import { createHash } from 'crypto';
 import { promises as fs } from 'fs';
@@ -11,14 +11,14 @@ const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // ms
 export async function createSession(this: Driver, createSession?: any, jsonwpDesiredCapabilities?: Record<string, any>, jsonwpRequiredCaps?: Record<string, any>, w3cCapabilities?: Record<string, any>): Promise<[string, Record<string, any>]> {
   const session = await createSession(jsonwpDesiredCapabilities, jsonwpRequiredCaps, w3cCapabilities);
 
-  const { ip, username, password, app: appPath, context, registry, entryPoint, arguments: args } = this.caps;
+  const { ip, username, password, app: appPath, context, registry, entryPoint, arguments: args } = this.caps as any;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = (context as 'ECP' | 'ODC') || this.roku.document.context;
   await this.updateSettings(await this.getSettings());
 
   const apps = await this.roku.ecp.queryApps();
-  let app = apps.find((app) => app.id === 'dev');
+  let app: App | undefined | null = apps.find((app) => app.id === 'dev');
   let options: Record<string, any> = { odc_enable: true };
 
   if (registry) {

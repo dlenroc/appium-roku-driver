@@ -60,8 +60,9 @@ import { deleteSession } from './commands/session/deleteSession';
 import { updateSettings } from './commands/settings/updateSettings';
 
 export class Driver extends BaseDriver {
-  protected pressedKey: string;
+  protected pressedKey?: string;
 
+  // @ts-ignore
   public roku: SDK;
   public errors = errors;
   public logger = logger.getLogger('RokuDriver');
@@ -125,6 +126,7 @@ export class Driver extends BaseDriver {
   public elementDisplayed = elementDisplayed;
   public elementEnabled = elementEnabled;
   public elementSelected = elementSelected;
+  // @ts-ignore because base driver only returns an element (but in fact it can return multiple elements as well)
   public findElOrEls = findElOrEls;
   public getAttribute = getAttribute;
   public getElementRect = getElementRect;
@@ -147,6 +149,7 @@ export class Driver extends BaseDriver {
 
   // Configurations
   protected locatorStrategies = ['id', 'tag name', 'css selector', 'xpath'];
+  // @ts-ignore because base driver defines it as an ancestor
   protected desiredCapConstraints = {
     app: {
       isString: true,
@@ -181,7 +184,7 @@ export class Driver extends BaseDriver {
       isString: true,
       presence: false,
       inclusion: ['channel', 'screensaver', 'screensaver-settings'],
-    }
+    },
   };
 
   static newMethodMap = {

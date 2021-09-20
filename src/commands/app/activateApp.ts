@@ -7,7 +7,7 @@ export async function activateApp(this: Driver, id: string, options?: Record<str
     error: 'Channel not started',
     condition: async () => {
       const activeApp = await this.roku.ecp.queryActiveApp();
-      return activeApp.app['id'] == id;
+      return typeof activeApp.app !== 'string' && activeApp.app.id == id;
     },
   });
 }

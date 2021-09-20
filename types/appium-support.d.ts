@@ -2,9 +2,7 @@ declare module '@appium/support' {
   import { Element } from '@appium/base-driver';
 
   namespace logger {
-    function getLogger(
-      name: string
-    ): {
+    function getLogger(name: string): {
       info(...args: any[]): void;
       silly(...args: any[]): void;
       verbose(...args: any[]): void;

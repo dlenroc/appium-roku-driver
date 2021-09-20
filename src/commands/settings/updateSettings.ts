@@ -1,14 +1,15 @@
 import { Driver } from '../../Driver';
+import type { BaseDriver } from '@appium/base-driver'
 
-export async function updateSettings(this: Driver, updateSettings: any, settings: Record<string, any>): Promise<void> {
+export async function updateSettings(this: Driver, updateSettings: BaseDriver['updateSettings'], settings: Record<string, any>): ReturnType<BaseDriver['updateSettings']> {
   await updateSettings(settings);
 
-  if (settings.hasOwnProperty('elementResponseAttributes')) {
+  if (this.roku && settings.hasOwnProperty('elementResponseAttributes')) {
     const elementResponseAttributes = settings.elementResponseAttributes;
 
     if (!elementResponseAttributes) {
-      this.roku.document.fields = null;
-      return;
+      this.roku.document.fields = undefined;
+      return this.getSettings();
     }
 
     const fields: Record<string, string[]> = {};
@@ -29,4 +30,6 @@ export async function updateSettings(this: Driver, updateSettings: any, settings
 
     this.roku.document.fields = fields;
   }
+
+  return this.getSettings();
 }
