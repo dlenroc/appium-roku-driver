@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.7.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.7.0...v0.7.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* type definition ([fa0a28f](https://www.github.com/dlenroc/appium-roku-driver/commit/fa0a28fdb8e606fa355bfbad47a33a69a0e1f6c3))
+
 ## [0.7.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.6.0...v0.7.0) (2021-07-26)
 
 
