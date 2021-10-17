@@ -4,7 +4,7 @@ import fetch from 'make-fetch-happen';
 import { resolve } from 'path';
 import { Driver } from '../Driver';
 
-const CACHED_MAX_AGE = 1000 * 60 * 60 * 24; // 1 day
+const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // 1 day
 
 export async function loadChannel(this: Driver, pathOrUrl: string): Promise<Buffer> {
   let source;
@@ -18,10 +18,9 @@ export async function loadChannel(this: Driver, pathOrUrl: string): Promise<Buff
 
     source = await response.buffer();
 
-    // Remove apps that are in cache more than 1 day
     const timestamp = Date.now();
     // @ts-ignore
-    await cacache.verify(cachePath, { filter: (entry: CacheObject) => timestamp < entry.time + CACHED_MAX_AGE });
+    await cacache.verify(cachePath, { filter: (entry: CacheObject) => timestamp < entry.time + CACHED_APPS_MAX_AGE });
   } else {
     source = await fs.readFile(pathOrUrl);
   }
