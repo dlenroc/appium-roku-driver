@@ -173,7 +173,7 @@ declare module '@appium/base-driver' {
     setValueImmediate?(value: string, elementId: string): Promise<void>;
     replaceValue?(value: string, elementId: string): Promise<void>;
     updateSettings(newSettings: Record<string, unknown>): Promise<DeviceSettings>;
-    getSettings(): Promise<DeviceSettings>;
+    getSettings(): Promise<Record<string, unknown>>;
     receiveAsyncResponse?(response: unknown): Promise<void>;
     executeDriverScript(script: string, scriptType?: string, timeout?: number): Promise<unknown>;
     getLogEvents(type?: string | string[]): {};
@@ -287,7 +287,7 @@ declare module '@appium/base-driver' {
   declare class DeviceSettings {
     constructor(defaultSettings: {}, onSettingsUpdate: SettingsUpdater);
     update(newSettings: {}): Promise<void>;
-    getSettings(): DeviceSettings;
+    getSettings(): Record<string, unknown>;
   }
 
   declare type LogType = {

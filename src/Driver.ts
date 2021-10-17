@@ -54,6 +54,7 @@ import { updateSettings } from './commands/updateSettings';
 import { getElement } from './helpers/getElement';
 import { getElements } from './helpers/getElements';
 import { getSelector } from './helpers/getSelector';
+import { loadChannel } from './helpers/loadChannel';
 import { waitForCondition } from './helpers/waitForCondition';
 
 export class Driver extends BaseDriver {
@@ -74,6 +75,7 @@ export class Driver extends BaseDriver {
       getElement: getElement.bind(this),
       getElements: getElements.bind(this),
       getSelector: getSelector.bind(this),
+      loadChannel: loadChannel.bind(this),
       waitForCondition: waitForCondition.bind(this),
     },
     super.helpers as DriverHelpers
