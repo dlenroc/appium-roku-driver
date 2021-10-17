@@ -40,11 +40,24 @@ export async function performActions(this: Driver, actions: Actions[]): Promise<
     action.actions = optimizeActions(action.actions);
 
     switch (action.type) {
+      case 'none':
+        await performNoneActions.call(this, action.actions);
+        break;
       case 'key':
         await performKeyActions.call(this, action.actions);
         break;
       case 'pointer':
         await performPointerActions.call(this, action.actions);
+        break;
+    }
+  }
+}
+
+async function performNoneActions(this: Driver, actions: Action[]): Promise<void> {
+  for (const action of actions) {
+    switch (action.type) {
+      case 'pause':
+        await longSleep(action.duration!!);
         break;
     }
   }
@@ -68,7 +81,7 @@ async function performKeyActions(this: Driver, actions: Action[]): Promise<void>
         await this.roku.ecp.keydown(key);
         break;
       case 'pause':
-        await longSleep(action.duration!!);
+        await performNoneActions.call(this, [action]);
         break;
     }
   }
@@ -91,7 +104,7 @@ async function performPointerActions(this: Driver, actions: Action[]): Promise<v
         await performKeyActions.call(this, [{ type: 'keyUp', value: 'Select' }]);
         break;
       case 'pause':
-        await longSleep(action.duration!!);
+        await performNoneActions.call(this, [action]);
         break;
     }
   }
