@@ -135,7 +135,7 @@ export class Driver extends BaseDriver {
 
   // Configurations
   public supportedLogTypes = {};
-  public locatorStrategies = ['id', 'tag name', 'css selector', 'xpath'];
+  public locatorStrategies = ['id', 'tag name', 'link text', 'partial link text', 'css selector', 'xpath'];
 
   public get desiredCapConstraints() {
     return {
