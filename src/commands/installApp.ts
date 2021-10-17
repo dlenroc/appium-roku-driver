@@ -9,17 +9,15 @@ export async function installApp(this: Driver, appPath: string, options?: unknow
 
   if (app) {
     const md5 = createHash('md5').update(source).digest('hex');
+    const alreadyInstalled = app.name.endsWith(`| ${md5}`);
 
-    if (!this.opts.skipUninstall || !app.name.endsWith(`| ${md5}`)) {
-      this.logger.info('Remove channel');
-      await this.removeApp('dev');
-      app = undefined;
+    if (alreadyInstalled) {
+      this.logger.info('Channel is already installed');
+      return;
     }
   }
 
-  if (!app) {
-    this.logger.info('Install channel');
-    const patchedApp = await this.roku.odc.extend(source);
-    await this.roku.developerServer.install(patchedApp);
-  }
+  this.logger.info('Install channel');
+  const patchedApp = await this.roku.odc.extend(source);
+  await this.roku.developerServer.install(patchedApp);
 }
