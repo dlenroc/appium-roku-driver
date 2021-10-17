@@ -17,7 +17,6 @@ declare module '@appium/support' {
 
   namespace util {
     function wrapElement(el: string): Element;
-
-    function unwrapElement(el: Element): string;
+    function unwrapElement(el: string): string;
   }
 }

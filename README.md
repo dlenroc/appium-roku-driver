@@ -89,16 +89,16 @@ const capabilities = {
   // Launch parameters
   'appium:arguments': {
     contentId: 1234,
-    mediaType: 'movie'
+    mediaType: 'movie',
   },
 
   // Registry sections Settings
   'appium:registry': {
     account: {
-      token: '<user_token>'
-    }
-  }
-}
+      token: '<user_token>',
+    },
+  },
+};
 ```
 
 ### Additional Commands
@@ -198,73 +198,67 @@ The following sections contain supported commands with links to source code and 
 
 > **Note:** command you call from the web driver may have a different name, but under the hood appium will call one of the commands below.
 
-### WebDriver Protocol
+### WebDriver
 
-| Command                                                        | Ref                                                                     | Description                                       |
-| -------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------- |
-| [createSession](src/commands/session/createSession.ts)         | [here](http://appium.io/docs/en/commands/session/create/)               | Create a new session                              |
-| [deleteSession](src/commands/session/deleteSession.ts)         | [here](http://appium.io/docs/en/commands/session/delete/)               | End the running session                           |
-| [setUrl](src/commands/interaction/setUrl.ts)                   | [here](http://appium.io/docs/en/commands/web/navigation/go-to-url/)     | Open an deep link                                 |
-| [getWindowRect](src/commands/screen/getWindowRect.ts)          | [here](http://appium.io/docs/en/commands/web/window/get-window-size/)   | Get the rect of the viewport                      |
-| [active](src/commands/element/active.ts)                       | [here](http://appium.io/docs/en/commands/element/other/active/)         | Gets the focused element                          |
-| [findElement](src/commands/element/findElOrEls.ts)             | [here](http://appium.io/docs/en/commands/element/find-element/)         | Search for an element                             |
-| [findElements](src/commands/element/findElOrEls.ts)            | [here](http://appium.io/docs/en/commands/element/find-element/)         | Search for multiple elements                      |
-| [findElementFromElement](src/commands/element/findElOrEls.ts)  | [here](http://appium.io/docs/en/commands/element/find-element/)         | Search for an element in parent element           |
-| [findElementsFromElement](src/commands/element/findElOrEls.ts) | [here](http://appium.io/docs/en/commands/element/find-element/)         | Search multiple elements in parent element        |
-| [elementDisplayed](src/commands/element/elementDisplayed.ts)   | [here](http://appium.io/docs/en/commands/element/attributes/displayed/) | Determine if an element is currently displayed    |
-| [elementSelected](src/commands/element/elementSelected.ts)     | [here](http://appium.io/docs/en/commands/element/attributes/selected/)  | Determine if element is focused                   |
-| [getAttribute](src/commands/element/getAttribute.ts)           | [here](http://appium.io/docs/en/commands/element/attributes/attribute/) | Get the value of an element's attribute           |
-| [getText](src/commands/element/getText.ts)                     | [here](http://appium.io/docs/en/commands/element/attributes/text/)      | Returns visible text for element                  |
-| [getName](src/commands/element/getName.ts)                     | [here](http://appium.io/docs/en/commands/element/attributes/name/)      | Get an element's tag name                         |
-| [getElementRect](src/commands/element/getElementRect.ts)       | [here](http://appium.io/docs/en/commands/element/attributes/rect/)      | Gets dimensions and coordinates of an element     |
-| [elementEnabled](src/commands/element/elementEnabled.ts)       | [here](http://appium.io/docs/en/commands/element/attributes/enabled/)   | Determine if an element is currently enabled      |
-| [click](src/commands/element/click.ts)                         | [here](http://appium.io/docs/en/commands/element/actions/click/)        | Focuses the element and then clicks `Select`      |
-| [clear](src/commands/element/clear.ts)                         | [here](http://appium.io/docs/en/commands/element/actions/clear/)        | Clear an element's value                          |
-| [setValue](src/commands/element/setValue.ts)                   | [here](http://appium.io/docs/en/commands/element/actions/send-keys/)    | Send a sequence of key strokes to an element      |
-| [getPageSource](src/commands/screen/getPageSource.ts)          | [here](http://appium.io/docs/en/commands/session/source/)               | Get the XML representation of the current UI      |
-| [execute](src/commands/interaction/execute.ts)                 | [here](http://appium.io/docs/en/commands/mobile-command/)               | Execute a command                                 |
-| [performActions](src/commands/interaction/performActions.ts)   | [here](http://appium.io/docs/en/commands/interactions/actions/)         | Perform a chain or multiple chains of actions     |
-| [releaseActions](src/commands/interaction/releaseActions.ts)   | [here](https://www.w3.org/TR/webdriver/#release-actions)                | Release all the keys that are currently depressed |
-| [isAlertShown](src/commands/dialog/isAlertShown.ts)            | [here](https://webdriver.io/docs/api/chromium/#isalertopen)             | Check if dialog is open                           |
-| [postDismissAlert](src/commands/dialog/postDismissAlert.ts)    | [here](https://www.w3.org/TR/webdriver/#dismiss-alert)                  | Dismiss dialog using `Back` key                   |
-| [postAcceptAlert](src/commands/dialog/postAcceptAlert.ts)      | [here](https://www.w3.org/TR/webdriver/#accept-alert)                   | Accept dialog using first button                  |
-| [getAlertText](src/commands/dialog/getAlertText.ts)            | [here](https://www.w3.org/TR/webdriver/#get-alert-text)                 | Get dialog text                                   |
-| [setAlertText](src/commands/dialog/setAlertText.ts)            | [here](https://www.w3.org/TR/webdriver/#send-alert-text)                | Fill dialog with text                             |
-| [getScreenshot](src/commands/screen/getScreenshot.ts)          | [here](http://appium.io/docs/en/commands/session/screenshot/)           | Take a screenshot of the current viewport         |
+### WebDriver Commands
 
-### Mobile JSON Wire Protocol
+| Command                                                | Description                                       |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| [createSession](src/commands/createSession.ts)         | Create a new session                              |
+| [deleteSession](src/commands/deleteSession.ts)         | End the running session                           |
+| [setUrl](src/commands/setUrl.ts)                       | Open an deep link                                 |
+| [getWindowRect](src/commands/getWindowRect.ts)         | Get the rect of the viewport                      |
+| [active](src/commands/active.ts)                       | Gets the focused element                          |
+| [findElement](src/commands/findElOrEls.ts)             | Search for an element                             |
+| [findElements](src/commands/findElOrEls.ts)            | Search for multiple elements                      |
+| [findElementFromElement](src/commands/findElOrEls.ts)  | Search for an element in parent element           |
+| [findElementsFromElement](src/commands/findElOrEls.ts) | Search multiple elements in parent element        |
+| [elementSelected](src/commands/elementSelected.ts)     | Determine if element is focused                   |
+| [getAttribute](src/commands/getProperty.ts)            | Get the value of an element's attribute           |
+| [getProperty](src/commands/getProperty.ts)             | Get the value of an element's attribute           |
+| [getText](src/commands/getText.ts)                     | Returns visible text for element                  |
+| [getName](src/commands/getName.ts)                     | Get an element's tag name                         |
+| [getElementRect](src/commands/getElementRect.ts)       | Gets dimensions and coordinates of an element     |
+| [elementEnabled](src/commands/elementDisplayed.ts)     | Determine if an element is currently enabled      |
+| [elementDisplayed](src/commands/elementDisplayed.ts)   | Determine if an element is currently displayed    |
+| [click](src/commands/click.ts)                         | Focuses the element and then clicks `Select`      |
+| [clear](src/commands/clear.ts)                         | Clear an element's value                          |
+| [setValue](src/commands/setValue.ts)                   | Send a sequence of key strokes to an element      |
+| [getPageSource](src/commands/getPageSource.ts)         | Get the XML representation of the current UI      |
+| [execute](src/commands/execute.ts)                     | Execute a command                                 |
+| [performActions](src/commands/performActions.ts)       | Perform a chain or multiple chains of actions     |
+| [releaseActions](src/commands/releaseActions.ts)       | Release all the keys that are currently depressed |
+| [isAlertShown](src/commands/isAlertShown.ts)           | Check if dialog is open                           |
+| [postDismissAlert](src/commands/postDismissAlert.ts)   | Dismiss dialog using `Back` key                   |
+| [postAcceptAlert](src/commands/postAcceptAlert.ts)     | Accept dialog using first button                  |
+| [getAlertText](src/commands/getAlertText.ts)           | Get dialog text                                   |
+| [setAlertText](src/commands/setAlertText.ts)           | Fill dialog with text                             |
+| [getScreenshot](src/commands/getScreenshot.ts)         | Take a screenshot of the current viewport         |
 
-| Command                                                        | Ref                                                                                        | Description                                                       |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [activateApp](src/commands/app/activateApp.ts)                 | [here](https://appium.io/docs/en/commands/device/app/activate-app/)                        | Activate the given app onto the device                            |
-| [background](src/commands/app/background.ts)                   | [here](https://appium.io/docs/en/commands/device/app/background-app/)                      | Send the currently running app for this session to the background |
-| [closeApp](src/commands/app/closeApp.ts)                       | [here](https://appium.io/docs/en/commands/device/app/close-app/)                           | Close an app on device                                            |
-| [installApp](src/commands/app/installApp.ts)                   | [here](https://appium.io/docs/en/commands/device/app/install-app/)                         | Install the given app onto the device                             |
-| [isAppInstalled](src/commands/app/isAppInstalled.ts)           | [here](https://appium.io/docs/en/commands/device/app/is-app-installed/)                    | Check whether the specified app is installed on the device        |
-| [launchApp](src/commands/app/launchApp.ts)                     | [here](https://appium.io/docs/en/commands/device/app/launch-app/)                          | Launch the app-under-test on the device                           |
-| [queryAppState](src/commands/app/queryAppState.ts)             | [here](https://appium.io/docs/en/commands/device/app/app-state/)                           | Get the given app status on the device                            |
-| [removeApp](src/commands/app/removeApp.ts)                     | [here](https://appium.io/docs/en/commands/device/app/remove-app/)                          | Remove an app from the device                                     |
-| [reset](src/commands/app/reset.ts)                             | [here](https://appium.io/docs/en/commands/device/app/reset-app/)                           | Reset the currently running app for this session                  |
-| [terminateApp](src/commands/app/terminateApp.ts)               | [here](https://appium.io/docs/en/commands/device/app/terminate-app/)                       | Terminate the given app on the device                             |
-| [getContexts](src/commands/context/getContexts.ts)             | [here](https://appium.io/docs/en/commands/context/get-contexts/)                           | Get available contexts                                            |
-| [getCurrentContext](src/commands/context/getCurrentContext.ts) | [here](https://appium.io/docs/en/commands/context/get-context/)                            | Get current context                                               |
-| [setContext](src/commands/context/setContext.ts)               | [here](https://appium.io/docs/en/commands/context/set-context/)                            | Set context                                                       |
-| [hideKeyboard](src/commands/keyboard/hideKeyboard.ts)          | [here](http://appium.io/docs/en/commands/device/keys/hide-keyboard/)                       | Hide keyboard                                                     |
-| [isKeyboardShown](src/commands/keyboard/isKeyboardShown.ts)    | [here](http://appium.io/docs/en/commands/device/keys/is-keyboard-shown/)                   | Whether or not the keyboard is shown                              |
-| [updateSettings](src/commands/settings/updateSettings.ts)      | [here](https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md) | Update settings                                                   |
-| [isLocked](src/commands/screensaver/isLocked.ts)               | [here](http://appium.io/docs/en/commands/device/interactions/is-locked/)                   | Check if screensaver is displayed                                 |
-| [unlock](src/commands/screensaver/unlock.ts)                   | [here](http://appium.io/docs/en/commands/device/interactions/unlock/)                      | Stop screensaver                                                  |
-| [pullFile](src/commands/files/pullFile.ts)                     | [here](https://appium.io/docs/en/commands/device/files/pull-file/)                         | Retrieve a file from the device's file system                     |
-| [pullFolder](src/commands/files/pullFolder.ts)                 | [here](http://appium.io/docs/en/commands/device/files/pull-folder/)                        | Retrieve a folder from the device's file system                   |
-| [pushFile](src/commands/files/pushFile.ts)                     | [here](https://appium.io/docs/en/commands/device/files/push-file/)                         | Place a file onto the device in a particular place                |
-| [replaceValue](src/commands/element/replaceValue.ts)           | -                                                                                          | Replace the value of the given element                            |
-| [setValueImmediate](src/commands/element/setValueImmediate.ts) | -                                                                                          | Replace the value of the given element                            |
+### Appium Commands
 
-### JSON Wire Protocol
-
-| Command                                               | Ref                                                                    | Description                                   |
-| ----------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------- |
-| [getWindowSize](src/commands/screen/getWindowSize.ts) | [here](http://appium.io/docs/en/commands/web/window/get-window-size/)  | Get the size of the viewport                  |
-| [submit](src/commands/element/submit.ts)              | [here](http://appium.io/docs/en/commands/element/other/submit/)        | Submit entered text                           |
-| [getLocation](src/commands/element/getLocation.ts)    | [here](http://appium.io/docs/en/commands/element/attributes/location/) | Determine an element's location on the screen |
-| [getSize](src/commands/element/getSize.ts)            | [here](http://appium.io/docs/en/commands/element/attributes/size/)     | Determine an element's size in pixels         |
+| Command                                                | Description                                                       |
+| ------------------------------------------------------ | ----------------------------------------------------------------- |
+| [unlock](src/commands/unlock.ts)                       | Stop screensaver                                                  |
+| [isLocked](src/commands/isLocked.ts)                   | Check if screensaver is displayed                                 |
+| [installApp](src/commands/installApp.ts)               | Install the given app onto the device                             |
+| [activateApp](src/commands/activateApp.ts)             | Activate the given app onto the device                            |
+| [removeApp](src/commands/removeApp.ts)                 | Remove an app from the device                                     |
+| [terminateApp](src/commands/terminateApp.ts)           | Terminate the given app on the device                             |
+| [isAppInstalled](src/commands/isAppInstalled.ts)       | Check whether the specified app is installed on the device        |
+| [queryAppState](src/commands/queryAppState.ts)         | Get the given app status on the device                            |
+| [hideKeyboard](src/commands/hideKeyboard.ts)           | Hide keyboard                                                     |
+| [isKeyboardShown](src/commands/isKeyboardShown.ts)     | Whether or not the keyboard is shown                              |
+| [pushFile](src/commands/pushFile.ts)                   | Place a file onto the device in a particular place                |
+| [pullFile](src/commands/pullFile.ts)                   | Retrieve a file from the device's file system                     |
+| [pullFolder](src/commands/pullFolder.ts)               | Retrieve a folder from the device's file system                   |
+| [launchApp](src/commands/launchApp.ts)                 | Launch the app-under-test on the device                           |
+| [closeApp](src/commands/closeApp.ts)                   | Close an app on device                                            |
+| [reset](src/commands/reset.ts)                         | Reset the currently running app for this session                  |
+| [background](src/commands/background.ts)               | Send the currently running app for this session to the background |
+| [setValueImmediate](src/commands/replaceValue.ts)      | Replace the value of the given element                            |
+| [replaceValue](src/commands/replaceValue.ts)           | Replace the value of the given element                            |
+| [updateSettings](src/commands/updateSettings.ts)       | Update settings                                                   |
+| [getCurrentContext](src/commands/getCurrentContext.ts) | Get current context                                               |
+| [setContext](src/commands/setContext.ts)               | Set context                                                       |
+| [getContexts](src/commands/getContexts.ts)             | Get available contexts                                            |
