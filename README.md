@@ -28,7 +28,7 @@ Can be tunned using `noReset`, `fullReset` capabilities.
 
 ### Locators
 
-The following location strategies are supported: `id`, `tag name`, `css selector` and `xpath`.
+The following location strategies are supported: `id`, `tag name`, `link text`, `partial link text`, `css selector` and `xpath`.
 
 ### Contexts
 
