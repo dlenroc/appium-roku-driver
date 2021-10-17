@@ -172,7 +172,7 @@ declare module '@appium/base-driver' {
     getStrings?(language?: string, stringFile?: string): Promise<Record<string, unknown>>;
     setValueImmediate?(value: string, elementId: string): Promise<void>;
     replaceValue?(value: string, elementId: string): Promise<void>;
-    updateSettings(newSettings: Record<string, unknown>): Promise<DeviceSettings>;
+    updateSettings(newSettings: Record<string, unknown>): Promise<void>;
     getSettings(): Promise<Record<string, unknown>>;
     receiveAsyncResponse?(response: unknown): Promise<void>;
     executeDriverScript(script: string, scriptType?: string, timeout?: number): Promise<unknown>;

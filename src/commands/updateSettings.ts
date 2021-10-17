@@ -1,35 +1,33 @@
+import type { BaseDriver } from '@appium/base-driver';
 import { Driver } from '../Driver';
-import type { BaseDriver, DeviceSettings } from '@appium/base-driver';
 
-export async function updateSettings(this: Driver, updateSettings: BaseDriver['updateSettings'], newSettings: Record<string, unknown>): Promise<DeviceSettings> {
+export async function updateSettings(this: Driver, updateSettings: BaseDriver['updateSettings'], newSettings: Record<string, unknown>): Promise<void> {
   await updateSettings(newSettings);
 
   if (this.roku && newSettings.hasOwnProperty('elementResponseAttributes')) {
+    this.roku.document.fields = undefined;
+
     const elementResponseAttributes = newSettings.elementResponseAttributes as string;
 
-    if (!elementResponseAttributes) {
-      this.roku.document.fields = undefined;
-      return this.getSettings();
-    }
+    if (elementResponseAttributes) {
+      const fields: Record<string, string[]> = {};
+      const attributes = elementResponseAttributes.split(',');
 
-    const fields: Record<string, string[]> = {};
-    const attributes = elementResponseAttributes.split(',');
-    for (let attribute of attributes) {
-      let tag = '*';
+      for (let attribute of attributes) {
+        let tag = '*';
 
-      if (attribute.includes('/')) {
-        [tag, attribute] = attribute.split('/');
+        if (attribute.includes('/')) {
+          [tag, attribute] = attribute.split('/');
+        }
+
+        if (!fields[tag]) {
+          fields[tag] = [];
+        }
+
+        fields[tag].push(attribute);
       }
 
-      if (!fields[tag]) {
-        fields[tag] = [];
-      }
-
-      fields[tag].push(attribute);
+      this.roku.document.fields = fields;
     }
-
-    this.roku.document.fields = fields;
   }
-
-  return this.getSettings();
 }
