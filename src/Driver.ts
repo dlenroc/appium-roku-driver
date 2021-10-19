@@ -1,7 +1,7 @@
 /// <reference path='../types/appium-support.d.ts'/>
 /// <reference path='../types/appium-base-driver.d.ts'/>
 
-import { BaseDriver, DriverHelpers, errors, OmitFirstArg } from '@appium/base-driver';
+import { BaseDriver, DriverHelpers, errors } from '@appium/base-driver';
 import { logger } from '@appium/support';
 import { SDK } from '@dlenroc/roku';
 import { activateApp } from './commands/activateApp';
@@ -82,8 +82,8 @@ export class Driver extends BaseDriver {
   );
 
   // WebDriver
-  public createSession: OmitFirstArg<typeof createSession> = createSession.bind(this, super.createSession.bind(this));
-  public deleteSession: OmitFirstArg<typeof deleteSession> = deleteSession.bind(this, super.deleteSession.bind(this));
+  public createSession = createSession.bind(this, super.createSession.bind(this));
+  public deleteSession = deleteSession.bind(this, super.deleteSession.bind(this));
   public setUrl = setUrl;
   public getWindowRect = getWindowRect;
   public active = active;
@@ -130,7 +130,7 @@ export class Driver extends BaseDriver {
   public background = background;
   public setValueImmediate = replaceValue;
   public replaceValue = replaceValue;
-  public updateSettings: OmitFirstArg<typeof updateSettings> = updateSettings.bind(this, super.updateSettings.bind(this));
+  public updateSettings = updateSettings.bind(this, super.updateSettings.bind(this));
   public getCurrentContext = getCurrentContext;
   public setContext = setContext;
   public getContexts = getContexts;
