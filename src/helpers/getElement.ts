@@ -2,6 +2,8 @@ import { Element } from '@dlenroc/roku';
 import { Driver } from '../Driver';
 
 export async function getElement(this: Driver, strategy: string, selector?: string, context?: string): Promise<Element> {
+  const hasSelector = !!selector;
+
   [strategy, selector] = this.helpers.getSelector(strategy, selector);
 
   let parent: Element;
@@ -24,10 +26,10 @@ export async function getElement(this: Driver, strategy: string, selector?: stri
   }
 
   if (!element) {
-    if (selector === undefined) {
-      throw new this.errors.StaleElementReferenceError(`Unable to locate element: ${selector}`);
-    } else {
+    if (hasSelector) {
       throw new this.errors.NoSuchElementError(`Unable to locate element: ${selector}`);
+    } else {
+      throw new this.errors.StaleElementReferenceError(`Unable to locate element: ${selector}`);
     }
   }
 
