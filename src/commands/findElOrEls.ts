@@ -37,7 +37,7 @@ async function findEls(this: Driver, strategy: string, selector: string, context
     elements = await this.helpers.retrying({
       timeout: this.implicitWaitMs,
       command: () => this.helpers.getElements(strategy, selector, context),
-      validate: (elements, error) => error || (Array.isArray(elements) && elements.length > 0),
+      validate: (elements, error) => !!error || (Array.isArray(elements) && elements.length > 0),
     });
   } else {
     elements = await this.helpers.getElements(strategy, selector, context);

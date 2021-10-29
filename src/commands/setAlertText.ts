@@ -11,6 +11,5 @@ export async function setAlertText(this: Driver, text: string): Promise<void> {
     throw new this.errors.InvalidElementStateError('Keyboard is not present');
   }
 
-  await keyboard.focus();
   await keyboard.type(text);
 }
