@@ -101,23 +101,9 @@ const capabilities = {
 };
 ```
 
-### Additional Commands
-
-Any methods from [node-roku](https://github.com/dlenroc/node-roku/tree/main/packages/roku#readme) can be called using a script in the following format `<component>:<method>`.
-
-The following components are available: [ecp](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme), [debugServer](https://github.com/dlenroc/node-roku/blob/main/packages/debug-server#readme), [developerServer](https://github.com/dlenroc/node-roku/blob/main/packages/developer-server#readme), and [odc](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme).
-
-```js
-// without args
-const playerState = driver.execute('ecp:queryMediaPlayer');
-
-// with args
-driver.execute('ecp:launch', 'dev');
-```
-
 ### Actions
 
-The following actions types are supported:
+The following action types are supported:
 
 - `input` - sends given keys.
 - `keyDown`, `keyUp` - presses/releases given key.
@@ -160,7 +146,7 @@ Below are the key codes and their equivalents in the roku remote.
 
 If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://www.npmjs.com/package/@appium/relaxed-caps-plugin) can be used to get rid of them.
 
-### Roku
+### Roku Capabilities
 
 | Capability          | Required |  Type  | Description                                                                                                                            |
 | ------------------- | :------: | :----: | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -172,7 +158,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `appium:arguments`  |    -     | object | Parameters to be passed to the main method                                                                                             |
 | `appium:entryPoint` |    -     | string | Specifies the channel entry point, possible values are `channel`, `screensaver`, `screensaver-settings`                                |
 
-### Appium
+### Appium Capabilities
 
 | Capability                            | Required |  Type   | Description                                                                                                                     |
 | ------------------------------------- | :------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -192,73 +178,96 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | --------------------------- | ------ | --------------------------------------------------------------------------------------------------------- |
 | `elementResponseAttributes` | string | Comma-separated list of element attribute names that will be available in page source and related actions |
 
-## Commands
+## Supported Commands
 
-The following sections contain supported commands with links to source code and documentation.
+The supported commands are listed in the sections below but note that they may have a different name in the client you are using
 
-> **Note:** command you call from the web driver may have a different name, but under the hood appium will call one of the commands below.
+Example: calling the `setContext` command
 
-### WebDriver
+```typescript
+// Java
+driver.context('ECP');
+
+// WebdriverIO
+driver.switchContext('ECP');
+```
 
 ### WebDriver Commands
 
-| Command                                                | Description                                       |
-| ------------------------------------------------------ | ------------------------------------------------- |
-| [createSession](src/commands/createSession.ts)         | Create a new session                              |
-| [deleteSession](src/commands/deleteSession.ts)         | End the running session                           |
-| [setUrl](src/commands/setUrl.ts)                       | Open an deep link                                 |
-| [getWindowRect](src/commands/getWindowRect.ts)         | Get the rect of the viewport                      |
-| [active](src/commands/active.ts)                       | Gets the focused element                          |
-| [findElement](src/commands/findElOrEls.ts)             | Search for an element                             |
-| [findElements](src/commands/findElOrEls.ts)            | Search for multiple elements                      |
-| [findElementFromElement](src/commands/findElOrEls.ts)  | Search for an element in parent element           |
-| [findElementsFromElement](src/commands/findElOrEls.ts) | Search multiple elements in parent element        |
-| [elementSelected](src/commands/elementSelected.ts)     | Determine if element is focused                   |
-| [getAttribute](src/commands/getProperty.ts)            | Get the value of an element's attribute           |
-| [getProperty](src/commands/getProperty.ts)             | Get the value of an element's attribute           |
-| [getText](src/commands/getText.ts)                     | Returns visible text for element                  |
-| [getName](src/commands/getName.ts)                     | Get an element's tag name                         |
-| [getElementRect](src/commands/getElementRect.ts)       | Gets dimensions and coordinates of an element     |
-| [elementEnabled](src/commands/elementDisplayed.ts)     | Determine if an element is currently enabled      |
-| [elementDisplayed](src/commands/elementDisplayed.ts)   | Determine if an element is currently displayed    |
-| [click](src/commands/click.ts)                         | Focuses the element and then clicks `Select`      |
-| [clear](src/commands/clear.ts)                         | Clear an element's value                          |
-| [setValue](src/commands/setValue.ts)                   | Send a sequence of key strokes to an element      |
-| [getPageSource](src/commands/getPageSource.ts)         | Get the XML representation of the current UI      |
-| [execute](src/commands/execute.ts)                     | Execute a command                                 |
-| [performActions](src/commands/performActions.ts)       | Perform a chain or multiple chains of actions     |
-| [releaseActions](src/commands/releaseActions.ts)       | Release all the keys that are currently depressed |
-| [isAlertShown](src/commands/isAlertShown.ts)           | Check if dialog is open                           |
-| [postDismissAlert](src/commands/postDismissAlert.ts)   | Dismiss dialog using `Back` key                   |
-| [postAcceptAlert](src/commands/postAcceptAlert.ts)     | Accept dialog using first button                  |
-| [getAlertText](src/commands/getAlertText.ts)           | Get dialog text                                   |
-| [setAlertText](src/commands/setAlertText.ts)           | Fill dialog with text                             |
-| [getScreenshot](src/commands/getScreenshot.ts)         | Take a screenshot of the current viewport         |
+| Command                                                | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ |
+| [createSession](src/commands/createSession.ts)         | Create a new session                                   |
+| [deleteSession](src/commands/deleteSession.ts)         | End the running session                                |
+| [setUrl](src/commands/setUrl.ts)                       | Open a deep link                                       |
+| [getWindowRect](src/commands/getWindowRect.ts)         | Get the position and size of the scene                 |
+| [active](src/commands/active.ts)                       | Get the currently focused element                      |
+| [findElement](src/commands/findElOrEls.ts)             | Search for an element                                  |
+| [findElements](src/commands/findElOrEls.ts)            | Search for multiple elements                           |
+| [findElementFromElement](src/commands/findElOrEls.ts)  | Search for an element in parent element                |
+| [findElementsFromElement](src/commands/findElOrEls.ts) | Search multiple elements in parent element             |
+| [elementSelected](src/commands/elementSelected.ts)     | Check if the given element is focused                  |
+| [getAttribute](src/commands/getProperty.ts)            | Get the value of an attribute from a given element     |
+| [getProperty](src/commands/getProperty.ts)             | Get the value of an attribute from a given element     |
+| [getText](src/commands/getText.ts)                     | Get the visible text of a given element                |
+| [getName](src/commands/getName.ts)                     | Get the tag name of given element                      |
+| [getElementRect](src/commands/getElementRect.ts)       | Get the position and size of the given element         |
+| [elementEnabled](src/commands/elementDisplayed.ts)     | Check if the element is enabled                        |
+| [elementDisplayed](src/commands/elementDisplayed.ts)   | Check if the element is displayed                      |
+| [click](src/commands/click.ts)                         | Presses the `Select` button on given element           |
+| [clear](src/commands/clear.ts)                         | Clears the content of the given element                |
+| [setValue](src/commands/setValue.ts)                   | Send a sequence of keystrokes to an element            |
+| [getPageSource](src/commands/getPageSource.ts)         | Get the XML representation of the current UI           |
+| [execute](src/commands/execute.ts)                     | Execute an roku command                                |
+| [performActions](src/commands/performActions.ts)       | Performs a chain of actions                            |
+| [releaseActions](src/commands/releaseActions.ts)       | Release depressed key                                  |
+| [isAlertShown](src/commands/isAlertShown.ts)           | Check if the dialog is displayed                       |
+| [postDismissAlert](src/commands/postDismissAlert.ts)   | Dismiss the dialog by pressing the `Back` button       |
+| [postAcceptAlert](src/commands/postAcceptAlert.ts)     | Accepts the dialog by selecting first button it offers |
+| [getAlertText](src/commands/getAlertText.ts)           | Get the text from the displayed dialog                 |
+| [setAlertText](src/commands/setAlertText.ts)           | Set the value in the keyboard dialog                   |
+| [getScreenshot](src/commands/getScreenshot.ts)         | Take a screenshot                                      |
 
 ### Appium Commands
 
-| Command                                                | Description                                                       |
-| ------------------------------------------------------ | ----------------------------------------------------------------- |
-| [unlock](src/commands/unlock.ts)                       | Stop screensaver                                                  |
-| [isLocked](src/commands/isLocked.ts)                   | Check if screensaver is displayed                                 |
-| [installApp](src/commands/installApp.ts)               | Install the given app onto the device                             |
-| [activateApp](src/commands/activateApp.ts)             | Activate the given app onto the device                            |
-| [removeApp](src/commands/removeApp.ts)                 | Remove an app from the device                                     |
-| [terminateApp](src/commands/terminateApp.ts)           | Terminate the given app on the device                             |
-| [isAppInstalled](src/commands/isAppInstalled.ts)       | Check whether the specified app is installed on the device        |
-| [queryAppState](src/commands/queryAppState.ts)         | Get the given app status on the device                            |
-| [hideKeyboard](src/commands/hideKeyboard.ts)           | Hide keyboard                                                     |
-| [isKeyboardShown](src/commands/isKeyboardShown.ts)     | Whether or not the keyboard is shown                              |
-| [pushFile](src/commands/pushFile.ts)                   | Place a file onto the device in a particular place                |
-| [pullFile](src/commands/pullFile.ts)                   | Retrieve a file from the device's file system                     |
-| [pullFolder](src/commands/pullFolder.ts)               | Retrieve a folder from the device's file system                   |
-| [launchApp](src/commands/launchApp.ts)                 | Launch the app-under-test on the device                           |
-| [closeApp](src/commands/closeApp.ts)                   | Close an app on device                                            |
-| [reset](src/commands/reset.ts)                         | Reset the currently running app for this session                  |
-| [background](src/commands/background.ts)               | Send the currently running app for this session to the background |
-| [setValueImmediate](src/commands/replaceValue.ts)      | Replace the value of the given element                            |
-| [replaceValue](src/commands/replaceValue.ts)           | Replace the value of the given element                            |
-| [updateSettings](src/commands/updateSettings.ts)       | Update settings                                                   |
-| [getCurrentContext](src/commands/getCurrentContext.ts) | Get current context                                               |
-| [setContext](src/commands/setContext.ts)               | Set context                                                       |
-| [getContexts](src/commands/getContexts.ts)             | Get available contexts                                            |
+| Command                                                | Description                                  |
+| ------------------------------------------------------ | -------------------------------------------- |
+| [unlock](src/commands/unlock.ts)                       | Dismiss the screensaver                      |
+| [isLocked](src/commands/isLocked.ts)                   | Check if the screensaver is displayed        |
+| [installApp](src/commands/installApp.ts)               | Install the channel if it is not installed   |
+| [activateApp](src/commands/activateApp.ts)             | Launch the given channel                     |
+| [removeApp](src/commands/removeApp.ts)                 | Remove the given channel from the device     |
+| [terminateApp](src/commands/terminateApp.ts)           | Terminate given channel if it is running     |
+| [isAppInstalled](src/commands/isAppInstalled.ts)       | Checks if a channel is installed             |
+| [queryAppState](src/commands/queryAppState.ts)         | Queries the channel state                    |
+| [hideKeyboard](src/commands/hideKeyboard.ts)           | Hides the keyboard dialog if it is showing   |
+| [isKeyboardShown](src/commands/isKeyboardShown.ts)     | Check if the keyboard is shown               |
+| [pushFile](src/commands/pushFile.ts)                   | Push a file to the device                    |
+| [pullFile](src/commands/pullFile.ts)                   | Pull a file from the device                  |
+| [pullFolder](src/commands/pullFolder.ts)               | Pull a folder from the device                |
+| [launchApp](src/commands/launchApp.ts)                 | Launch the channel under test                |
+| [closeApp](src/commands/closeApp.ts)                   | Terminate the currently running channel      |
+| [reset](src/commands/reset.ts)                         | Reset the state of the channel under test    |
+| [background](src/commands/background.ts)               | Close the running channel for the given time |
+| [setValueImmediate](src/commands/replaceValue.ts)      | Set a value to an element                    |
+| [replaceValue](src/commands/replaceValue.ts)           | Replaces element value with the given one    |
+| [updateSettings](src/commands/updateSettings.ts)       | Updates current test session settings        |
+| [getCurrentContext](src/commands/getCurrentContext.ts) | Get the name of the current context          |
+| [setContext](src/commands/setContext.ts)               | Switches to the given context                |
+| [getContexts](src/commands/getContexts.ts)             | Get the names of available contexts          |
+
+### Roku Commands
+
+In addition to the standard apium commands, Roku has several additional features that go beyond the appium protocol, so they are available through a javascript executor and a script in the following format `<component>:<command>`
+
+The following components are available: [ecp](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme), [debugServer](https://github.com/dlenroc/node-roku/blob/main/packages/debug-server#readme), [developerServer](https://github.com/dlenroc/node-roku/blob/main/packages/developer-server#readme), and [odc](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme)
+
+Example:
+
+```js
+// with args
+driver.execute('ecp:launch', ['dev']);
+
+// without args
+const playerState = driver.execute('ecp:queryMediaPlayer');
+playerState.duration;
+```

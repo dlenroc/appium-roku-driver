@@ -5,7 +5,7 @@ export async function getElementRect(this: Driver, elementId: string): Promise<R
   const element = await this.helpers.getElement(elementId);
 
   if (!element.bounds) {
-    return this.logger.errorAndThrow(new this.errors.ElementNotVisibleError());
+    throw new this.errors.ElementNotVisibleError();
   }
 
   return element.bounds;

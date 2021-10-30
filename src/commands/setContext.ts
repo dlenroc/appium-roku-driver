@@ -9,7 +9,7 @@ export async function setContext(this: Driver, name: string): Promise<void> {
   const contexts = await this.getContexts();
 
   if (!contexts.includes(name)) {
-    return this.logger.errorAndThrow(new this.errors.NoSuchContextError(`There is no "${name}" context in [${contexts.join(', ')}]`));
+    throw new this.errors.NoSuchContextError(`There is no "${name}" context in [${contexts.join(', ')}]`);
   }
 
   this.roku.document.context = name as any;

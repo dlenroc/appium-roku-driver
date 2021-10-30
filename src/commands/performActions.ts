@@ -112,7 +112,7 @@ async function performPointerActions(this: Driver, actions: Action[]): Promise<v
 
 function optimizeActions(actions: Action[]): Action[] {
   // Map all keyDown + all keyUp to a keyPress sequence - WebDriverIO sends keys this way
-  if (actions.length % 2 == 0) {
+  if (actions.length % 2 === 0) {
     const centerIndex = actions.length / 2;
     const optimizedActions = [];
 

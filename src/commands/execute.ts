@@ -5,7 +5,7 @@ export async function execute(this: Driver, script: string, args: unknown[]): Pr
   const roku = this.roku as any;
 
   if (!roku[component]?.[method]) {
-    return this.logger.errorAndThrow(new this.errors.InvalidArgumentError(`Script format must be "<component>:<method_name>"`));
+    return new this.errors.InvalidArgumentError(`Script format must be "<component>:<method_name>"`);
   }
 
   return roku[component][method](...args);
