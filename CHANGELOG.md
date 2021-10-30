@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.8.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.7.1...v0.8.0) (2021-10-30)
+
+
+### Features
+
+* support for `link text` and `partial link text` selector strategies ([f5f1920](https://www.github.com/dlenroc/appium-roku-driver/commit/f5f1920929948ebdef3f3dc009fba524b95edad5))
+* URL support in `installApp` command ([137f178](https://www.github.com/dlenroc/appium-roku-driver/commit/137f17847da70b5bd8a69b6436faae318e865900))
+
+
+### Bug Fixes
+
+* `noReset` reset strategy ([a9fda32](https://www.github.com/dlenroc/appium-roku-driver/commit/a9fda32e75d3db048cf933d1c2bf7fed7dfaedc5))
+* implicit wait ([a58b7a9](https://www.github.com/dlenroc/appium-roku-driver/commit/a58b7a9fc265a035c935c85b856e63d42738bb40))
+
 ### [0.7.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.7.0...v0.7.1) (2021-09-20)
 
 
