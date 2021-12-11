@@ -35,7 +35,6 @@ export async function retrying<Type>(this: Driver, options: { timeout: number; c
       await longSleep(duration);
     } else {
       await longSleep(elapsed);
-      continue; // last chance
     }
   }
 }

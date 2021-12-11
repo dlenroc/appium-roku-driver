@@ -170,7 +170,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `appium:fullReset`                    |    -     | boolean | Stop app, clear app data and uninstall app before session starts and after test                                                 |
 | `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |
 | `appium:newCommandTimeout`            |    -     | number  | How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session |
-| `appium:settings[<key>]`              |    -     |   any   | Update [driver settings](#setting) on session creation                                                                          |
+| `appium:settings[<key>]`              |    -     |   any   | Update [driver settings](#settings) on session creation                                                                         |
 
 ## Settings
 
