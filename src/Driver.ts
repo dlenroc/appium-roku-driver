@@ -66,8 +66,7 @@ export class Driver extends BaseDriver {
     },
   };
 
-  // @ts-ignore
-  protected roku: SDK;
+  protected roku!: SDK;
   protected pressedKey?: string;
   protected logger = logger.getLogger('RokuDriver');
 
