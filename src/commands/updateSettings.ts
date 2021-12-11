@@ -1,5 +1,5 @@
 import type { BaseDriver } from '@appium/base-driver';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function updateSettings(this: Driver, updateSettings: BaseDriver['updateSettings'], newSettings: Record<string, unknown>): Promise<void> {
   await updateSettings(newSettings);

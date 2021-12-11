@@ -1,7 +1,7 @@
-import { Action, Actions } from '@appium/base-driver';
-import { Key } from '@dlenroc/roku';
+import type { Action, Actions } from '@appium/base-driver';
+import type { Key } from '@dlenroc/roku';
 import { longSleep } from 'asyncbox';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 const Keys: Record<string, Key> = {
   '\uE002': 'Info', // help

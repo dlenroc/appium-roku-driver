@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function queryAppState(this: Driver, appId: string): Promise<number> {
   const activeApp = await this.roku.ecp.queryActiveApp();

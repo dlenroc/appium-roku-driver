@@ -1,4 +1,5 @@
-import { Driver } from '../Driver';
+import { errors } from '@appium/base-driver';
+import type { Driver } from '../Driver';
 
 export async function isAlertShown(this: Driver): Promise<boolean> {
   try {
@@ -6,7 +7,7 @@ export async function isAlertShown(this: Driver): Promise<boolean> {
 
     return true;
   } catch (e) {
-    if (e instanceof this.errors.NoSuchElementError) {
+    if (e instanceof errors.NoSuchElementError) {
       return false;
     }
 

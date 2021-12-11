@@ -1,14 +1,15 @@
 /// <reference path='../../types/asyncbox.d.ts'/>
 
 import { longSleep } from 'asyncbox';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
+import { errors } from '@appium/base-driver';
 
 export async function background(this: Driver, seconds: null | number): Promise<void> {
   const activeApp = await this.roku.ecp.queryActiveApp();
   const app = activeApp.app;
 
   if (typeof app === 'string') {
-    return this.logger.errorAndThrow('Channel is not running');
+    throw new errors.InvalidArgumentError(`Channel is not running`);
   }
 
   await this.closeApp();

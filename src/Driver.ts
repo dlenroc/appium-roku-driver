@@ -1,9 +1,10 @@
+/// <reference path='../types/base-driver.d.ts'/>
 /// <reference path='../types/appium-support.d.ts'/>
-/// <reference path='../types/appium-base-driver.d.ts'/>
 
-import { BaseDriver, DriverHelpers, errors } from '@appium/base-driver';
+import type { DriverHelpers } from '@appium/base-driver';
+import { BaseDriver } from '@appium/base-driver';
 import { logger } from '@appium/support';
-import { SDK } from '@dlenroc/roku';
+import type { SDK } from '@dlenroc/roku';
 import { activateApp } from './commands/activateApp';
 import { active } from './commands/active';
 import { background } from './commands/background';
@@ -65,9 +66,7 @@ export class Driver extends BaseDriver {
     },
   };
 
-  // @ts-ignore
-  protected roku: SDK;
-  protected errors = errors;
+  protected roku!: SDK;
   protected pressedKey?: string;
   protected logger = logger.getLogger('RokuDriver');
 

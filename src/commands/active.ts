@@ -1,7 +1,7 @@
-import { Element } from '@appium/base-driver';
+import type { Element } from '@appium/base-driver';
 import { util } from '@appium/support';
 import base64 from 'base-64';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function active(this: Driver): Promise<Element> {
   await this.roku.document.render();

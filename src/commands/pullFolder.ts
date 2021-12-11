@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function pullFolder(this: Driver, path: string): Promise<string> {
   const root = path;

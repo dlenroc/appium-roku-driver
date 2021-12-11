@@ -1,5 +1,5 @@
-import { BaseDriver } from '@appium/base-driver';
-import { Driver } from '../Driver';
+import type { BaseDriver } from '@appium/base-driver';
+import type { Driver } from '../Driver';
 
 export async function deleteSession(this: Driver, deleteSession: BaseDriver['deleteSession']): Promise<void> {
   await deleteSession();

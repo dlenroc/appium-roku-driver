@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
@@ -29,8 +29,8 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@appium/base-driver": "^8.1.1",
-    "@appium/support": "^2.54.2",
+    "@appium/base-driver": "^8.2.2",
+    "@appium/support": "^2.55.2",
     "@dlenroc/roku": "^1.2.0",
     "asyncbox": "^2.9.2",
     "base-64": "^1.0.0",
@@ -45,8 +45,9 @@
     "@types/cacache": "^15.0.1",
     "@types/cssesc": "^3.0.0",
     "@types/make-fetch-happen": "^9.0.1",
-    "rollup": "^2.58.3",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.4.4"
+    "rollup": "^2.61.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "typescript": "^4.5.3"
   }
 }
