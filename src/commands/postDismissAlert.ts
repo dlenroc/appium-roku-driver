@@ -1,8 +1,9 @@
-import { Driver } from '../Driver';
+import { errors } from '@appium/base-driver';
+import type { Driver } from '../Driver';
 
 export async function postDismissAlert(this: Driver): Promise<void> {
   if (!(await this.isAlertShown())) {
-    throw new this.errors.NoAlertOpenError();
+    throw new errors.NoAlertOpenError();
   }
 
   await this.roku.ecp.keypress('Back');

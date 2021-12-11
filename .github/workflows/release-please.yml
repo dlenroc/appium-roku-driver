@@ -11,15 +11,15 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          package-name: '@dlenroc/appium-roku-driver'
-          bump-minor-pre-major: true
           release-type: node
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
       - uses: actions/checkout@v2
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v2
         if: ${{ steps.release.outputs.release_created }}
         with:
-          node-version: 14
+          node-version: 16
           registry-url: https://registry.npmjs.org
       - run: npm install
         if: ${{ steps.release.outputs.release_created }}

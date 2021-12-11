@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function getPageSource(this: Driver): Promise<string> {
   await this.roku.document.render();

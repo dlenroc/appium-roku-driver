@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function reset(this: Driver): Promise<void> {
   const { app, arguments: args, entryPoint, registry } = this.opts;

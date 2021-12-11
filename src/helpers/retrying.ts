@@ -1,6 +1,6 @@
 import { longSleep } from 'asyncbox';
 import { performance } from 'perf_hooks';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function retrying<Type>(this: Driver, options: { timeout: number; command: () => Promise<Type>; validate: (result?: Type, error?: any) => boolean }): Promise<Type> {
   const duration = 500;

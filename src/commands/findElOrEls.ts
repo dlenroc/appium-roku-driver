@@ -1,8 +1,8 @@
-import { Element } from '@appium/base-driver';
+import { Element, errors } from '@appium/base-driver';
 import { util } from '@appium/support';
-import { Element as RokuElement } from '@dlenroc/roku';
+import type { Element as RokuElement } from '@dlenroc/roku';
 import base64 from 'base-64';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function findElOrEls(this: Driver, strategy: string, selector: string, mult: boolean, context: string): Promise<Element | Element[]> {
   if (mult) {
@@ -20,7 +20,7 @@ async function findEl(this: Driver, strategy: string, selector: string, context:
     element = await this.helpers.retrying({
       timeout: this.implicitWaitMs,
       command: () => this.helpers.getElement(strategy, selector, context),
-      validate: (element, error) => !!element || !(error instanceof this.errors.NoSuchElementError),
+      validate: (element, error) => !!element || !(error instanceof errors.NoSuchElementError),
     });
   } else {
     element = await this.helpers.getElement(strategy, selector, context);

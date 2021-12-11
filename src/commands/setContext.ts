@@ -1,4 +1,5 @@
-import { Driver } from '../Driver';
+import { errors } from '@appium/base-driver';
+import type { Driver } from '../Driver';
 
 export async function setContext(this: Driver, name: string): Promise<void> {
   // appium-desktop requires NATIVE_APP context
@@ -9,7 +10,7 @@ export async function setContext(this: Driver, name: string): Promise<void> {
   const contexts = await this.getContexts();
 
   if (!contexts.includes(name)) {
-    throw new this.errors.NoSuchContextError(`There is no "${name}" context in [${contexts.join(', ')}]`);
+    throw new errors.NoSuchContextError(`There is no "${name}" context in [${contexts.join(', ')}]`);
   }
 
   this.roku.document.context = name as any;

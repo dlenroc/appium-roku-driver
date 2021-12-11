@@ -1,8 +1,10 @@
-import cacache, { CacheObject } from 'cacache';
+import { errors } from '@appium/base-driver';
+import type { CacheObject } from 'cacache';
+import cacache from 'cacache';
 import { promises as fs } from 'fs';
 import fetch from 'make-fetch-happen';
 import { resolve } from 'path';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 const CACHED_APPS_MAX_AGE = 1000 * 60 * 60 * 24; // 1 day
 
@@ -13,7 +15,7 @@ export async function loadChannel(this: Driver, pathOrUrl: string): Promise<Buff
     const cachePath = resolve(this.opts.tmpDir, 'appium-roku-driver');
     const response = await fetch(pathOrUrl, { cachePath });
     if (!response.ok) {
-      throw new this.errors.SessionNotCreatedError(`Failed to download "${pathOrUrl}" -> ${response.status} ${response.statusText}`);
+      throw new errors.SessionNotCreatedError(`Failed to download "${pathOrUrl}" -> ${response.status} ${response.statusText}`);
     }
 
     source = await response.buffer();

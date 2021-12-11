@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function pullFile(this: Driver, path: string): Promise<string> {
   const content = await this.roku.odc.pullFile(path);

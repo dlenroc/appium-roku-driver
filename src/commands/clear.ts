@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function clear(this: Driver, elementId: string): Promise<void> {
   await this.replaceValue('', elementId);

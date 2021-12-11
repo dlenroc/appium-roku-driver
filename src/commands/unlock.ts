@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function unlock(this: Driver): Promise<void> {
   const isLocked = await this.isLocked();

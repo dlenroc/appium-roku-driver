@@ -1,5 +1,6 @@
-import { Element } from '@dlenroc/roku';
-import { Driver } from '../Driver';
+import { errors } from '@appium/base-driver';
+import type { Element } from '@dlenroc/roku';
+import type { Driver } from '../Driver';
 
 export async function getElement(this: Driver, strategy: string, selector?: string, context?: string): Promise<Element> {
   const hasSelector = !!selector;
@@ -27,9 +28,9 @@ export async function getElement(this: Driver, strategy: string, selector?: stri
 
   if (!element) {
     if (hasSelector) {
-      throw new this.errors.NoSuchElementError(`Unable to locate element: ${selector}`);
+      throw new errors.NoSuchElementError(`Unable to locate element: ${selector}`);
     } else {
-      throw new this.errors.StaleElementReferenceError(`Unable to locate element: ${selector}`);
+      throw new errors.StaleElementReferenceError(`Unable to locate element: ${selector}`);
     }
   }
 

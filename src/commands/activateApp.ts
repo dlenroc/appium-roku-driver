@@ -1,5 +1,5 @@
-import { AppId, Params } from '@dlenroc/roku';
-import { Driver } from '../Driver';
+import type { AppId, Params } from '@dlenroc/roku';
+import type { Driver } from '../Driver';
 
 export async function activateApp(this: Driver, appId: string, options?: unknown): Promise<void> {
   await this.roku.ecp.launch(appId as AppId, options as Params);

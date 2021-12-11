@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function isKeyboardShown(this: Driver): Promise<boolean> {
   await this.roku.document.render();

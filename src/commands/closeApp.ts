@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function closeApp(this: Driver): Promise<void> {
   await this.helpers.waitForCondition({

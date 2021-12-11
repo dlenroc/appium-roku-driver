@@ -1,6 +1,6 @@
-import { App } from '@dlenroc/roku';
+import type { App } from '@dlenroc/roku';
 import { createHash } from 'crypto';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function installApp(this: Driver, appPath: string, options?: unknown): Promise<void> {
   const source = await this.helpers.loadChannel(appPath);

@@ -1,6 +1,6 @@
-import { BaseDriver } from '@appium/base-driver';
+import type { BaseDriver } from '@appium/base-driver';
 import { SDK } from '@dlenroc/roku';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function createSession(this: Driver, createSession: BaseDriver['createSession'], jwpCaps: {}, jwpReqCaps: {}, w3cCaps: {}): Promise<[string, {}]> {
   const session = await createSession(jwpCaps, jwpReqCaps, w3cCaps);

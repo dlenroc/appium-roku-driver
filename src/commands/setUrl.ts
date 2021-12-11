@@ -1,6 +1,6 @@
-import { AppId } from '@dlenroc/roku';
+import type { AppId } from '@dlenroc/roku';
 import { URL } from 'url';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function setUrl(this: Driver, url: string): Promise<void> {
   const { host, pathname, searchParams } = new URL(url);

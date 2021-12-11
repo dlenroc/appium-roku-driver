@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function removeApp(this: Driver, appId: string, options?: unknown): Promise<void> {
   if (appId !== 'dev') {

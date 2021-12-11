@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function releaseActions(this: Driver): Promise<void> {
   if (this.pressedKey) {

@@ -1,5 +1,5 @@
-import { Element } from '@dlenroc/roku';
-import { Driver } from '../Driver';
+import type { Element } from '@dlenroc/roku';
+import type { Driver } from '../Driver';
 
 export async function getElements(this: Driver, strategy: string, selector: string, context?: string): Promise<Element[]> {
   [strategy, selector] = this.helpers.getSelector(strategy, selector);

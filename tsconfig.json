@@ -1,19 +1,14 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "declarationDir": "./dist",
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
     "removeComments": true,
-    "lib": ["ES2019", "ES2020.Promise", "ES2020.BigInt", "ES2020.String"],
     "moduleResolution": "Node",
-    "module": "ES2015",
+    "lib": ["ES2019"],
     "target": "ES2019",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"]
+  }
 }

@@ -1,6 +1,6 @@
 import base64 from 'base-64';
 import cssEscape from 'cssesc';
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export function getSelector(this: Driver, strategy: string, selector?: string): ['css selector' | 'xpath', string] {
   if (selector === undefined) {

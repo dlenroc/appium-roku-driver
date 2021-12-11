@@ -1,4 +1,4 @@
-import { Driver } from '../Driver';
+import type { Driver } from '../Driver';
 
 export async function hideKeyboard(this: Driver, strategy?: string, key?: string, keyCode?: string, keyName?: string): Promise<void> {
   const keyboard = await this.helpers.getElement('xpath', '//*[substring(name(), string-length(name()) - string-length("Keyboard") + 1) = "Keyboard" or substring(name(), string-length(name()) - string-length("PinPad") + 1) = "PinPad"]');
