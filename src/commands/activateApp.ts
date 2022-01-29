@@ -3,7 +3,7 @@ import type { Driver } from '../Driver';
 
 export async function activateApp(this: Driver, appId: string, options?: unknown): Promise<void> {
   await this.roku.ecp.launch(appId as AppId, options as Params);
-  await this.helpers.waitForCondition({
+  await this.waitForCondition({
     error: 'Channel not started',
     condition: async () => {
       const activeApp = await this.roku.ecp.queryActiveApp();

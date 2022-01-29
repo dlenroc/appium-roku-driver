@@ -8,7 +8,7 @@ export async function postDismissAlert(this: Driver): Promise<void> {
 
   await this.roku.ecp.keypress('Back');
 
-  await this.helpers.waitForCondition({
+  await this.waitForCondition({
     error: 'Dialog is still visible',
     condition: async () => {
       const isAlertShown = await this.isAlertShown();

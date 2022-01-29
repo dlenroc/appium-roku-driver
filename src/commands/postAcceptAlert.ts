@@ -14,7 +14,7 @@ export async function postAcceptAlert(this: Driver): Promise<void> {
 
   await button.select();
 
-  await this.helpers.waitForCondition({
+  await this.waitForCondition({
     error: 'Dialog is still visible',
     condition: async () => {
       const isAlertShown = await this.isAlertShown();

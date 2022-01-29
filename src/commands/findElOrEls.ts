@@ -17,13 +17,13 @@ async function findEl(this: Driver, strategy: string, selector: string, context:
 
   if (this.implicitWaitMs) {
     // @ts-ignore
-    element = await this.helpers.retrying({
+    element = await this.retrying({
       timeout: this.implicitWaitMs,
-      command: () => this.helpers.getElement(strategy, selector, context),
+      command: () => this.getElement(strategy, selector, context),
       validate: (element, error) => !!element || !(error instanceof errors.NoSuchElementError),
     });
   } else {
-    element = await this.helpers.getElement(strategy, selector, context);
+    element = await this.getElement(strategy, selector, context);
   }
 
   return util.wrapElement(base64.encode(element.path));
@@ -34,13 +34,13 @@ async function findEls(this: Driver, strategy: string, selector: string, context
 
   if (this.implicitWaitMs) {
     // @ts-ignore
-    elements = await this.helpers.retrying({
+    elements = await this.retrying({
       timeout: this.implicitWaitMs,
-      command: () => this.helpers.getElements(strategy, selector, context),
+      command: () => this.getElements(strategy, selector, context),
       validate: (elements, error) => !!error || (Array.isArray(elements) && elements.length > 0),
     });
   } else {
-    elements = await this.helpers.getElements(strategy, selector, context);
+    elements = await this.getElements(strategy, selector, context);
   }
 
   return elements.map((element) => util.wrapElement(base64.encode(element.path)));

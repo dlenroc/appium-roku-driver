@@ -1,7 +1,7 @@
 import type { Driver } from '../Driver';
 
 export async function closeApp(this: Driver): Promise<void> {
-  await this.helpers.waitForCondition({
+  await this.waitForCondition({
     error: 'Channel not closed',
     condition: async () => {
       await this.roku.ecp.keypress('Home');

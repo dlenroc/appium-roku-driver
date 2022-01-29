@@ -5,13 +5,13 @@ import type { Driver } from '../Driver';
 export async function getElement(this: Driver, strategy: string, selector?: string, context?: string): Promise<Element> {
   const hasSelector = !!selector;
 
-  [strategy, selector] = this.helpers.getSelector(strategy, selector);
+  [strategy, selector] = this.getSelector(strategy, selector);
 
   let parent: Element;
   let element: Element | null = null;
 
   if (context) {
-    parent = await this.helpers.getElement(context);
+    parent = await this.getElement(context);
   } else {
     await this.roku.document.render();
     parent = this.roku.document;

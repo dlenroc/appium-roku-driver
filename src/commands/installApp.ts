@@ -1,9 +1,13 @@
 import type { App } from '@dlenroc/roku';
 import { createHash } from 'crypto';
+import { readFile } from 'fs/promises';
 import type { Driver } from '../Driver';
 
 export async function installApp(this: Driver, appPath: string, options?: unknown): Promise<void> {
-  const source = await this.helpers.loadChannel(appPath);
+  // @ts-ignore because is available since @appium/base-driver@8.2.2 but misses in type definition
+  appPath = await this.helpers.configureApp(appPath, { supportedExtensions: ['zip'], onPostProcess: () => {} });
+
+  const source = await readFile(appPath);
   const apps = await this.roku.ecp.queryApps();
   let app: App | undefined = apps.find((app) => app.id === 'dev');
 
