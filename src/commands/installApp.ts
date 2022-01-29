@@ -4,12 +4,8 @@ import { readFile } from 'fs/promises';
 import type { Driver } from '../Driver';
 
 export async function installApp(this: Driver, appPath: string, options?: unknown): Promise<void> {
-  console.log(this.helpers)
-  appPath = await this.helpers.configureApp(appPath, {
-    // @ts-ignore
-    onPostProcess: function () { },
-    supportedExtensions: ['zip']
-  });
+  // @ts-ignore because is available since @appium/base-driver@8.2.2 but misses in type definition
+  appPath = await this.helpers.configureApp(appPath, { supportedExtensions: ['zip'], onPostProcess: () => {} });
 
   const source = await readFile(appPath);
   const apps = await this.roku.ecp.queryApps();
