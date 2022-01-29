@@ -91,7 +91,7 @@ async function performPointerActions(this: Driver, actions: Action[]): Promise<v
   for (const action of actions) {
     switch (action.type) {
       case 'pointerMove':
-        const element = await this.helpers.getElement(action.origin!!);
+        const element = await this.getElement(action.origin!!);
         await element.focus();
         break;
       case 'pointerPress':

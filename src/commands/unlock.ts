@@ -8,7 +8,7 @@ export async function unlock(this: Driver): Promise<void> {
   }
 
   await this.roku.ecp.keypress('Enter');
-  await this.helpers.waitForCondition({
+  await this.waitForCondition({
     error: 'Screensaver is still visible',
     condition: async () => {
       const isLocked = await this.isLocked();

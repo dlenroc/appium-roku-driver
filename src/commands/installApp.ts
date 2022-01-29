@@ -1,9 +1,17 @@
 import type { App } from '@dlenroc/roku';
 import { createHash } from 'crypto';
+import { readFile } from 'fs/promises';
 import type { Driver } from '../Driver';
 
 export async function installApp(this: Driver, appPath: string, options?: unknown): Promise<void> {
-  const source = await this.helpers.loadChannel(appPath);
+  console.log(this.helpers)
+  appPath = await this.helpers.configureApp(appPath, {
+    // @ts-ignore
+    onPostProcess: function () { },
+    supportedExtensions: ['zip']
+  });
+
+  const source = await readFile(appPath);
   const apps = await this.roku.ecp.queryApps();
   let app: App | undefined = apps.find((app) => app.id === 'dev');
 

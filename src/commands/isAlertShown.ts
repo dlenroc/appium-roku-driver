@@ -3,7 +3,7 @@ import type { Driver } from '../Driver';
 
 export async function isAlertShown(this: Driver): Promise<boolean> {
   try {
-    await this.helpers.getElement('xpath', '//*[substring(name(), string-length(name()) - string-length("Dialog") + 1) = "Dialog"]');
+    await this.getElement('xpath', '//*[substring(name(), string-length(name()) - string-length("Dialog") + 1) = "Dialog"]');
 
     return true;
   } catch (e) {

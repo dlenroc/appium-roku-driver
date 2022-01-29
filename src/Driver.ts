@@ -55,7 +55,6 @@ import { updateSettings } from './commands/updateSettings';
 import { getElement } from './helpers/getElement';
 import { getElements } from './helpers/getElements';
 import { getSelector } from './helpers/getSelector';
-import { loadChannel } from './helpers/loadChannel';
 import { retrying } from './helpers/retrying';
 import { waitForCondition } from './helpers/waitForCondition';
 
@@ -70,14 +69,12 @@ export class Driver extends BaseDriver {
   protected pressedKey?: string;
   protected logger = logger.getLogger('RokuDriver');
 
-  public helpers = Object.assign({}, super.helpers as DriverHelpers, {
-    getElement: getElement.bind(this),
-    getElements: getElements.bind(this),
-    getSelector: getSelector.bind(this),
-    loadChannel: loadChannel.bind(this),
-    retrying: retrying.bind(this),
-    waitForCondition: waitForCondition.bind(this),
-  });
+  // Helpers
+  protected getElement = getElement;
+  protected getElements = getElements;
+  protected getSelector = getSelector;
+  protected retrying = retrying;
+  protected waitForCondition = waitForCondition;
 
   // WebDriver
   public createSession = createSession.bind(this, super.createSession.bind(this));
