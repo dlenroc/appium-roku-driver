@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.8.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.8.0...v0.8.1) (2022-01-29)
+
+
+### Features
+
+* switch to `configureApp` ([567bf1e](https://www.github.com/dlenroc/appium-roku-driver/commit/567bf1e3e4805e2f2deb018229159ad834befea7))
+
 ## [0.8.0](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.7.1...v0.8.0) (2021-10-30)
 
 
