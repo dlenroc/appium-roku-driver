@@ -1,14 +1,15 @@
+import { errors } from '@appium/base-driver';
 import type { Driver } from '../Driver';
 
 export async function updateSetting(this: Driver, prop: string, newValue: unknown, curValue: unknown): Promise<void> {
-  if (this.roku && prop === 'elementResponseAttributes') {
-    this.roku.document.fields = undefined;
+  if (prop === 'elementResponseAttributes') {
+    if (typeof newValue !== 'string') {
+      throw new errors.InvalidArgumentError(`The value of "elementResponseAttributes" must be a string.`);
+    }
 
-    const elementResponseAttributes = newValue as string;
-
-    if (elementResponseAttributes) {
+    if (newValue) {
       const fields: Record<string, string[]> = {};
-      const attributes = elementResponseAttributes.split(',');
+      const attributes = newValue.split(',');
 
       for (let attribute of attributes) {
         let tag = '*';
@@ -25,6 +26,8 @@ export async function updateSetting(this: Driver, prop: string, newValue: unknow
       }
 
       this.roku.document.fields = fields;
+    } else {
+      this.roku.document.fields = undefined;
     }
   }
 }
