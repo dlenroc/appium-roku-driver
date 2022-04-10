@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.8.2](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.1...v0.8.2) (2022-04-10)
+
+
+### Bug Fixes
+
+* Appium 2 compatibility ([fea70b8](https://github.com/dlenroc/appium-roku-driver/commit/fea70b8852e16134a9883cd7afef49e2cf37c533))
+
 ### [0.8.1](https://www.github.com/dlenroc/appium-roku-driver/compare/v0.8.0...v0.8.1) (2022-01-29)
 
 
