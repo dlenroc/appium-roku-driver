@@ -10,7 +10,6 @@ export async function createSession(this: Driver, createSession: BaseDriver['cre
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = context || 'ECP';
 
-  await this.updateSettings(this.settings.getSettings());
   await this.installApp(app);
   await this.activateApp('dev', {
     odc_clear_registry: !noReset,

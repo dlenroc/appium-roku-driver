@@ -1,4 +1,5 @@
-import { Element, errors } from '@appium/base-driver';
+import { Element } from '@appium/types';
+import { errors } from '@appium/base-driver';
 import { util } from '@appium/support';
 import type { Element as RokuElement } from '@dlenroc/roku';
 import base64 from 'base-64';
