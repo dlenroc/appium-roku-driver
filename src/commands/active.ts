@@ -1,4 +1,4 @@
-import type { Element } from '@appium/base-driver';
+import type { Element } from '@appium/types';
 import { util } from '@appium/support';
 import base64 from 'base-64';
 import type { Driver } from '../Driver';

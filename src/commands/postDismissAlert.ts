@@ -3,7 +3,7 @@ import type { Driver } from '../Driver';
 
 export async function postDismissAlert(this: Driver): Promise<void> {
   if (!(await this.isAlertShown())) {
-    throw new errors.NoAlertOpenError();
+    throw new errors.NoAlertOpenError(undefined);
   }
 
   await this.roku.ecp.keypress('Back');

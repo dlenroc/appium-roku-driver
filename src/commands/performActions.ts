@@ -1,4 +1,4 @@
-import type { Action, Actions } from '@appium/base-driver';
+import type { Action, Actions } from '@appium/types';
 import type { Key } from '@dlenroc/roku';
 import { longSleep } from 'asyncbox';
 import type { Driver } from '../Driver';

@@ -1,7 +1,3 @@
-/// <reference path='../types/base-driver.d.ts'/>
-/// <reference path='../types/appium-support.d.ts'/>
-
-import type { DriverHelpers } from '@appium/base-driver';
 import { BaseDriver } from '@appium/base-driver';
 import { logger } from '@appium/support';
 import type { SDK } from '@dlenroc/roku';
