@@ -1,4 +1,4 @@
-import { BaseDriver } from '@appium/base-driver';
+import { BaseDriver, DeviceSettings } from '@appium/base-driver';
 import { logger } from '@appium/support';
 import type { SDK } from '@dlenroc/roku';
 import { activateApp } from './commands/activateApp';
@@ -47,7 +47,7 @@ import { setUrl } from './commands/setUrl';
 import { setValue } from './commands/setValue';
 import { terminateApp } from './commands/terminateApp';
 import { unlock } from './commands/unlock';
-import { updateSettings } from './commands/updateSettings';
+import { updateSetting } from './commands/updateSetting';
 import { getElement } from './helpers/getElement';
 import { getElements } from './helpers/getElements';
 import { getSelector } from './helpers/getSelector';
@@ -64,6 +64,7 @@ export class Driver extends BaseDriver {
   protected roku!: SDK;
   protected pressedKey?: string;
   protected logger = logger.getLogger('RokuDriver');
+  protected settings = new DeviceSettings({}, updateSetting.bind(this));
 
   // Helpers
   protected getElement = getElement;
@@ -121,7 +122,6 @@ export class Driver extends BaseDriver {
   public background = background;
   public setValueImmediate = replaceValue;
   public replaceValue = replaceValue;
-  public updateSettings = updateSettings.bind(this, super.updateSettings.bind(this));
   public getCurrentContext = getCurrentContext;
   public setContext = setContext;
   public getContexts = getContexts;

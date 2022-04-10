@@ -1,13 +1,10 @@
-import type { BaseDriver } from '@appium/base-driver';
 import type { Driver } from '../Driver';
 
-export async function updateSettings(this: Driver, updateSettings: BaseDriver['updateSettings'], newSettings: Record<string, unknown>): Promise<void> {
-  await updateSettings(newSettings);
-
-  if (this.roku && newSettings.hasOwnProperty('elementResponseAttributes')) {
+export async function updateSetting(this: Driver, prop: string, newValue: unknown, curValue: unknown): Promise<void> {
+  if (this.roku && prop === 'elementResponseAttributes') {
     this.roku.document.fields = undefined;
 
-    const elementResponseAttributes = newSettings.elementResponseAttributes as string;
+    const elementResponseAttributes = newValue as string;
 
     if (elementResponseAttributes) {
       const fields: Record<string, string[]> = {};
