@@ -1,12 +1,13 @@
 import { errors } from '@appium/base-driver';
 import type { Driver } from '../Driver';
+import { BUTTON, DIALOG } from '../Elements';
 
 export async function postAcceptAlert(this: Driver): Promise<void> {
   if (!(await this.isAlertShown())) {
     throw new errors.NoAlertOpenError(undefined);
   }
 
-  const button = this.roku.document.xpathSelect('//*[substring(name(), string-length(name()) - string-length("Dialog") + 1) = "Dialog"]//*[substring(name(), string-length(name()) - string-length("Button") + 1) = "Button"]');
+  const button = this.roku.document.xpathSelect(`//*[${DIALOG}]//*[${BUTTON}]`);
 
   if (!button) {
     throw new errors.InvalidElementStateError('Failed to accept dialog');

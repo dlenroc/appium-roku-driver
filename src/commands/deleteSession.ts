@@ -1,7 +1,7 @@
-import type { BaseDriver } from '@appium/base-driver';
+import type { ExternalDriver } from '@appium/types';
 import type { Driver } from '../Driver';
 
-export async function deleteSession(this: Driver, deleteSession: BaseDriver['deleteSession']): Promise<void> {
+export async function deleteSession(this: Driver, deleteSession: ExternalDriver['deleteSession']): Promise<void> {
   await deleteSession();
 
   const { fullReset, noReset } = this.opts;
