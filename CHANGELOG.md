@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.2...v0.8.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* handle `extends` attribute ([f0c97e3](https://github.com/dlenroc/appium-roku-driver/commit/f0c97e35ddea0d3dd6b5f184bfa2eb949b7b24eb))
+
 ### [0.8.2](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.1...v0.8.2) (2022-04-10)
 
 
