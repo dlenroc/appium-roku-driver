@@ -259,7 +259,7 @@ driver.switchContext('ECP');
 
 In addition to the standard apium commands, Roku has several additional features that go beyond the appium protocol, so they are available through a javascript executor and a script in the following format `<component>:<command>`
 
-The following components are available: [ecp](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme), [debugServer](https://github.com/dlenroc/node-roku/blob/main/packages/debug-server#readme), [developerServer](https://github.com/dlenroc/node-roku/blob/main/packages/developer-server#readme), and [odc](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme)
+The following components are available: [ecp](https://www.npmjs.com/package/@dlenroc/roku-ecp/v/1.2.2), [debugServer](https://www.npmjs.com/package/@dlenroc/roku-debug-server/v/1.0.2), [developerServer](https://www.npmjs.com/package/@dlenroc/roku-developer-server/v/1.0.1), and [odc](https://www.npmjs.com/package/@dlenroc/roku-odc/v/1.4.3)
 
 Example:
 
