@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.4](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.3...v0.8.4) (2023-09-16)
+
+
+### Bug Fixes
+
+* odc injection ([bd84560](https://github.com/dlenroc/appium-roku-driver/commit/bd84560763eed64b35bb9edb31042cb3f074aa50))
+
 ## [0.8.3](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.2...v0.8.3) (2022-06-06)
 
 
