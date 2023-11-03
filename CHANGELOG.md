@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.5](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.4...v0.8.5) (2023-11-03)
+
+
+### Bug Fixes
+
+* `12.5.0` firmware support ([0379e15](https://github.com/dlenroc/appium-roku-driver/commit/0379e15c07220c227142d8867683eccdcc6b76f8))
+
 ## [0.8.4](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.3...v0.8.4) (2023-09-16)
 
 
