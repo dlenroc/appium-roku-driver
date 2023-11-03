@@ -482,9 +482,9 @@
       }
     },
     "node_modules/@dlenroc/roku-developer-server": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/@dlenroc/roku-developer-server/-/roku-developer-server-1.0.1.tgz",
-      "integrity": "sha512-va8RZaWOj0YrX9Btz6CzSUlu3D1FySKtvPzZtkzpTar6fFz5AdctbEG9dppkok34owel/Wbqka3rPQskjgM5bQ==",
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@dlenroc/roku-developer-server/-/roku-developer-server-1.0.2.tgz",
+      "integrity": "sha512-vNUWEi08smVJKvrWeE4FJUSS7oy6vcWPxHPVLx5Uj3H+OzLFd9MlMr6NUaO9cr9JPwKeF1R0U3vnaUWFCZQ7lw==",
       "dependencies": {
         "digest-header": "^1.1.0",
         "form-data": "^4.0.0",
@@ -4522,9 +4522,9 @@
       "integrity": "sha512-siMQDAJveq2Nl+8sZyIkaYD8+nYaoHfLiFME6wWGDuQDrnD7ctb7KzZZrLjNFg0OHEEGlmAZomOc/g8mCAGJ0g=="
     },
     "@dlenroc/roku-developer-server": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/@dlenroc/roku-developer-server/-/roku-developer-server-1.0.1.tgz",
-      "integrity": "sha512-va8RZaWOj0YrX9Btz6CzSUlu3D1FySKtvPzZtkzpTar6fFz5AdctbEG9dppkok34owel/Wbqka3rPQskjgM5bQ==",
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@dlenroc/roku-developer-server/-/roku-developer-server-1.0.2.tgz",
+      "integrity": "sha512-vNUWEi08smVJKvrWeE4FJUSS7oy6vcWPxHPVLx5Uj3H+OzLFd9MlMr6NUaO9cr9JPwKeF1R0U3vnaUWFCZQ7lw==",
       "requires": {
         "digest-header": "^1.1.0",
         "form-data": "^4.0.0",
