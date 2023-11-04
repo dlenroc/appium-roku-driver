@@ -1,4 +1,4 @@
-import type { Action, Actions } from '@appium/types';
+import type { ActionSequence, KeyAction, NullAction, PointerAction } from '@appium/types';
 import type { Key } from '@dlenroc/roku';
 import { longSleep } from 'asyncbox';
 import type { Driver } from '../Driver';
@@ -35,7 +35,7 @@ const Keys: Record<string, Key> = {
   // PowerOff
 };
 
-export async function performActions(this: Driver, actions: Actions[]): Promise<void> {
+export async function performActions(this: Driver, actions: ActionSequence[]): Promise<void> {
   for (const action of actions) {
     action.actions = optimizeActions(action.actions);
 
@@ -53,7 +53,7 @@ export async function performActions(this: Driver, actions: Actions[]): Promise<
   }
 }
 
-async function performNoneActions(this: Driver, actions: Action[]): Promise<void> {
+async function performNoneActions(this: Driver, actions: NullAction[]): Promise<void> {
   for (const action of actions) {
     switch (action.type) {
       case 'pause':
@@ -63,11 +63,13 @@ async function performNoneActions(this: Driver, actions: Action[]): Promise<void
   }
 }
 
-async function performKeyActions(this: Driver, actions: Action[]): Promise<void> {
+async function performKeyActions(this: Driver, actions: KeyAction[]): Promise<void> {
   for (const action of actions) {
+    // @ts-ignore
     const key = Keys[action.value!!] || action.value;
 
     switch (action.type) {
+      // @ts-ignore
       case 'keyPress':
         this.pressedKey = undefined;
         await this.roku.ecp.keypress(key);
@@ -87,14 +89,16 @@ async function performKeyActions(this: Driver, actions: Action[]): Promise<void>
   }
 }
 
-async function performPointerActions(this: Driver, actions: Action[]): Promise<void> {
+async function performPointerActions(this: Driver, actions: PointerAction[]): Promise<void> {
   for (const action of actions) {
     switch (action.type) {
       case 'pointerMove':
-        const element = await this.getElement(action.origin!!);
+        const element = await this.getElement(action.origin as string);
         await element.focus();
         break;
+      // @ts-ignore
       case 'pointerPress':
+        // @ts-ignore
         await performKeyActions.call(this, [{ type: 'keyPress', value: 'Select' }]);
         break;
       case 'pointerDown':
@@ -110,7 +114,7 @@ async function performPointerActions(this: Driver, actions: Action[]): Promise<v
   }
 }
 
-function optimizeActions(actions: Action[]): Action[] {
+function optimizeActions(actions: any): any {
   // Map all keyDown + all keyUp to a keyPress sequence - WebDriverIO sends keys this way
   if (actions.length % 2 === 0) {
     const centerIndex = actions.length / 2;

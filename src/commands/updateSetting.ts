@@ -1,7 +1,7 @@
 import { errors } from '@appium/base-driver';
 import type { Driver } from '../Driver';
 
-export async function updateSetting(this: Driver, prop: unknown, newValue: unknown, curValue: unknown): Promise<void> {
+export async function updateSetting(this: Driver, prop: unknown, newValue: unknown): Promise<void> {
   if (prop === 'elementResponseAttributes') {
     if (typeof newValue !== 'string') {
       throw new errors.InvalidArgumentError(`The value of "elementResponseAttributes" must be a string.`);

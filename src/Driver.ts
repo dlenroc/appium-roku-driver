@@ -1,6 +1,8 @@
 import { BaseDriver, DeviceSettings } from '@appium/base-driver';
 import { logger } from '@appium/support';
+import { ExternalDriver } from '@appium/types';
 import type { SDK } from '@dlenroc/roku';
+import { capabilitiesConstraints } from './CapabilitiesConstraints';
 import { activateApp } from './commands/activateApp';
 import { active } from './commands/active';
 import { background } from './commands/background';
@@ -54,7 +56,7 @@ import { getSelector } from './helpers/getSelector';
 import { retrying } from './helpers/retrying';
 import { waitForCondition } from './helpers/waitForCondition';
 
-export class Driver extends BaseDriver {
+export class Driver extends BaseDriver<typeof capabilitiesConstraints> implements ExternalDriver<typeof capabilitiesConstraints> {
   static newMethodMap = {
     '/session/:sessionId/alert': {
       GET: { command: 'isAlertShown' },
@@ -62,9 +64,8 @@ export class Driver extends BaseDriver {
   };
 
   protected roku!: SDK;
-  protected pressedKey?: string;
+  protected pressedKey?: string | undefined;
   protected logger = logger.getLogger('RokuDriver');
-  protected settings = new DeviceSettings({}, updateSetting.bind(this));
 
   // Helpers
   protected getElement = getElement;
@@ -74,12 +75,12 @@ export class Driver extends BaseDriver {
   protected waitForCondition = waitForCondition;
 
   // WebDriver
-  public createSession = createSession.bind(this, super.createSession.bind(this));
-  public deleteSession = deleteSession.bind(this, super.deleteSession.bind(this));
+  public override createSession = createSession;
+  public override deleteSession = deleteSession;
   public setUrl = setUrl;
   public getWindowRect = getWindowRect;
   public active = active;
-  public findElOrEls = findElOrEls;
+  public override findElOrEls = findElOrEls;
   public elementSelected = elementSelected;
   public getAttribute = getProperty;
   public getProperty = getProperty;
@@ -91,7 +92,7 @@ export class Driver extends BaseDriver {
   public click = click;
   public clear = clear;
   public setValue = setValue;
-  public getPageSource = getPageSource;
+  public override getPageSource = getPageSource;
   public execute = execute;
   public performActions = performActions;
   public releaseActions = releaseActions;
@@ -118,7 +119,7 @@ export class Driver extends BaseDriver {
   public pullFolder = pullFolder;
   public launchApp = launchApp;
   public closeApp = closeApp;
-  public reset = reset;
+  public override reset = reset;
   public background = background;
   public setValueImmediate = replaceValue;
   public replaceValue = replaceValue;
@@ -127,45 +128,8 @@ export class Driver extends BaseDriver {
   public getContexts = getContexts;
 
   // Configurations
-  public supportedLogTypes = {};
-  public locatorStrategies = ['id', 'tag name', 'link text', 'partial link text', 'css selector', 'xpath'];
-
-  public get desiredCapConstraints() {
-    return {
-      app: {
-        isString: true,
-        presence: true,
-      },
-      ip: {
-        isString: true,
-        presence: true,
-      },
-      password: {
-        isString: true,
-        presence: true,
-      },
-      username: {
-        isString: true,
-        presence: false,
-      },
-      context: {
-        isString: true,
-        presence: false,
-        inclusion: ['ECP', 'ODC'],
-      },
-      registry: {
-        isObject: true,
-        presence: false,
-      },
-      arguments: {
-        isObject: true,
-        presence: false,
-      },
-      entryPoint: {
-        isString: true,
-        presence: false,
-        inclusion: ['channel', 'screensaver', 'screensaver-settings'],
-      },
-    };
-  }
+  public override desiredCapConstraints = capabilitiesConstraints;
+  public override locatorStrategies = ['id', 'tag name', 'link text', 'partial link text', 'css selector', 'xpath'];
+  public override settings = new DeviceSettings({}, updateSetting.bind(this));
+  public override supportedLogTypes = {};
 }

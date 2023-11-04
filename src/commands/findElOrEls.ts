@@ -1,10 +1,12 @@
-import { Element } from '@appium/types';
 import { errors } from '@appium/base-driver';
 import { util } from '@appium/support';
+import { Element } from '@appium/types';
 import type { Element as RokuElement } from '@dlenroc/roku';
 import base64 from 'base-64';
 import type { Driver } from '../Driver';
 
+export function findElOrEls(strategy: string, selector: string, mult: false, context?: any): Promise<Element>;
+export function findElOrEls(strategy: string, selector: string, mult: true, context?: any): Promise<Element[]>;
 export async function findElOrEls(this: Driver, strategy: string, selector: string, mult: boolean, context: string): Promise<Element | Element[]> {
   if (mult) {
     return findEls.call(this, strategy, selector, context);

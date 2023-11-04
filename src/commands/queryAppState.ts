@@ -1,6 +1,6 @@
 import type { Driver } from '../Driver';
 
-export async function queryAppState(this: Driver, appId: string): Promise<number> {
+export async function queryAppState(this: Driver, appId: string): Promise<0 | 1 | 2 | 3 | 4> {
   const activeApp = await this.roku.ecp.queryActiveApp();
 
   if (typeof activeApp.app !== 'string' && activeApp.app.id == appId) {
@@ -16,5 +16,5 @@ export async function queryAppState(this: Driver, appId: string): Promise<number
   const isInstalled = await this.isAppInstalled(appId);
 
   // not running/installed
-  return +isInstalled;
+  return +isInstalled as 0 | 1;
 }

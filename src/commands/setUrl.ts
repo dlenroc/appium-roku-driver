@@ -1,7 +1,7 @@
+import { errors } from '@appium/base-driver';
 import type { AppId } from '@dlenroc/roku';
 import { URL } from 'url';
 import type { Driver } from '../Driver';
-import { errors } from '@appium/base-driver';
 
 export async function setUrl(this: Driver, url: string): Promise<void> {
   const { host, pathname, searchParams } = new URL(url);

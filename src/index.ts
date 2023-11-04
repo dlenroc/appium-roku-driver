@@ -1,1 +1,1 @@
-export { Driver as default, Driver } from './Driver';
+export { Driver, Driver as default } from './Driver';

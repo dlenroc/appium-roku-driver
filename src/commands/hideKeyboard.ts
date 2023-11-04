@@ -1,7 +1,7 @@
 import type { Driver } from '../Driver';
 import { BUTTON, DIALOG, KEYBOARD } from '../Elements';
 
-export async function hideKeyboard(this: Driver, strategy?: string, key?: string, keyCode?: string, keyName?: string): Promise<void> {
+export async function hideKeyboard(this: Driver): Promise<boolean> {
   const keyboard = await this.getElement('xpath', `//*[${KEYBOARD}]`);
   const submitButton = keyboard.xpathSelect(`./ancestor-or-self::*[${DIALOG}]//*[${BUTTON}]`);
 
@@ -18,4 +18,6 @@ export async function hideKeyboard(this: Driver, strategy?: string, key?: string
       return !isKeyboardShown;
     },
   });
+
+  return true;
 }

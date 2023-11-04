@@ -1,10 +1,17 @@
-import type { ExternalDriver, W3CCapabilities } from '@appium/types';
+import { BaseDriver } from '@appium/base-driver';
+import type { DefaultCreateSessionResult, DriverData, W3CDriverCaps } from '@appium/types';
 import { SDK } from '@dlenroc/roku';
+import type { capabilitiesConstraints as constrains } from '../CapabilitiesConstraints';
 import type { Driver } from '../Driver';
 
-export async function createSession(this: Driver, createSession: ExternalDriver['createSession'], jwpCaps: W3CCapabilities, jwpReqCaps: W3CCapabilities, w3cCaps: W3CCapabilities): Promise<[string, {}]> {
-  const session = await createSession(jwpCaps, jwpReqCaps, w3cCaps);
-
+export async function createSession(
+  this: Driver,
+  jwpCaps: W3CDriverCaps<typeof constrains>,
+  jwpReqCaps: W3CDriverCaps<typeof constrains>,
+  w3cCaps: W3CDriverCaps<typeof constrains>,
+  driverData?: DriverData[]
+): Promise<DefaultCreateSessionResult<typeof constrains>> {
+  const session = BaseDriver.prototype.createSession.call(this, jwpCaps, jwpReqCaps, w3cCaps, driverData);
   const { app, arguments: args, context, entryPoint, ip, noReset, password, registry, username } = this.opts;
 
   this.roku = new SDK(ip, username || 'rokudev', password);
