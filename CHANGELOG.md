@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.5...v0.9.0) (2023-11-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* nodejs 18, 19, 20 support via `libxmljs2@v0.32.0`
+
+### Bug Fixes
+
+* `hideKeyboard`, `removeApp` and `terminateApp` return type ([9e0852c](https://github.com/dlenroc/appium-roku-driver/commit/9e0852c45c6256e4a36beef945cad67c6e1ab05b))
+* compatibility with `appium@2.2.1` ([9e0852c](https://github.com/dlenroc/appium-roku-driver/commit/9e0852c45c6256e4a36beef945cad67c6e1ab05b))
+* nodejs 18, 19, 20 support via `libxmljs2@v0.32.0` ([9e0852c](https://github.com/dlenroc/appium-roku-driver/commit/9e0852c45c6256e4a36beef945cad67c6e1ab05b))
+
 ## [0.8.5](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.4...v0.8.5) (2023-11-03)
 
 
