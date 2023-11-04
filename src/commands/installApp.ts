@@ -3,9 +3,11 @@ import { createHash } from 'crypto';
 import { readFile } from 'fs/promises';
 import type { Driver } from '../Driver';
 
-export async function installApp(this: Driver, appPath: string, options?: unknown): Promise<void> {
-  // @ts-ignore because is available since @appium/base-driver@8.2.2 but misses in type definition
-  appPath = await this.helpers.configureApp(appPath, { supportedExtensions: ['zip'], onPostProcess: () => {} });
+export async function installApp(this: Driver, appPath: string): Promise<void> {
+  appPath = await this.helpers.configureApp(appPath, {
+    supportedExtensions: ['.zip'],
+    onPostProcess: () => null,
+  });
 
   const source = await readFile(appPath);
   const apps = await this.roku.ecp.queryApps();

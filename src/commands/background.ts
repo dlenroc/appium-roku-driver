@@ -1,8 +1,8 @@
 /// <reference path='../../types/asyncbox.d.ts'/>
 
+import { errors } from '@appium/base-driver';
 import { longSleep } from 'asyncbox';
 import type { Driver } from '../Driver';
-import { errors } from '@appium/base-driver';
 
 export async function background(this: Driver, seconds: null | number): Promise<void> {
   const activeApp = await this.roku.ecp.queryActiveApp();

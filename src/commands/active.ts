@@ -1,5 +1,5 @@
-import type { Element } from '@appium/types';
 import { util } from '@appium/support';
+import type { Element } from '@appium/types';
 import base64 from 'base-64';
 import type { Driver } from '../Driver';
 
