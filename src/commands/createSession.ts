@@ -17,13 +17,15 @@ export async function createSession(
   this.roku = new SDK(ip, username || 'rokudev', password);
   this.roku.document.context = context || 'ECP';
 
-  await this.installApp(app);
-  await this.activateApp('dev', {
-    odc_clear_registry: !noReset,
-    ...(entryPoint && { odc_entry_point: entryPoint }),
-    ...(registry && { odc_registry: registry }),
-    ...(args && args),
-  });
+  if (app) {
+    await this.installApp(app);
+    await this.activateApp('dev', {
+      odc_clear_registry: !noReset,
+      ...(entryPoint && { odc_entry_point: entryPoint }),
+      ...(registry && { odc_registry: registry }),
+      ...(args && args),
+    });
+  }
 
   return session;
 }

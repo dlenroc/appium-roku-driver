@@ -3,7 +3,7 @@ import type { Constraints } from "@appium/types";
 export const capabilitiesConstraints = {
   app: {
     isString: true,
-    presence: true,
+    presence: false,
   },
   ip: {
     isString: true,
