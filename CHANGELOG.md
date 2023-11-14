@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.9.0...v0.9.1) (2023-11-14)
+
+
+### Features
+
+* make `app` capability optional ([6a67b08](https://github.com/dlenroc/appium-roku-driver/commit/6a67b08f07402b0b5dd3e888afc2b27d0df53cc1))
+
 ## [0.9.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.8.5...v0.9.0) (2023-11-04)
 
 
