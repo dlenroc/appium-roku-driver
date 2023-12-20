@@ -1,5 +1,5 @@
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
 export async function getCurrentContext(this: Driver): Promise<string | null> {
-  return this.roku.document.context;
+  return this.document.context;
 }

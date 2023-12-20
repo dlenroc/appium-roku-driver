@@ -165,7 +165,7 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | `platformName`                        |    +     | string  | Must be `roku`                                                                                                                  |
 | `appium:automationName`               |    +     | string  | Must be `roku`                                                                                                                  |
 | `appium:deviceName`                   |   +/-    | String  | Helps webdriver clients understand that they are dealing with appium                                                            |
-| `appium:app`                          |    +     | string  | The absolute local path or remote http URL to channel                                                                           |
+| `appium:app`                          |    -     | string  | The absolute local path or remote http URL to channel                                                                           |
 | `appium:noReset`                      |    -     | boolean | Do not stop app, do not clear app data, and do not uninstall app                                                                |
 | `appium:fullReset`                    |    -     | boolean | Stop app, clear app data and uninstall app before session starts and after test                                                 |
 | `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |

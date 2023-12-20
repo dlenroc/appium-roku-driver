@@ -1,7 +1,12 @@
-import type { Element } from '@dlenroc/roku';
-import type { Driver } from '../Driver';
+import type { Element } from 'roku-dom';
+import type { Driver } from '../Driver.ts';
 
-export async function getElements(this: Driver, strategy: string, selector: string, context?: string): Promise<Element[]> {
+export async function getElements(
+  this: Driver,
+  strategy: string,
+  selector: string,
+  context?: string
+): Promise<Element[]> {
   [strategy, selector] = this.getSelector(strategy, selector);
 
   let parent: Element;
@@ -10,8 +15,8 @@ export async function getElements(this: Driver, strategy: string, selector: stri
   if (context) {
     parent = await this.getElement(context);
   } else {
-    await this.roku.document.render();
-    parent = this.roku.document;
+    await this.document.render();
+    parent = this.document;
   }
 
   switch (strategy) {
