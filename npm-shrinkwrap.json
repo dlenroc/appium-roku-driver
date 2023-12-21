@@ -3095,17 +3095,17 @@
       }
     },
     "node_modules/libxmljs2": {
-      "version": "0.32.0",
-      "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.32.0.tgz",
-      "integrity": "sha512-DuvKfSQZeUzw0A4UWZXfcBpr3VqlcJY1b3aw99PxTiX3T5t1rEO4gSpobNrP9S74LIhyDKaAs/lphuErV+n+7w==",
+      "version": "0.33.0",
+      "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.33.0.tgz",
+      "integrity": "sha512-Hw74f2/3rbpxc6tkTqe3yrs4v2Tx0rEukrYxaNkXSVKK540i2eqlQxzf1jjG+RlwMuv66WxkkuZHM/OQq6km4w==",
       "hasInstallScript": true,
       "dependencies": {
-        "@mapbox/node-pre-gyp": "^1.0.10",
+        "@mapbox/node-pre-gyp": "^1.0.11",
         "bindings": "~1.5.0",
-        "nan": "~2.17.0"
+        "nan": "~2.18.0"
       },
       "engines": {
-        "node": ">=16"
+        "node": ">=18"
       }
     },
     "node_modules/lie": {
@@ -3453,9 +3453,9 @@
       }
     },
     "node_modules/nan": {
-      "version": "2.17.0",
-      "resolved": "https://registry.npmjs.org/nan/-/nan-2.17.0.tgz",
-      "integrity": "sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ=="
+      "version": "2.18.0",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.18.0.tgz",
+      "integrity": "sha512-W7tfG7vMOGtD30sHoZSSc/JVYiyDPEyQVso/Zz+/uQd0B0L46gtC+pHha5FFMRpil6fm/AoEcRWyOVi4+E/f8w=="
     },
     "node_modules/napi-build-utils": {
       "version": "1.0.2",
@@ -4244,25 +4244,6 @@
       "funding": {
         "url": "https://github.com/fb55/entities?sponsor=1"
       }
-    },
-    "node_modules/roku-dom/node_modules/libxmljs2": {
-      "version": "0.33.0",
-      "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.33.0.tgz",
-      "integrity": "sha512-Hw74f2/3rbpxc6tkTqe3yrs4v2Tx0rEukrYxaNkXSVKK540i2eqlQxzf1jjG+RlwMuv66WxkkuZHM/OQq6km4w==",
-      "hasInstallScript": true,
-      "dependencies": {
-        "@mapbox/node-pre-gyp": "^1.0.11",
-        "bindings": "~1.5.0",
-        "nan": "~2.18.0"
-      },
-      "engines": {
-        "node": ">=18"
-      }
-    },
-    "node_modules/roku-dom/node_modules/nan": {
-      "version": "2.18.0",
-      "resolved": "https://registry.npmjs.org/nan/-/nan-2.18.0.tgz",
-      "integrity": "sha512-W7tfG7vMOGtD30sHoZSSc/JVYiyDPEyQVso/Zz+/uQd0B0L46gtC+pHha5FFMRpil6fm/AoEcRWyOVi4+E/f8w=="
     },
     "node_modules/safe-buffer": {
       "version": "5.2.1",
@@ -5723,7 +5704,7 @@
         "@dlenroc/roku": "^1.2.0",
         "css-select": "^4.3.0",
         "css-select-base-adapter": "^0.1.1",
-        "libxmljs2": "^0.32.0"
+        "libxmljs2": "0.33.0"
       }
     },
     "@dlenroc/roku-ecp": {
@@ -7721,13 +7702,13 @@
       }
     },
     "libxmljs2": {
-      "version": "0.32.0",
-      "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.32.0.tgz",
-      "integrity": "sha512-DuvKfSQZeUzw0A4UWZXfcBpr3VqlcJY1b3aw99PxTiX3T5t1rEO4gSpobNrP9S74LIhyDKaAs/lphuErV+n+7w==",
+      "version": "0.33.0",
+      "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.33.0.tgz",
+      "integrity": "sha512-Hw74f2/3rbpxc6tkTqe3yrs4v2Tx0rEukrYxaNkXSVKK540i2eqlQxzf1jjG+RlwMuv66WxkkuZHM/OQq6km4w==",
       "requires": {
-        "@mapbox/node-pre-gyp": "^1.0.10",
+        "@mapbox/node-pre-gyp": "^1.0.11",
         "bindings": "~1.5.0",
-        "nan": "~2.17.0"
+        "nan": "~2.18.0"
       }
     },
     "lie": {
@@ -7985,9 +7966,9 @@
       }
     },
     "nan": {
-      "version": "2.17.0",
-      "resolved": "https://registry.npmjs.org/nan/-/nan-2.17.0.tgz",
-      "integrity": "sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ=="
+      "version": "2.18.0",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.18.0.tgz",
+      "integrity": "sha512-W7tfG7vMOGtD30sHoZSSc/JVYiyDPEyQVso/Zz+/uQd0B0L46gtC+pHha5FFMRpil6fm/AoEcRWyOVi4+E/f8w=="
     },
     "napi-build-utils": {
       "version": "1.0.2",
@@ -8512,7 +8493,7 @@
       "requires": {
         "css-select": "^5.1.0",
         "css-select-base-adapter": "^0.1.1",
-        "libxmljs2": "^0.33.0"
+        "libxmljs2": "0.33.0"
       },
       "dependencies": {
         "css-select": {
@@ -8559,21 +8540,6 @@
           "version": "4.5.0",
           "resolved": "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz",
           "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw=="
-        },
-        "libxmljs2": {
-          "version": "0.33.0",
-          "resolved": "https://registry.npmjs.org/libxmljs2/-/libxmljs2-0.33.0.tgz",
-          "integrity": "sha512-Hw74f2/3rbpxc6tkTqe3yrs4v2Tx0rEukrYxaNkXSVKK540i2eqlQxzf1jjG+RlwMuv66WxkkuZHM/OQq6km4w==",
-          "requires": {
-            "@mapbox/node-pre-gyp": "^1.0.11",
-            "bindings": "~1.5.0",
-            "nan": "~2.18.0"
-          }
-        },
-        "nan": {
-          "version": "2.18.0",
-          "resolved": "https://registry.npmjs.org/nan/-/nan-2.18.0.tgz",
-          "integrity": "sha512-W7tfG7vMOGtD30sHoZSSc/JVYiyDPEyQVso/Zz+/uQd0B0L46gtC+pHha5FFMRpil6fm/AoEcRWyOVi4+E/f8w=="
         }
       }
     },
