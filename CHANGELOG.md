@@ -3,10 +3,6 @@
 ## [0.10.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.9.1...v0.10.0) (2023-12-23)
 
 
-### ⚠ BREAKING CHANGES
-
-* switch to ESM
-
 ### Features
 
 * added windows support ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
