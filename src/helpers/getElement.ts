@@ -1,8 +1,13 @@
 import { errors } from '@appium/base-driver';
-import type { Element } from '@dlenroc/roku';
-import type { Driver } from '../Driver';
+import type { Element } from 'roku-dom';
+import type { Driver } from '../Driver.ts';
 
-export async function getElement(this: Driver, strategy: string, selector?: string, context?: string): Promise<Element> {
+export async function getElement(
+  this: Driver,
+  strategy: string,
+  selector?: string,
+  context?: string
+): Promise<Element> {
   const hasSelector = !!selector;
 
   [strategy, selector] = this.getSelector(strategy, selector);
@@ -13,8 +18,8 @@ export async function getElement(this: Driver, strategy: string, selector?: stri
   if (context) {
     parent = await this.getElement(context);
   } else {
-    await this.roku.document.render();
-    parent = this.roku.document;
+    await this.document.render();
+    parent = this.document;
   }
 
   switch (strategy) {
@@ -28,9 +33,13 @@ export async function getElement(this: Driver, strategy: string, selector?: stri
 
   if (!element) {
     if (hasSelector) {
-      throw new errors.NoSuchElementError(`Unable to locate element: ${selector}`);
+      throw new errors.NoSuchElementError(
+        `Unable to locate element: ${selector}`
+      );
     } else {
-      throw new errors.StaleElementReferenceError(`Unable to locate element: ${selector}`);
+      throw new errors.StaleElementReferenceError(
+        `Unable to locate element: ${selector}`
+      );
     }
   }
 

@@ -1,9 +1,13 @@
-import type { Driver } from '../Driver';
+import * as ecp from '@dlenroc/roku-ecp';
+import type { Driver } from '../Driver.ts';
 
-export async function queryAppState(this: Driver, appId: string): Promise<0 | 1 | 2 | 3 | 4> {
-  const activeApp = await this.roku.ecp.queryActiveApp();
+export async function queryAppState(
+  this: Driver,
+  appId: string
+): Promise<0 | 1 | 2 | 3 | 4> {
+  const activeApp = await ecp.queryActiveApp(this.sdk.ecp);
 
-  if (typeof activeApp.app !== 'string' && activeApp.app.id == appId) {
+  if ('id' in activeApp.app && activeApp.app.id == appId) {
     // running in background
     if (activeApp.screensaver) {
       return 3;

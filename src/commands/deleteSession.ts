@@ -1,20 +1,23 @@
 import { BaseDriver } from '@appium/base-driver';
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
-export async function deleteSession(this: Driver, sessionId?: string): Promise<void> {
-  await BaseDriver.prototype.deleteSession.call(this, sessionId);
+export async function deleteSession(
+  this: Driver,
+  sessionId?: string
+): Promise<void> {
+  try {
+    await BaseDriver.prototype.deleteSession.call(this, sessionId);
 
-  const { fullReset, noReset } = this.opts;
+    const { fullReset, noReset } = this.opts;
 
-  if (fullReset) {
-    const isInstalled = await this.isAppInstalled('dev');
-
-    if (isInstalled) {
+    if (fullReset) {
       await this.removeApp('dev');
     }
-  }
 
-  if (!noReset) {
-    await this.closeApp();
+    if (!noReset) {
+      await this.closeApp();
+    }
+  } finally {
+    this.abortController.abort('Session deleted');
   }
 }

@@ -1,9 +1,13 @@
-import type { Driver } from '../Driver';
+import * as ecp from '@dlenroc/roku-ecp';
+import type { Driver } from '../Driver.ts';
 
-export async function terminateApp(this: Driver, appId: string): Promise<boolean> {
-  const activeApp = await this.roku.ecp.queryActiveApp();
+export async function terminateApp(
+  this: Driver,
+  appId: string
+): Promise<boolean> {
+  const activeApp = await ecp.queryActiveApp(this.sdk.ecp);
 
-  if (typeof activeApp.app !== 'string' && activeApp.app.id == appId) {
+  if ('id' in activeApp.app && activeApp.app.id == appId) {
     await this.closeApp();
     return true;
   }

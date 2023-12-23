@@ -1,8 +1,11 @@
 import { errors } from '@appium/base-driver';
 import type { Rect } from '@appium/types';
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
-export async function getElementRect(this: Driver, elementId: string): Promise<Rect> {
+export async function getElementRect(
+  this: Driver,
+  elementId: string
+): Promise<Rect> {
   const element = await this.getElement(elementId);
 
   if (!element.bounds) {

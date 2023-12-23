@@ -1,7 +1,8 @@
 import { errors } from '@appium/base-driver';
 import type { AppId } from '@dlenroc/roku';
+import * as ecp from '@dlenroc/roku-ecp';
 import { URL } from 'url';
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
 export async function setUrl(this: Driver, url: string): Promise<void> {
   const { host, pathname, searchParams } = new URL(url);
@@ -14,9 +15,9 @@ export async function setUrl(this: Driver, url: string): Promise<void> {
 
   switch (host) {
     case 'launch':
-      return await this.roku.ecp.launch(app, params);
+      return await ecp.launch(this.sdk.ecp, { appId: app, params });
     case 'input':
-      return await this.roku.ecp.input(params);
+      return await ecp.input(this.sdk.ecp, params);
     default:
       throw new errors.InvalidArgumentError('Unsupported URL format');
   }

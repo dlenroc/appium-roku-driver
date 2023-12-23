@@ -1,13 +1,20 @@
-import type { AppId, Params } from '@dlenroc/roku';
-import type { Driver } from '../Driver';
+import * as ecp from '@dlenroc/roku-ecp';
+import type { Driver } from '../Driver.ts';
 
-export async function activateApp(this: Driver, appId: string, options?: unknown): Promise<void> {
-  await this.roku.ecp.launch(appId as AppId, options as Params);
+export async function activateApp(
+  this: Driver,
+  appId: string,
+  options?: unknown
+): Promise<void> {
+  await ecp.launch(this.sdk.ecp, {
+    appId: appId as ecp.AppId,
+    params: options as Record<string, unknown>,
+  });
   await this.waitForCondition({
     error: 'Channel not started',
     condition: async () => {
-      const activeApp = await this.roku.ecp.queryActiveApp();
-      return typeof activeApp.app !== 'string' && activeApp.app.id == appId;
+      const state = await this.queryAppState(appId);
+      return state === 4;
     },
   });
 }

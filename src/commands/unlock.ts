@@ -1,4 +1,5 @@
-import type { Driver } from '../Driver';
+import * as ecp from '@dlenroc/roku-ecp';
+import type { Driver } from '../Driver.ts';
 
 export async function unlock(this: Driver): Promise<void> {
   const isLocked = await this.isLocked();
@@ -7,7 +8,7 @@ export async function unlock(this: Driver): Promise<void> {
     return;
   }
 
-  await this.roku.ecp.keypress('Enter');
+  await ecp.keypress(this.sdk.ecp, { key: 'Enter' });
   await this.waitForCondition({
     error: 'Screensaver is still visible',
     condition: async () => {

@@ -1,71 +1,83 @@
 import { BaseDriver, DeviceSettings } from '@appium/base-driver';
-import { logger } from '@appium/support';
 import { ExternalDriver } from '@appium/types';
 import type { SDK } from '@dlenroc/roku';
-import { capabilitiesConstraints } from './CapabilitiesConstraints';
-import { activateApp } from './commands/activateApp';
-import { active } from './commands/active';
-import { background } from './commands/background';
-import { clear } from './commands/clear';
-import { click } from './commands/click';
-import { closeApp } from './commands/closeApp';
-import { createSession } from './commands/createSession';
-import { deleteSession } from './commands/deleteSession';
-import { elementDisplayed } from './commands/elementDisplayed';
-import { elementSelected } from './commands/elementSelected';
-import { execute } from './commands/execute';
-import { findElOrEls } from './commands/findElOrEls';
-import { getAlertText } from './commands/getAlertText';
-import { getContexts } from './commands/getContexts';
-import { getCurrentContext } from './commands/getCurrentContext';
-import { getElementRect } from './commands/getElementRect';
-import { getName } from './commands/getName';
-import { getPageSource } from './commands/getPageSource';
-import { getProperty } from './commands/getProperty';
-import { getScreenshot } from './commands/getScreenshot';
-import { getText } from './commands/getText';
-import { getWindowRect } from './commands/getWindowRect';
-import { hideKeyboard } from './commands/hideKeyboard';
-import { installApp } from './commands/installApp';
-import { isAlertShown } from './commands/isAlertShown';
-import { isAppInstalled } from './commands/isAppInstalled';
-import { isKeyboardShown } from './commands/isKeyboardShown';
-import { isLocked } from './commands/isLocked';
-import { launchApp } from './commands/launchApp';
-import { performActions } from './commands/performActions';
-import { postAcceptAlert } from './commands/postAcceptAlert';
-import { postDismissAlert } from './commands/postDismissAlert';
-import { pullFile } from './commands/pullFile';
-import { pullFolder } from './commands/pullFolder';
-import { pushFile } from './commands/pushFile';
-import { queryAppState } from './commands/queryAppState';
-import { releaseActions } from './commands/releaseActions';
-import { removeApp } from './commands/removeApp';
-import { replaceValue } from './commands/replaceValue';
-import { reset } from './commands/reset';
-import { setAlertText } from './commands/setAlertText';
-import { setContext } from './commands/setContext';
-import { setUrl } from './commands/setUrl';
-import { setValue } from './commands/setValue';
-import { terminateApp } from './commands/terminateApp';
-import { unlock } from './commands/unlock';
-import { updateSetting } from './commands/updateSetting';
-import { getElement } from './helpers/getElement';
-import { getElements } from './helpers/getElements';
-import { getSelector } from './helpers/getSelector';
-import { retrying } from './helpers/retrying';
-import { waitForCondition } from './helpers/waitForCondition';
+import type { Executor as DeveloperServerExecutor } from '@dlenroc/roku-developer-server';
+import type { Executor as ECPExecutor } from '@dlenroc/roku-ecp';
+import type { Executor as ODCExecutor } from '@dlenroc/roku-odc';
+import type { Document } from 'roku-dom';
+import { capabilitiesConstraints } from './CapabilitiesConstraints.js';
+import { activateApp } from './commands/activateApp.js';
+import { active } from './commands/active.js';
+import { background } from './commands/background.js';
+import { clear } from './commands/clear.js';
+import { click } from './commands/click.js';
+import { closeApp } from './commands/closeApp.js';
+import { createSession } from './commands/createSession.js';
+import { deleteSession } from './commands/deleteSession.js';
+import { elementDisplayed } from './commands/elementDisplayed.js';
+import { elementSelected } from './commands/elementSelected.js';
+import { execute } from './commands/execute.js';
+import { findElOrEls } from './commands/findElOrEls.js';
+import { getAlertText } from './commands/getAlertText.js';
+import { getContexts } from './commands/getContexts.js';
+import { getCurrentContext } from './commands/getCurrentContext.js';
+import { getElementRect } from './commands/getElementRect.js';
+import { getName } from './commands/getName.js';
+import { getPageSource } from './commands/getPageSource.js';
+import { getProperty } from './commands/getProperty.js';
+import { getScreenshot } from './commands/getScreenshot.js';
+import { getText } from './commands/getText.js';
+import { getWindowRect } from './commands/getWindowRect.js';
+import { hideKeyboard } from './commands/hideKeyboard.js';
+import { installApp } from './commands/installApp.js';
+import { isAlertShown } from './commands/isAlertShown.js';
+import { isAppInstalled } from './commands/isAppInstalled.js';
+import { isKeyboardShown } from './commands/isKeyboardShown.js';
+import { isLocked } from './commands/isLocked.js';
+import { launchApp } from './commands/launchApp.js';
+import { performActions } from './commands/performActions.js';
+import { postAcceptAlert } from './commands/postAcceptAlert.js';
+import { postDismissAlert } from './commands/postDismissAlert.js';
+import { pullFile } from './commands/pullFile.js';
+import { pullFolder } from './commands/pullFolder.js';
+import { pushFile } from './commands/pushFile.js';
+import { queryAppState } from './commands/queryAppState.js';
+import { releaseActions } from './commands/releaseActions.js';
+import { removeApp } from './commands/removeApp.js';
+import { replaceValue } from './commands/replaceValue.js';
+import { reset } from './commands/reset.js';
+import { setAlertText } from './commands/setAlertText.js';
+import { setContext } from './commands/setContext.js';
+import { setUrl } from './commands/setUrl.js';
+import { setValue } from './commands/setValue.js';
+import { terminateApp } from './commands/terminateApp.js';
+import { unlock } from './commands/unlock.js';
+import { updateSetting } from './commands/updateSetting.js';
+import { getElement } from './helpers/getElement.js';
+import { getElements } from './helpers/getElements.js';
+import { getSelector } from './helpers/getSelector.js';
+import { retrying } from './helpers/retrying.js';
+import { waitForCondition } from './helpers/waitForCondition.js';
 
-export class Driver extends BaseDriver<typeof capabilitiesConstraints> implements ExternalDriver<typeof capabilitiesConstraints> {
+class RokuDriver
+  extends BaseDriver<typeof capabilitiesConstraints>
+  implements ExternalDriver<typeof capabilitiesConstraints>
+{
   static newMethodMap = {
     '/session/:sessionId/alert': {
       GET: { command: 'isAlertShown' },
     },
   };
 
-  protected roku!: SDK;
+  protected abortController!: AbortController;
   protected pressedKey?: string | undefined;
-  protected logger = logger.getLogger('RokuDriver');
+  protected roku!: SDK;
+  protected document: Document;
+  protected sdk!: {
+    developerServer: DeveloperServerExecutor;
+    ecp: ECPExecutor;
+    odc: ODCExecutor;
+  };
 
   // Helpers
   protected getElement = getElement;
@@ -96,7 +108,7 @@ export class Driver extends BaseDriver<typeof capabilitiesConstraints> implement
   public execute = execute;
   public performActions = performActions;
   public releaseActions = releaseActions;
-  public isAlertShown = isAlertShown; // Chrome Specific
+  public isAlertShown = isAlertShown;
   public postDismissAlert = postDismissAlert;
   public postAcceptAlert = postAcceptAlert;
   public getAlertText = getAlertText;
@@ -129,7 +141,16 @@ export class Driver extends BaseDriver<typeof capabilitiesConstraints> implement
 
   // Configurations
   public override desiredCapConstraints = capabilitiesConstraints;
-  public override locatorStrategies = ['id', 'tag name', 'link text', 'partial link text', 'css selector', 'xpath'];
+  public override locatorStrategies = [
+    'id',
+    'tag name',
+    'link text',
+    'partial link text',
+    'css selector',
+    'xpath',
+  ];
   public override settings = new DeviceSettings({}, updateSetting.bind(this));
   public override supportedLogTypes = {};
 }
+
+export { RokuDriver as Driver };

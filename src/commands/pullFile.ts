@@ -1,6 +1,7 @@
-import type { Driver } from '../Driver';
+import * as odc from '@dlenroc/roku-odc';
+import type { Driver } from '../Driver.ts';
 
 export async function pullFile(this: Driver, path: string): Promise<string> {
-  const content = await this.roku.odc.pullFile(path);
-  return content.toString('base64');
+  const content = await odc.pullFile(this.sdk.odc, { path });
+  return Buffer.from(content).toString('base64');
 }

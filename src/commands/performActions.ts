@@ -1,7 +1,13 @@
-import type { ActionSequence, KeyAction, NullAction, PointerAction } from '@appium/types';
+import type {
+  ActionSequence,
+  KeyAction,
+  NullAction,
+  PointerAction,
+} from '@appium/types';
 import type { Key } from '@dlenroc/roku';
+import * as ecp from '@dlenroc/roku-ecp';
 import { longSleep } from 'asyncbox';
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
 const Keys: Record<string, Key> = {
   '\uE002': 'Info', // help
@@ -35,7 +41,10 @@ const Keys: Record<string, Key> = {
   // PowerOff
 };
 
-export async function performActions(this: Driver, actions: ActionSequence[]): Promise<void> {
+export async function performActions(
+  this: Driver,
+  actions: ActionSequence[]
+): Promise<void> {
   for (const action of actions) {
     action.actions = optimizeActions(action.actions);
 
@@ -53,7 +62,10 @@ export async function performActions(this: Driver, actions: ActionSequence[]): P
   }
 }
 
-async function performNoneActions(this: Driver, actions: NullAction[]): Promise<void> {
+async function performNoneActions(
+  this: Driver,
+  actions: NullAction[]
+): Promise<void> {
   for (const action of actions) {
     switch (action.type) {
       case 'pause':
@@ -63,24 +75,28 @@ async function performNoneActions(this: Driver, actions: NullAction[]): Promise<
   }
 }
 
-async function performKeyActions(this: Driver, actions: KeyAction[]): Promise<void> {
+async function performKeyActions(
+  this: Driver,
+  actions: KeyAction[]
+): Promise<void> {
   for (const action of actions) {
     // @ts-ignore
-    const key = Keys[action.value!!] || action.value;
+    let key = Keys[action.value!!] || action.value;
+    key = key?.length === 1 ? `LIT_${encodeURIComponent(key)}` : key;
 
     switch (action.type) {
       // @ts-ignore
       case 'keyPress':
         this.pressedKey = undefined;
-        await this.roku.ecp.keypress(key);
+        await ecp.keypress(this.sdk.ecp, { key });
         break;
       case 'keyDown':
         this.pressedKey = key;
-        await this.roku.ecp.keydown(key);
+        await ecp.keydown(this.sdk.ecp, { key });
         break;
       case 'keyUp':
         this.pressedKey = undefined;
-        await this.roku.ecp.keydown(key);
+        await ecp.keydown(this.sdk.ecp, { key });
         break;
       case 'pause':
         await performNoneActions.call(this, [action]);
@@ -89,7 +105,10 @@ async function performKeyActions(this: Driver, actions: KeyAction[]): Promise<vo
   }
 }
 
-async function performPointerActions(this: Driver, actions: PointerAction[]): Promise<void> {
+async function performPointerActions(
+  this: Driver,
+  actions: PointerAction[]
+): Promise<void> {
   for (const action of actions) {
     switch (action.type) {
       case 'pointerMove':
@@ -99,13 +118,19 @@ async function performPointerActions(this: Driver, actions: PointerAction[]): Pr
       // @ts-ignore
       case 'pointerPress':
         // @ts-ignore
-        await performKeyActions.call(this, [{ type: 'keyPress', value: 'Select' }]);
+        await performKeyActions.call(this, [
+          { type: 'keyPress', value: 'Select' },
+        ]);
         break;
       case 'pointerDown':
-        await performKeyActions.call(this, [{ type: 'keyDown', value: 'Select' }]);
+        await performKeyActions.call(this, [
+          { type: 'keyDown', value: 'Select' },
+        ]);
         break;
       case 'pointerUp':
-        await performKeyActions.call(this, [{ type: 'keyUp', value: 'Select' }]);
+        await performKeyActions.call(this, [
+          { type: 'keyUp', value: 'Select' },
+        ]);
         break;
       case 'pause':
         await performNoneActions.call(this, [action]);
@@ -121,7 +146,11 @@ function optimizeActions(actions: any): any {
     const optimizedActions = [];
 
     for (let i = 0; i < centerIndex; i++) {
-      if (actions[i].type === 'keyDown' && actions[centerIndex + i].type === 'keyUp' && actions[i].value === actions[centerIndex + i].value) {
+      if (
+        actions[i].type === 'keyDown' &&
+        actions[centerIndex + i].type === 'keyUp' &&
+        actions[i].value === actions[centerIndex + i].value
+      ) {
         optimizedActions.push({ type: 'keyPress', value: actions[i].value });
       } else {
         break;
@@ -138,13 +167,20 @@ function optimizeActions(actions: any): any {
 
   for (let i = 0, n = actions.length; i < n; i++) {
     if (actions[i + 1]) {
-      if (actions[i].type === 'pointerDown' && actions[i + 1].type === 'pointerUp') {
+      if (
+        actions[i].type === 'pointerDown' &&
+        actions[i + 1].type === 'pointerUp'
+      ) {
         i++;
         optimizedActions.push({ type: 'pointerPress' });
         continue;
       }
 
-      if (actions[i].type === 'keyDown' && actions[i + 1].type === 'keyUp' && actions[i].value === actions[i + 1].value) {
+      if (
+        actions[i].type === 'keyDown' &&
+        actions[i + 1].type === 'keyUp' &&
+        actions[i].value === actions[i + 1].value
+      ) {
         i++;
         optimizedActions.push({ type: 'keyPress', value: actions[i].value });
         continue;

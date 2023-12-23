@@ -10,7 +10,7 @@
     "driver"
   ],
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
@@ -30,22 +30,29 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@appium/base-driver": "^9.4.1",
-    "@appium/support": "^4.1.8",
+    "@appium/base-driver": "^9.4.4",
+    "@appium/support": "^4.1.11",
     "@dlenroc/roku": "^1.2.0",
+    "@dlenroc/roku-developer-server": "^2.0.0",
+    "@dlenroc/roku-ecp": "^2.0.0",
+    "@dlenroc/roku-odc": "^2.0.1",
     "asyncbox": "^3.0.0",
     "base-64": "^1.0.0",
     "cssesc": "^3.0.0",
-    "jszip": "^3.10.1"
+    "jszip": "^3.10.1",
+    "roku-dom": "npm:@dlenroc/roku-dom@^2.0.0"
   },
   "devDependencies": {
-    "@appium/types": "^0.14.1",
+    "@appium/types": "^0.15.0",
     "@tsconfig/node18": "^18.2.2",
-    "@types/base-64": "^1.0.1",
-    "@types/cssesc": "^3.0.1",
-    "typescript": "^5.2.2"
+    "@types/base-64": "^1.0.2",
+    "@types/cssesc": "^3.0.2",
+    "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "libxmljs2": "0.32.0"
   },
   "peerDependencies": {
-    "appium": "^2.2.1"
+    "appium": "^2.3.0"
   }
 }

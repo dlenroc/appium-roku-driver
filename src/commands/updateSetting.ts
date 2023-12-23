@@ -1,10 +1,16 @@
 import { errors } from '@appium/base-driver';
-import type { Driver } from '../Driver';
+import type { Driver } from '../Driver.ts';
 
-export async function updateSetting(this: Driver, prop: unknown, newValue: unknown): Promise<void> {
+export async function updateSetting(
+  this: Driver,
+  prop: unknown,
+  newValue: unknown
+): Promise<void> {
   if (prop === 'elementResponseAttributes') {
     if (typeof newValue !== 'string') {
-      throw new errors.InvalidArgumentError(`The value of "elementResponseAttributes" must be a string.`);
+      throw new errors.InvalidArgumentError(
+        `The value of "elementResponseAttributes" must be a string.`
+      );
     }
 
     if (newValue) {
@@ -25,9 +31,9 @@ export async function updateSetting(this: Driver, prop: unknown, newValue: unkno
         fields[tag].push(attribute);
       }
 
-      this.roku.document.fields = fields;
+      this.document.fields = fields;
     } else {
-      this.roku.document.fields = undefined;
+      this.document.fields = undefined;
     }
   }
 }
