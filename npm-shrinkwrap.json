@@ -1,12 +1,12 @@
 {
   "name": "@dlenroc/appium-roku-driver",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@dlenroc/appium-roku-driver",
-      "version": "0.9.1",
+      "version": "0.10.0",
       "license": "MIT",
       "dependencies": {
         "@appium/base-driver": "^9.4.4",
