@@ -35,7 +35,7 @@
     "@dlenroc/roku": "^1.2.0",
     "@dlenroc/roku-developer-server": "^2.0.0",
     "@dlenroc/roku-ecp": "^2.0.0",
-    "@dlenroc/roku-odc": "^2.0.0",
+    "@dlenroc/roku-odc": "^2.0.1",
     "asyncbox": "^3.0.0",
     "base-64": "^1.0.0",
     "cssesc": "^3.0.0",
