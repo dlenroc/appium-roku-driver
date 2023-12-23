@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.10.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.9.1...v0.10.0) (2023-12-23)
+
+
+### Features
+
+* added windows support ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+
+
+### Bug Fixes
+
+* align `active` command behavior with `Roku WebDriver` ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+* app state clearing/setting when `fullReset` capability is set ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+* remove unnecessary XML parsing in `getPageSource` command ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+* stop roku clients after session deleting ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+
+
+### Code Refactoring
+
+* switch to ESM ([fb0473e](https://github.com/dlenroc/appium-roku-driver/commit/fb0473e01dc3d02068ca25450ea6c4054d1567d3))
+
 ## [0.9.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.9.0...v0.9.1) (2023-11-14)
 
 
