@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.10.0...v0.10.1) (2024-01-12)
+
+
+### Bug Fixes
+
+* `setValue` and `replaceValue` for custom input elements ([00e4a70](https://github.com/dlenroc/appium-roku-driver/commit/00e4a704b59cbc15cecc5044a8d0890d38805516))
+
 ## [0.10.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.9.1...v0.10.0) (2023-12-23)
 
 
