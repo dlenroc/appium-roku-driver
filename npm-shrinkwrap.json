@@ -19,7 +19,7 @@
         "base-64": "^1.0.0",
         "cssesc": "^3.0.0",
         "jszip": "^3.10.1",
-        "roku-dom": "npm:@dlenroc/roku-dom@^2.0.0"
+        "roku-dom": "npm:@dlenroc/roku-dom@^2.0.1"
       },
       "devDependencies": {
         "@appium/types": "^0.15.0",
@@ -4166,9 +4166,9 @@
     },
     "node_modules/roku-dom": {
       "name": "@dlenroc/roku-dom",
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/@dlenroc/roku-dom/-/roku-dom-2.0.0.tgz",
-      "integrity": "sha512-HG9zRDMqBQF9rMku7WW4LpBYVPsRRcERRi2rPX94luTy5iC3yK/vBSyWMdcNwkdsI4llmVWDMIqDaA529ggrDg==",
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/@dlenroc/roku-dom/-/roku-dom-2.0.1.tgz",
+      "integrity": "sha512-fNwwkTQITzIJHkSfHCz/X+RVsptwMQ1YY9t7+8rjItI27sZ37c/PNcEAxBoujNZ2DUchbFizvaO5nCCW7uVHTg==",
       "dependencies": {
         "css-select": "^5.1.0",
         "css-select-base-adapter": "^0.1.1",
@@ -8508,9 +8508,9 @@
       }
     },
     "roku-dom": {
-      "version": "npm:@dlenroc/roku-dom@2.0.0",
-      "resolved": "https://registry.npmjs.org/@dlenroc/roku-dom/-/roku-dom-2.0.0.tgz",
-      "integrity": "sha512-HG9zRDMqBQF9rMku7WW4LpBYVPsRRcERRi2rPX94luTy5iC3yK/vBSyWMdcNwkdsI4llmVWDMIqDaA529ggrDg==",
+      "version": "npm:@dlenroc/roku-dom@2.0.1",
+      "resolved": "https://registry.npmjs.org/@dlenroc/roku-dom/-/roku-dom-2.0.1.tgz",
+      "integrity": "sha512-fNwwkTQITzIJHkSfHCz/X+RVsptwMQ1YY9t7+8rjItI27sZ37c/PNcEAxBoujNZ2DUchbFizvaO5nCCW7uVHTg==",
       "requires": {
         "css-select": "^5.1.0",
         "css-select-base-adapter": "^0.1.1",

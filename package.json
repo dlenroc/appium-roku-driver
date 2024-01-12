@@ -40,7 +40,7 @@
     "base-64": "^1.0.0",
     "cssesc": "^3.0.0",
     "jszip": "^3.10.1",
-    "roku-dom": "npm:@dlenroc/roku-dom@^2.0.0"
+    "roku-dom": "npm:@dlenroc/roku-dom@^2.0.1"
   },
   "devDependencies": {
     "@appium/types": "^0.15.0",
