@@ -1,7 +1,7 @@
 import { errors } from '@appium/base-driver';
-import type { AppId } from '@dlenroc/roku';
+import type { AppId } from '@dlenroc/roku-ecp';
 import * as ecp from '@dlenroc/roku-ecp';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import type { Driver } from '../Driver.ts';
 
 export async function setUrl(this: Driver, url: string): Promise<void> {

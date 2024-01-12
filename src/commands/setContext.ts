@@ -2,11 +2,6 @@ import { errors } from '@appium/base-driver';
 import type { Driver } from '../Driver.ts';
 
 export async function setContext(this: Driver, name: string): Promise<void> {
-  // appium-desktop requires NATIVE_APP context
-  if (name === 'NATIVE_APP') {
-    return this.setContext('ECP');
-  }
-
   const contexts = await this.getContexts();
 
   if (!contexts.includes(name)) {
@@ -15,5 +10,5 @@ export async function setContext(this: Driver, name: string): Promise<void> {
     );
   }
 
-  this.document.context = name as any;
+  this.opts.context = name as any;
 }

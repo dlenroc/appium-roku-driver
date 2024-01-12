@@ -35,4 +35,8 @@ export const capabilitiesConstraints = {
     presence: false,
     inclusion: ['channel', 'screensaver', 'screensaver-settings'],
   },
+  shouldTerminateApp: {
+    isBoolean: true,
+    presence: false,
+  },
 } as const satisfies Constraints;

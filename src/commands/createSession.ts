@@ -4,11 +4,10 @@ import type {
   DriverData,
   W3CDriverCaps,
 } from '@appium/types';
-import { SDK } from '@dlenroc/roku';
+import { DebugServerExecutor } from '@dlenroc/roku-debug-server';
 import { DeveloperServerExecutor } from '@dlenroc/roku-developer-server';
 import { ECPExecutor } from '@dlenroc/roku-ecp';
 import { ODCExecutor } from '@dlenroc/roku-odc';
-import { Document } from 'roku-dom';
 import type { capabilitiesConstraints as constrains } from '../CapabilitiesConstraints.js';
 import type { Driver } from '../Driver.ts';
 
@@ -19,57 +18,40 @@ export async function createSession(
   w3cCaps: W3CDriverCaps<typeof constrains>,
   driverData?: DriverData[]
 ): Promise<DefaultCreateSessionResult<typeof constrains>> {
-  const session = BaseDriver.prototype.createSession.call(
+  const session = await BaseDriver.prototype.createSession.call(
     this,
     jwpCaps,
     jwpReqCaps,
     w3cCaps,
     driverData
   );
-  const {
-    app,
-    arguments: args,
-    context,
-    entryPoint,
-    ip,
-    noReset,
-    password,
-    registry,
-    username,
-  } = this.opts;
 
-  this.abortController = new AbortController();
-
+  this.opts.context ??= 'ECP';
   this.sdk = {
+    debugServer: new DebugServerExecutor({
+      hostname: this.opts.ip,
+      port: 8085,
+    }),
     developerServer: new DeveloperServerExecutor({
-      signal: this.abortController.signal,
-      address: `http://${ip}`,
-      username: username || 'rokudev',
-      password,
+      address: `http://${this.opts.ip}`,
+      username: this.opts.username ?? 'rokudev',
+      password: this.opts.password,
     }),
     ecp: new ECPExecutor({
-      signal: this.abortController.signal,
-      address: `http://${ip}:8060`,
+      address: `http://${this.opts.ip}:8060`,
     }),
     odc: new ODCExecutor({
-      signal: this.abortController.signal,
-      address: `http://${ip}:8061`,
+      address: `http://${this.opts.ip}:8061`,
     }),
   };
 
-  this.document = new Document(this.sdk);
-  this.document.context = context || 'ECP';
-
-  this.roku = new SDK(ip, username || 'rokudev', password);
-  this.roku.document = this.document as any;
-
-  if (app) {
-    await this.installApp(app);
+  if (this.opts.app) {
+    await this.installApp(this.opts.app);
     await this.activateApp('dev', {
-      odc_clear_registry: !noReset,
-      ...(entryPoint && { odc_entry_point: entryPoint }),
-      ...(registry && { odc_registry: registry }),
-      ...(args && args),
+      odc_clear_registry: !this.opts.noReset,
+      ...(this.opts.entryPoint && { odc_entry_point: this.opts.entryPoint }),
+      ...(this.opts.registry && { odc_registry: this.opts.registry }),
+      ...this.opts.arguments,
     });
   }
 
