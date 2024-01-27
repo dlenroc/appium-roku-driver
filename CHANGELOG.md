@@ -16,7 +16,7 @@
 
 * detection of focused element that follow after dynamic keyboard ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
 * drop `libxmljs2` usage in favor of `@xmldom/xmldom` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
-* interpret `[@id](https://github.com/id)` from XPath like either `id`, `uiElementId`, or `name` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* interpret `@id` from XPath like either `id`, `uiElementId`, or `name` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
 * make `setValue` and `clear` commands simpler but more reliable ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
 * removed `pointerDown` and `pointerUp` actions in favor of key actions ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
 * removed commands deprecated by Appium and W3C specs ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
