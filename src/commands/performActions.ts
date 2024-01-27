@@ -1,13 +1,16 @@
+import { errors } from '@appium/base-driver';
+import { util } from '@appium/support';
 import type {
   ActionSequence,
   KeyAction,
   NullAction,
   PointerAction,
 } from '@appium/types';
-import type { Key } from '@dlenroc/roku';
+import type { Key } from '@dlenroc/roku-ecp';
 import * as ecp from '@dlenroc/roku-ecp';
-import { longSleep } from 'asyncbox';
+import { setTimeout as sleep } from 'node:timers/promises';
 import type { Driver } from '../Driver.ts';
+import { focus } from './internal/focus.js';
 
 const Keys: Record<string, Key> = {
   '\uE002': 'Info', // help
@@ -46,8 +49,6 @@ export async function performActions(
   actions: ActionSequence[]
 ): Promise<void> {
   for (const action of actions) {
-    action.actions = optimizeActions(action.actions);
-
     switch (action.type) {
       case 'none':
         await performNoneActions.call(this, action.actions);
@@ -58,6 +59,10 @@ export async function performActions(
       case 'pointer':
         await performPointerActions.call(this, action.actions);
         break;
+      default:
+        throw new errors.InvalidArgumentError(
+          `Unsupported action: ${JSON.stringify(action)}`
+        );
     }
   }
 }
@@ -69,8 +74,12 @@ async function performNoneActions(
   for (const action of actions) {
     switch (action.type) {
       case 'pause':
-        await longSleep(action.duration!!);
+        await sleep(action.duration);
         break;
+      default:
+        throw new errors.InvalidArgumentError(
+          `Unsupported none action: ${JSON.stringify(action)}`
+        );
     }
   }
 }
@@ -79,28 +88,42 @@ async function performKeyActions(
   this: Driver,
   actions: KeyAction[]
 ): Promise<void> {
-  for (const action of actions) {
-    // @ts-ignore
-    let key = Keys[action.value!!] || action.value;
+  for (let i = 0, n = actions.length; i < n; i++) {
+    const action = actions[i]!;
+    const nextAction = actions[i + 1];
+
+    if (action.type === 'pause') {
+      await performNoneActions.call(this, [action]);
+      continue;
+    }
+
+    let key = Keys[action.value] || action.value;
     key = key?.length === 1 ? `LIT_${encodeURIComponent(key)}` : key;
 
+    if (
+      action.type === 'keyDown' &&
+      nextAction?.type === 'keyUp' &&
+      action.value === nextAction.value
+    ) {
+      i++;
+      this.pressedKey = undefined;
+      await ecp.keypress(this.sdk.ecp, { key });
+      continue;
+    }
+
     switch (action.type) {
-      // @ts-ignore
-      case 'keyPress':
-        this.pressedKey = undefined;
-        await ecp.keypress(this.sdk.ecp, { key });
-        break;
       case 'keyDown':
         this.pressedKey = key;
         await ecp.keydown(this.sdk.ecp, { key });
         break;
       case 'keyUp':
         this.pressedKey = undefined;
-        await ecp.keydown(this.sdk.ecp, { key });
+        await ecp.keyup(this.sdk.ecp, { key });
         break;
-      case 'pause':
-        await performNoneActions.call(this, [action]);
-        break;
+      default:
+        throw new errors.InvalidArgumentError(
+          `Unsupported key action: ${JSON.stringify(action)}`
+        );
     }
   }
 }
@@ -110,85 +133,38 @@ async function performPointerActions(
   actions: PointerAction[]
 ): Promise<void> {
   for (const action of actions) {
-    switch (action.type) {
-      case 'pointerMove':
-        const element = await this.getElement(action.origin as string);
-        await element.focus();
-        break;
-      // @ts-ignore
-      case 'pointerPress':
-        // @ts-ignore
-        await performKeyActions.call(this, [
-          { type: 'keyPress', value: 'Select' },
-        ]);
-        break;
-      case 'pointerDown':
-        await performKeyActions.call(this, [
-          { type: 'keyDown', value: 'Select' },
-        ]);
-        break;
-      case 'pointerUp':
-        await performKeyActions.call(this, [
-          { type: 'keyUp', value: 'Select' },
-        ]);
-        break;
-      case 'pause':
-        await performNoneActions.call(this, [action]);
-        break;
-    }
-  }
-}
-
-function optimizeActions(actions: any): any {
-  // Map all keyDown + all keyUp to a keyPress sequence - WebDriverIO sends keys this way
-  if (actions.length % 2 === 0) {
-    const centerIndex = actions.length / 2;
-    const optimizedActions = [];
-
-    for (let i = 0; i < centerIndex; i++) {
-      if (
-        actions[i].type === 'keyDown' &&
-        actions[centerIndex + i].type === 'keyUp' &&
-        actions[i].value === actions[centerIndex + i].value
-      ) {
-        optimizedActions.push({ type: 'keyPress', value: actions[i].value });
-      } else {
-        break;
-      }
+    if (action.type === 'pause') {
+      await performNoneActions.call(this, [action]);
+      continue;
     }
 
-    if (optimizedActions.length === centerIndex) {
-      actions = optimizedActions;
-    }
-  }
+    if (action.type === 'pointerMove') {
+      const origin = action.origin ?? '';
+      const elementId = util.unwrapElement(origin);
 
-  // Map (key/pointer)Down and (key/pointer)Up combination to keyPress
-  const optimizedActions = [];
-
-  for (let i = 0, n = actions.length; i < n; i++) {
-    if (actions[i + 1]) {
-      if (
-        actions[i].type === 'pointerDown' &&
-        actions[i + 1].type === 'pointerUp'
-      ) {
-        i++;
-        optimizedActions.push({ type: 'pointerPress' });
-        continue;
+      if (origin === elementId) {
+        throw new errors.InvalidArgumentError(
+          '"origin" property of pointerMove action must be an element ID: ' +
+            JSON.stringify(action)
+        );
       }
 
-      if (
-        actions[i].type === 'keyDown' &&
-        actions[i + 1].type === 'keyUp' &&
-        actions[i].value === actions[i + 1].value
-      ) {
-        i++;
-        optimizedActions.push({ type: 'keyPress', value: actions[i].value });
-        continue;
+      if (action.x || action.y) {
+        throw new errors.InvalidArgumentError(
+          '"x" and "y" properties of pointerMove action are not supported: ' +
+            JSON.stringify(action)
+        );
       }
+
+      await focus.call(this, elementId, {
+        timeout: Math.max(0, action.duration ?? 0) || 1e4,
+      });
+
+      continue;
     }
 
-    optimizedActions.push(actions[i]);
+    throw new errors.InvalidArgumentError(
+      `Unsupported pointer action: ${JSON.stringify(action)}`
+    );
   }
-
-  return optimizedActions;
 }

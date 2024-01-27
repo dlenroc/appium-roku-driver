@@ -5,19 +5,18 @@ export async function deleteSession(
   this: Driver,
   sessionId?: string
 ): Promise<void> {
-  try {
-    await BaseDriver.prototype.deleteSession.call(this, sessionId);
+  await BaseDriver.prototype.deleteSession.call(this, sessionId);
 
-    const { fullReset, noReset } = this.opts;
-
-    if (fullReset) {
-      await this.removeApp('dev');
-    }
-
-    if (!noReset) {
-      await this.closeApp();
-    }
-  } finally {
-    this.abortController.abort('Session deleted');
+  if (this.opts.shouldTerminateApp) {
+    await this.performActions([
+      {
+        id: 'remote',
+        type: 'key',
+        actions: [
+          { type: 'keyDown', value: 'Home' },
+          { type: 'keyUp', value: 'Home' },
+        ],
+      },
+    ]);
   }
 }

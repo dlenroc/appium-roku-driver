@@ -21,19 +21,21 @@ export async function updateSetting(
         let tag = '*';
 
         if (attribute.includes('/')) {
-          [tag, attribute] = attribute.split('/');
+          const parts = attribute.split('/');
+          tag = parts[0]!;
+          attribute = parts[1]!;
         }
 
         if (!fields[tag]) {
           fields[tag] = [];
         }
 
-        fields[tag].push(attribute);
+        fields[tag]!.push(attribute);
       }
 
-      this.document.fields = fields;
+      this.fields = fields;
     } else {
-      this.document.fields = undefined;
+      this.fields = undefined;
     }
   }
 }

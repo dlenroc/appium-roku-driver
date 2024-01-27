@@ -3,8 +3,9 @@ import * as odc from '@dlenroc/roku-odc';
 import type { Driver } from '../Driver.ts';
 
 export async function getPageSource(this: Driver): Promise<string> {
-  if (this.document.context === 'ODC') {
-    return odc.getAppUI(this.sdk.odc);
+  if (this.opts.context === 'ODC') {
+    const fields = this.fields ? { fields: this.fields } : undefined;
+    return odc.getAppUI(this.sdk.odc, fields);
   } else {
     return ecp.queryAppUI(this.sdk.ecp);
   }

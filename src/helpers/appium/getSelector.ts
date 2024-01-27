@@ -1,24 +1,10 @@
-import base64 from 'base-64';
 import cssEscape from 'cssesc';
-import type { Driver } from '../Driver.ts';
 
 export function getSelector(
-  this: Driver,
   strategy: string,
-  selector?: string
+  selector: string
 ): ['css selector' | 'xpath', string] {
-  if (selector === undefined) {
-    return ['xpath', base64.decode(strategy)];
-  }
-
   switch (strategy) {
-    case 'id':
-      const tag = this.document.context === 'ECP' ? 'name' : 'id';
-      return [
-        'css selector',
-        `[${tag}=${cssEscape(selector, { wrap: true })}]`,
-      ];
-
     case 'tag name':
       return ['css selector', cssEscape(selector, { isIdentifier: true })];
 
