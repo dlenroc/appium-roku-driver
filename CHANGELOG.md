@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.11.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.10.1...v0.11.0) (2024-01-27)
+
+
+### Features
+
+* added `appiun:shouldTerminateApp` capability support ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* support for `isFocused` in `getProperty` command ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* support for `isInFocusChain` in `getProperty` command ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* support for `isInFocusHierarchy` in `getProperty` command ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* switched to roku sdk v2.0 ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+
+
+### Bug Fixes
+
+* detection of focused element that follow after dynamic keyboard ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* drop `libxmljs2` usage in favor of `@xmldom/xmldom` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* interpret `[@id](https://github.com/id)` from XPath like either `id`, `uiElementId`, or `name` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* make `setValue` and `clear` commands simpler but more reliable ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* removed `pointerDown` and `pointerUp` actions in favor of key actions ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* removed commands deprecated by Appium and W3C specs ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* removed misleading commands/capabilities ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* removed non-webdriver locator strategy `id` ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* speeding up `ODC` context by loading only the required attributes ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* updated `activateApp` to restart application if it’s already activated ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+* updated `getScreenshot` to throw error if screenshot taking failed ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+
+
+### Code Refactoring
+
+* rewritten in JavaScript and minimized misleading commands ([549c6e5](https://github.com/dlenroc/appium-roku-driver/commit/549c6e53b9a2612ee6567abc00e0f8148aaf5b2d))
+
 ## [0.10.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.10.0...v0.10.1) (2024-01-12)
 
 
