@@ -36,37 +36,18 @@ export async function focus(
       return;
     }
 
-    const activeElementChain = domUtils.getChain(activeElement).reverse();
-    const targetElementChain = domUtils.getChain(targetElement).reverse();
-    const depth = Math.min(
-      activeElementChain.length,
-      targetElementChain.length
-    );
-
-    let direction;
-
-    for (let i = 0; i < depth && !direction; i++) {
-      const activeElement = activeElementChain[i]!;
-      const targetElement = targetElementChain[i]!;
-      if (activeElement === targetElement) {
-        continue;
-      }
-
-      const targetRect = domUtils.getRect(targetElement);
-      const currentRect = domUtils.getRect(activeElement);
-
-      if (targetRect.y + targetRect.height <= currentRect.y) {
-        direction = 'Up';
-      } else if (targetRect.y >= currentRect.y + currentRect.height) {
-        direction = 'Down';
-      } else if (targetRect.x + targetRect.width <= currentRect.x) {
-        direction = 'Left';
-      } else if (targetRect.x >= currentRect.x + currentRect.width) {
-        direction = 'Right';
-      }
-
-      break;
-    }
+    const targetRect = domUtils.getRect(targetElement);
+    const currentRect = domUtils.getRect(activeElement);
+    const direction =
+      targetRect.y + targetRect.height <= currentRect.y
+        ? 'Up'
+        : targetRect.y >= currentRect.y + currentRect.height
+        ? 'Down'
+        : targetRect.x + targetRect.width <= currentRect.x
+        ? 'Left'
+        : targetRect.x >= currentRect.x + currentRect.width
+        ? 'Right'
+        : undefined;
 
     if (!direction) {
       throw new errors.UnknownError(

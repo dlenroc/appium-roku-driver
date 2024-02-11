@@ -14,9 +14,10 @@
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "prepare": "npm run build"
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "test": "glob 'test/**/*.test.ts' -c 'tsx --test --test-concurrency 1'",
+    "watch": "npm run build -- --watch"
   },
   "engines": {
     "node": ">=18"
@@ -30,8 +31,8 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@appium/base-driver": "^9.5.0",
-    "@appium/support": "^4.2.0",
+    "@appium/base-driver": "^9.5.1",
+    "@appium/support": "^4.2.1",
     "@dlenroc/roku-debug-server": "^2.0.0",
     "@dlenroc/roku-developer-server": "^2.0.0",
     "@dlenroc/roku-ecp": "^2.0.0",
@@ -43,11 +44,13 @@
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "@appium/types": "^0.16.0",
+    "@appium/types": "^0.16.1",
     "@tsconfig/node18": "^18.2.2",
-    "@tsconfig/strictest": "^2.0.2",
+    "@tsconfig/strictest": "^2.0.3",
     "@types/cssesc": "^3.0.2",
-    "typescript": "^5.3.3"
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "webdriverio": "^8.31.1"
   },
   "peerDependencies": {
     "appium": "^2.3.0"
