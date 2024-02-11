@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="GetElementRect" extends="Scene">
+  <children>
+    <group id="test">
+      <Label id="name" text="translation" horizAlign="center" translation="[10,10]" width="800"/>
+      <Rectangle id="element" translation="[10,50]" width="800" height="50" color="0xEE4035"></Rectangle>
+      <Label id="expected" text="{ &quot;x&quot;: 10, &quot;y&quot;: 50, &quot;width&quot;: 800, &quot;height&quot;: 50 }" horizAlign="center" vertAlign="center" translation="[10,50]" width="800" height="50"/>
+    </group>
+
+    <group id="test" translation="[1000,1000]">
+      <group inheritParentTransform="false" translation="[700,100]">
+        <group translation="[100,-100]">
+          <Label id="name" text="inherited translation" horizAlign="center" translation="[10,10]" width="800"/>
+          <Rectangle id="element" translation="[10,50]" width="800" height="50" color="0xF37736"></Rectangle>
+          <Label id="expected" text="{ &quot;x&quot;: 810, &quot;y&quot;: 50, &quot;width&quot;: 800, &quot;height&quot;: 50 }" horizAlign="center" vertAlign="center" translation="[10,50]" width="800" height="50"/>
+        </group>
+      </group>
+    </group>
+
+    <group id="test" translation="[1000,1000]">
+      <Label id="name" text="absolute translation" inheritParentTransform="false" horizAlign="center" translation="[10,110]" width="800"/>
+      <Rectangle id="element" inheritParentTransform="false" translation="[10,150]" width="800" height="50" color="0x7BC043"></Rectangle>
+      <Label id="expected" text="{ &quot;x&quot;: 10, &quot;y&quot;: 150, &quot;width&quot;: 800, &quot;height&quot;: 50 }" inheritParentTransform="false" horizAlign="center" vertAlign="center" translation="[10,150]" width="800" height="50"/>
+    </group>
+  </children>
+</component>

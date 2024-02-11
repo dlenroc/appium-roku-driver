@@ -30,9 +30,9 @@ The following location strategies are supported: `tag name`, `link text`, `parti
 
 ### Contexts
 
-- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context that finds elements quickly, but reports incorrect element coordinates and does not see many attributes.
+- `ECP` (default) [External Control Protocol](https://github.com/dlenroc/node-roku/blob/main/packages/ecp#readme) is a context that finds elements quickly, but does not see many attributes.
 
-- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context that sees all attributes and reports coordinates relative to the viewport (can be tunned using `elementResponseAttributes` setting).
+- `ODC` (WIP) [On Device Component](https://github.com/dlenroc/node-roku/blob/main/packages/odc#readme) is a context that finds elements slower, but see all attributes. (can be tunned using `elementResponseAttributes` setting).
 
 ### Deep linking
 

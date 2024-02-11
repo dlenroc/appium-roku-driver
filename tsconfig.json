@@ -1,11 +1,11 @@
 {
   "extends": ["@tsconfig/strictest", "@tsconfig/node18"],
   "compilerOptions": {
+    "noEmit": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "verbatimModuleSyntax": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    "outDir": "dist"
   }
 }
