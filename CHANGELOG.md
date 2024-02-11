@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.0...v0.11.1) (2024-02-11)
+
+
+### Bug Fixes
+
+* handle `inheritParentTransform` attribute ([7662ae9](https://github.com/dlenroc/appium-roku-driver/commit/7662ae9c6ed5022b266801169d232c36c35307ed))
+
 ## [0.11.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.10.1...v0.11.0) (2024-01-27)
 
 
