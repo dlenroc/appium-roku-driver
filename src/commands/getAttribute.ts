@@ -1,4 +1,4 @@
-import type { Driver } from '../Driver.js';
+import type { Driver } from '../Driver.ts';
 import * as appiumUtils from '../helpers/appium.js';
 import * as domUtils from '../helpers/dom.js';
 

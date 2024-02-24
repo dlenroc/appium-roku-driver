@@ -8,21 +8,21 @@ import { DebugServerExecutor } from '@dlenroc/roku-debug-server';
 import { DeveloperServerExecutor } from '@dlenroc/roku-developer-server';
 import { ECPExecutor } from '@dlenroc/roku-ecp';
 import { ODCExecutor } from '@dlenroc/roku-odc';
-import type { capabilitiesConstraints as constrains } from '../CapabilitiesConstraints.js';
+import type { capabilitiesConstraints as constrains } from '../CapabilitiesConstraints.ts';
 import type { Driver } from '../Driver.ts';
 
 export async function createSession(
   this: Driver,
-  jwpCaps: W3CDriverCaps<typeof constrains>,
-  jwpReqCaps: W3CDriverCaps<typeof constrains>,
-  w3cCaps: W3CDriverCaps<typeof constrains>,
+  w3cCaps1: W3CDriverCaps<typeof constrains>,
+  w3cCaps2?: W3CDriverCaps<typeof constrains>,
+  w3cCaps3?: W3CDriverCaps<typeof constrains>,
   driverData?: DriverData[]
 ): Promise<DefaultCreateSessionResult<typeof constrains>> {
   const session = await BaseDriver.prototype.createSession.call(
     this,
-    jwpCaps,
-    jwpReqCaps,
-    w3cCaps,
+    w3cCaps1,
+    w3cCaps2,
+    w3cCaps3,
     driverData
   );
 
