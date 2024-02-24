@@ -3,7 +3,7 @@ import type { Driver } from '../Driver.ts';
 
 export async function deleteSession(
   this: Driver,
-  sessionId?: string
+  sessionId?: string | null
 ): Promise<void> {
   await BaseDriver.prototype.deleteSession.call(this, sessionId);
 

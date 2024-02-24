@@ -7,16 +7,16 @@ import { isTag } from '../helpers/dom.js';
 export function findElOrEls(
   strategy: string,
   selector: string,
-  mult: false,
+  mult: true,
   context?: any
-): Promise<Element>;
+): Promise<Element[]>;
 
 export function findElOrEls(
   strategy: string,
   selector: string,
-  mult: true,
+  mult: false,
   context?: any
-): Promise<Element[]>;
+): Promise<Element>;
 
 export async function findElOrEls(
   this: Driver,

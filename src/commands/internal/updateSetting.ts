@@ -1,5 +1,5 @@
 import { errors } from '@appium/base-driver';
-import type { Driver } from '../Driver.ts';
+import type { Driver } from '../../Driver.js';
 
 export async function updateSetting(
   this: Driver,

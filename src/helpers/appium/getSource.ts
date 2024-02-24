@@ -1,6 +1,6 @@
 import * as ecp from '@dlenroc/roku-ecp';
 import * as odc from '@dlenroc/roku-odc';
-import type { Driver } from '../../Driver.js';
+import type { Driver } from '../../Driver.ts';
 import * as domUtils from '../dom.js';
 
 export async function getSource(
