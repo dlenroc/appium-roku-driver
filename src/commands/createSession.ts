@@ -26,21 +26,26 @@ export async function createSession(
     driverData
   );
 
+  this.controller = new AbortController();
   this.opts.context ??= 'ECP';
   this.sdk = {
     debugServer: new DebugServerExecutor({
+      signal: this.controller.signal,
       hostname: this.opts.ip,
       port: 8085,
     }),
     developerServer: new DeveloperServerExecutor({
+      signal: this.controller.signal,
       address: `http://${this.opts.ip}`,
       username: this.opts.username ?? 'rokudev',
       password: this.opts.password,
     }),
     ecp: new ECPExecutor({
+      signal: this.controller.signal,
       address: `http://${this.opts.ip}:8060`,
     }),
     odc: new ODCExecutor({
+      signal: this.controller.signal,
       address: `http://${this.opts.ip}:8061`,
     }),
   };

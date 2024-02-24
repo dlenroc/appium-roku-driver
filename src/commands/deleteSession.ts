@@ -1,4 +1,4 @@
-import { BaseDriver } from '@appium/base-driver';
+import { BaseDriver, errors } from '@appium/base-driver';
 import type { Driver } from '../Driver.ts';
 
 export async function deleteSession(
@@ -19,4 +19,8 @@ export async function deleteSession(
       },
     ]);
   }
+
+  this.controller?.abort(
+    new errors.UnknownError('The session was terminated!')
+  );
 }
