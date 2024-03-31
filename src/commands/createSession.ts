@@ -23,13 +23,11 @@ export async function createSession(
     driverData
   );
 
-  this.controller = new AbortController();
   this.opts.context ??= 'ECP';
   this.sdk = new SDK({
     ip: this.opts.ip,
     username: this.opts.username ?? 'rokudev',
     password: this.opts.password,
-    signal: this.controller.signal,
   });
 
   if (this.opts.app) {
