@@ -13,7 +13,7 @@ export async function activateApp(
     throw new errors.InvalidArgumentError('Launch arguments must be an object');
   }
 
-  await ecp.launch(this.sdk.ecp, {
+  await this.sdk.ecp.launch({
     appId: appId as ecp.AppId,
     params: options as Record<string, unknown>,
   });

@@ -1,12 +1,9 @@
 import { BaseDriver, DeviceSettings } from '@appium/base-driver';
 import type { ExternalDriver } from '@appium/types';
-import type { Executor as DebugServerExecutor } from '@dlenroc/roku-debug-server';
-import type { Executor as DeveloperServerExecutor } from '@dlenroc/roku-developer-server';
-import type { Executor as ECPExecutor } from '@dlenroc/roku-ecp';
-import type { Executor as ODCExecutor } from '@dlenroc/roku-odc';
 import { capabilitiesConstraints } from './CapabilitiesConstraints.js';
 import * as Commands from './commands.js';
 import { updateSetting } from './commands/internal/updateSetting.js';
+import type { SDK } from './helpers/sdk.js';
 
 class RokuDriver
   extends BaseDriver<typeof capabilitiesConstraints>
@@ -27,12 +24,7 @@ class RokuDriver
   protected controller?: AbortController;
   protected pressedKey?: string | undefined;
   protected fields: Record<string, string[]> | undefined;
-  protected sdk!: {
-    debugServer: DebugServerExecutor;
-    developerServer: DeveloperServerExecutor;
-    ecp: ECPExecutor;
-    odc: ODCExecutor;
-  };
+  protected sdk!: SDK;
 }
 
 type Commands = typeof Commands;

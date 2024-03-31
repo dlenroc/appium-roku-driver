@@ -4,12 +4,9 @@ import type {
   DriverData,
   W3CDriverCaps,
 } from '@appium/types';
-import { DebugServerExecutor } from '@dlenroc/roku-debug-server';
-import { DeveloperServerExecutor } from '@dlenroc/roku-developer-server';
-import { ECPExecutor } from '@dlenroc/roku-ecp';
-import { ODCExecutor } from '@dlenroc/roku-odc';
 import type { capabilitiesConstraints as constrains } from '../CapabilitiesConstraints.ts';
 import type { Driver } from '../Driver.ts';
+import { SDK } from '../helpers/sdk.js';
 
 export async function createSession(
   this: Driver,
@@ -28,27 +25,12 @@ export async function createSession(
 
   this.controller = new AbortController();
   this.opts.context ??= 'ECP';
-  this.sdk = {
-    debugServer: new DebugServerExecutor({
-      signal: this.controller.signal,
-      hostname: this.opts.ip,
-      port: 8085,
-    }),
-    developerServer: new DeveloperServerExecutor({
-      signal: this.controller.signal,
-      address: `http://${this.opts.ip}`,
-      username: this.opts.username ?? 'rokudev',
-      password: this.opts.password,
-    }),
-    ecp: new ECPExecutor({
-      signal: this.controller.signal,
-      address: `http://${this.opts.ip}:8060`,
-    }),
-    odc: new ODCExecutor({
-      signal: this.controller.signal,
-      address: `http://${this.opts.ip}:8061`,
-    }),
-  };
+  this.sdk = new SDK({
+    ip: this.opts.ip,
+    username: this.opts.username ?? 'rokudev',
+    password: this.opts.password,
+    signal: this.controller.signal,
+  });
 
   if (this.opts.app) {
     await this.installApp(this.opts.app);

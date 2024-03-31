@@ -1,9 +1,8 @@
 import { errors } from '@appium/base-driver';
-import * as developerServer from '@dlenroc/roku-developer-server';
 import type { Driver } from '../Driver.ts';
 
 export async function getScreenshot(this: Driver): Promise<string> {
-  const path = await developerServer.takeScreenshot(this.sdk.developerServer);
+  const path = await this.sdk.developerServer.takeScreenshot();
   if (!path) {
     throw new errors.UnknownError(
       'A screenshot was not taken; ' +
@@ -12,7 +11,7 @@ export async function getScreenshot(this: Driver): Promise<string> {
     );
   }
 
-  const response = await this.sdk.developerServer.execute(path);
+  const response = await this.sdk.developerServer.executor.execute(path);
   if (!response.ok) {
     throw new errors.UnknownError(
       'Screenshot was taken, but could not be retrieved from the device.'

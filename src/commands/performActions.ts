@@ -7,7 +7,6 @@ import type {
   PointerAction,
 } from '@appium/types';
 import type { Key } from '@dlenroc/roku-ecp';
-import * as ecp from '@dlenroc/roku-ecp';
 import { setTimeout as sleep } from 'node:timers/promises';
 import type { Driver } from '../Driver.ts';
 import { focus } from './internal/focus.js';
@@ -106,19 +105,19 @@ async function performKeyActions(
       action.value === nextAction.value
     ) {
       i++;
+      await this.sdk.ecp.keypress({ key });
       this.pressedKey = undefined;
-      await ecp.keypress(this.sdk.ecp, { key });
       continue;
     }
 
     switch (action.type) {
       case 'keyDown':
         this.pressedKey = key;
-        await ecp.keydown(this.sdk.ecp, { key });
+        await this.sdk.ecp.keydown({ key });
         break;
       case 'keyUp':
+        await this.sdk.ecp.keyup({ key });
         this.pressedKey = undefined;
-        await ecp.keyup(this.sdk.ecp, { key });
         break;
       default:
         throw new errors.InvalidArgumentError(

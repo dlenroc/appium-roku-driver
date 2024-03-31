@@ -1,5 +1,3 @@
-import * as debugServer from '@dlenroc/roku-debug-server';
-import * as developerServer from '@dlenroc/roku-developer-server';
 import type { Driver } from '../Driver.ts';
 
 export async function removeApp(this: Driver, appId: string): Promise<boolean> {
@@ -7,10 +5,10 @@ export async function removeApp(this: Driver, appId: string): Promise<boolean> {
 
   if (isInstalled) {
     if (appId === 'dev') {
-      await developerServer.deleteChannel(this.sdk.developerServer);
+      await this.sdk.developerServer.deleteChannel();
     } else {
       const id = appId as any;
-      await debugServer.removePlugin(this.sdk.debugServer, { id });
+      await this.sdk.debugServer.removePlugin({ id });
     }
   }
 
