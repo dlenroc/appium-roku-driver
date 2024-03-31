@@ -12,7 +12,7 @@
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "prepare": "npm run build",
@@ -35,7 +35,7 @@
     "@appium/support": "^4.2.2",
     "@dlenroc/roku-debug-server": "^2.0.0",
     "@dlenroc/roku-developer-server": "^2.0.0",
-    "@dlenroc/roku-ecp": "^2.0.0",
+    "@dlenroc/roku-ecp": "^2.1.0",
     "@dlenroc/roku-odc": "^2.0.1",
     "@xmldom/xmldom": "^0.8.10",
     "css-select": "^5.1.0",
@@ -45,12 +45,12 @@
   },
   "devDependencies": {
     "@appium/types": "^0.16.1",
-    "@tsconfig/node18": "^18.2.2",
-    "@tsconfig/strictest": "^2.0.3",
+    "@tsconfig/node18": "^18.2.4",
+    "@tsconfig/strictest": "^2.0.5",
     "@types/cssesc": "^3.0.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.3.3",
-    "webdriverio": "^8.32.3"
+    "typescript": "^5.4.3",
+    "webdriverio": "^8.35.1"
   },
   "peerDependencies": {
     "appium": "^2.3.0"
