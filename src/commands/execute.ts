@@ -1,8 +1,4 @@
 import { errors } from '@appium/base-driver';
-import * as debugServer from '@dlenroc/roku-debug-server';
-import * as developerServer from '@dlenroc/roku-developer-server';
-import * as ecp from '@dlenroc/roku-ecp';
-import * as odc from '@dlenroc/roku-odc';
 import type { Driver } from '../Driver.ts';
 
 export async function execute(
@@ -17,29 +13,29 @@ export async function execute(
     );
   }
 
-  const sdk = { debugServer, developerServer, ecp, odc } as any;
-
-  if (!(component in sdk)) {
+  if (!(component in this.sdk)) {
     throw new errors.InvalidArgumentError(
       `Component "${component}" is not supported`
     );
   }
 
-  const api = sdk[component];
-
-  if (!(method in api) || typeof api[method] !== 'function') {
+  if (
+    !(method in (this.sdk as any)[component]) ||
+    typeof (this.sdk as any)[component][method] !== 'function'
+  ) {
     throw new errors.InvalidArgumentError(
       `Method "${method}" is not supported for component "${component}"`
     );
   }
 
-  const client = (this.sdk as any)[component];
-  const fn = api[method] as Function;
-  if (args.length && fn.length < 3) {
+  const fn = (this.sdk as any)[component][method];
+  if (args.length && fn.length < 2) {
     throw new errors.InvalidArgumentError(
       `Method "${method}" from component "${component}" does not accept arguments`
     );
   }
 
-  return args.length ? fn(client, args[0]) : fn(client);
+  return args.length
+    ? (this.sdk as any)[component][method](args[0])
+    : (this.sdk as any)[component][method]();
 }

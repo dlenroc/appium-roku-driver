@@ -1,5 +1,3 @@
-import * as developerServer from '@dlenroc/roku-developer-server';
-import * as ecp from '@dlenroc/roku-ecp';
 import * as odc from '@dlenroc/roku-odc';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -12,8 +10,8 @@ export async function installApp(this: Driver, appPath: string): Promise<void> {
       supportedExtensions: ['.zip'],
       onPostProcess: () => undefined,
     }),
-    ecp
-      .queryApps(this.sdk.ecp)
+    this.sdk.ecp
+      .queryApps()
       .then((apps) => apps.find((app) => app.id === 'dev')),
   ]);
 
@@ -32,7 +30,7 @@ export async function installApp(this: Driver, appPath: string): Promise<void> {
   this.log.info('Install channel');
   const patchedApp = await odc.inject(source.buffer);
 
-  await developerServer.installChannel(this.sdk.developerServer, {
+  await this.sdk.developerServer.installChannel({
     content: new Uint8Array(patchedApp),
   });
 

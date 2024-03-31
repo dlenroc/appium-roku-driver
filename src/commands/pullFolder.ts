@@ -1,4 +1,3 @@
-import * as odc from '@dlenroc/roku-odc';
 import JSZip from 'jszip';
 import type { Driver } from '../Driver.ts';
 
@@ -6,7 +5,7 @@ export async function pullFolder(this: Driver, path: string): Promise<string> {
   const root = path;
   const sdk = this.sdk;
   const zip = new JSZip();
-  const tree = await odc.getFiles(sdk.odc, { path: root });
+  const tree = await sdk.odc.getFiles({ path: root });
 
   await (async function addFilesInZip(
     currentPath: string,
@@ -17,7 +16,7 @@ export async function pullFolder(this: Driver, path: string): Promise<string> {
       const fullPath = `${root}/${path}`;
 
       if (file.type === 'file') {
-        zip.file(path, await odc.pullFile(sdk.odc, { path: fullPath }));
+        zip.file(path, await sdk.odc.pullFile({ path: fullPath }));
       }
 
       if (file.type === 'directory') {

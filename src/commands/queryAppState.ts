@@ -1,11 +1,10 @@
-import * as ecp from '@dlenroc/roku-ecp';
 import type { Driver } from '../Driver.ts';
 
 export async function queryAppState(
   this: Driver,
   appId: string
 ): Promise<0 | 1 | 2 | 3 | 4> {
-  const activeApp = await ecp.queryActiveApp(this.sdk.ecp);
+  const activeApp = await this.sdk.ecp.queryActiveApp();
 
   if ('id' in activeApp.app && activeApp.app.id == appId) {
     // running in background
