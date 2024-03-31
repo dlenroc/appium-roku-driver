@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.2](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.1...v0.11.2) (2024-03-31)
+
+
+### Features
+
+* stop pending commands after session deletion ([cc1380f](https://github.com/dlenroc/appium-roku-driver/commit/cc1380fa48a74828a71c0869fd7738d818a79cd5))
+
+
+### Bug Fixes
+
+* release pressed key ([a887636](https://github.com/dlenroc/appium-roku-driver/commit/a88763609fbe2625466f35d797f5652d2857511a))
+
 ## [0.11.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.0...v0.11.1) (2024-02-11)
 
 
