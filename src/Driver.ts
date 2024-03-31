@@ -21,7 +21,6 @@ class RokuDriver
     'xpath',
   ];
 
-  protected controller?: AbortController;
   protected pressedKey?: string | undefined;
   protected fields: Record<string, string[]> | undefined;
   protected sdk!: SDK;
