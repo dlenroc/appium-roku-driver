@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.2...v0.11.3) (2024-05-01)
+
+
+### Features
+
+* concurrent commands execution ([9819573](https://github.com/dlenroc/appium-roku-driver/commit/9819573ebc1f6445846130ecc41ab58bae4ca45a))
+
 ## [0.11.2](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.1...v0.11.2) (2024-03-31)
 
 
