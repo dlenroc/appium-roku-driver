@@ -21,6 +21,10 @@ class RokuDriver
     'xpath',
   ];
 
+  public override get isCommandsQueueEnabled(): boolean {
+    return false;
+  }
+
   protected pressedKey?: string | undefined;
   protected fields: Record<string, string[]> | undefined;
   protected sdk!: SDK;
