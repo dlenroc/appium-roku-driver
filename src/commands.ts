@@ -6,6 +6,7 @@ export * from './commands/createSession.js';
 export * from './commands/deleteSession.js';
 export * from './commands/elementDisplayed.js';
 export * from './commands/execute.js';
+export * from './commands/executeCommand.js';
 export * from './commands/findElOrEls.js';
 export * from './commands/getAttribute.js';
 export * from './commands/getContexts.js';

@@ -7,31 +7,48 @@ import { ECPExecutor } from '@dlenroc/roku-ecp';
 import * as odcCommands from '@dlenroc/roku-odc';
 import { ODCExecutor } from '@dlenroc/roku-odc';
 import { setMaxListeners } from 'events';
+import hashObject from 'hash-object';
 
 interface DebugServer extends ExtendedType<typeof debugServerCommands> {}
 class DebugServer {
   constructor(public executor: DebugServerExecutor) {}
 }
-extend(DebugServer.prototype, debugServerCommands);
+extend(DebugServer.prototype, debugServerCommands, {
+  idempotentMethods: Object.entries(debugServerCommands)
+    .filter(([name]) => name.startsWith('get'))
+    .map(([, value]) => value),
+});
 
 interface DeveloperServer
   extends ExtendedType<typeof developerServerCommands> {}
 class DeveloperServer {
   constructor(public executor: DeveloperServerExecutor) {}
 }
-extend(DeveloperServer.prototype, developerServerCommands);
+extend(DeveloperServer.prototype, developerServerCommands, {
+  idempotentMethods: Object.entries(developerServerCommands)
+    .filter(([name]) => name.match(/^(save|take)/))
+    .map(([, value]) => value),
+});
 
 interface ECP extends ExtendedType<typeof ecpCommands> {}
 class ECP {
   constructor(public executor: ECPExecutor) {}
 }
-extend(ECP.prototype, ecpCommands);
+extend(ECP.prototype, ecpCommands, {
+  idempotentMethods: Object.entries(ecpCommands)
+    .filter(([name]) => name.startsWith('query'))
+    .map(([, value]) => value),
+});
 
 interface ODC extends ExtendedType<typeof odcCommands> {}
 class ODC {
   constructor(public executor: ODCExecutor) {}
 }
-extend(ODC.prototype, odcCommands);
+extend(ODC.prototype, odcCommands, {
+  idempotentMethods: Object.entries(odcCommands)
+    .filter(([name]) => name.match(/^(get|pull)/))
+    .map(([, value]) => value),
+});
 
 type ExtendedType<Source> = {
   [Key in keyof Source]: Source[Key] extends (
@@ -42,15 +59,38 @@ type ExtendedType<Source> = {
     : never;
 };
 
-function extend(target: any, source: any) {
-  for (const [key, value] of Object.entries(source)) {
+function extend(
+  target: any,
+  source: any,
+  options: { idempotentMethods?: Function[] } = {}
+) {
+  const idempotentCacheKey = Symbol();
+  const idempotentMethods = new Set(options.idempotentMethods);
+
+  for (const [name, value] of Object.entries(source)) {
     if (typeof value === 'function') {
       const argsLength = value.length > 0 ? value.length - 1 : 0;
-      target[key] = function (...args: any[]) {
+      target[name] = function (...args: any[]) {
+        if (idempotentMethods.has(value)) {
+          const cache = (this[idempotentCacheKey] ||= new Map<string, any>());
+          const cacheKey = hashObject(args);
+          if (cache.has(cacheKey)) {
+            return cache.get(cacheKey);
+          }
+
+          const result = (value as any)(this.executor, ...args);
+          if (result instanceof Promise) {
+            cache.set(cacheKey, result);
+            result.finally(() => cache.delete(cacheKey));
+          }
+
+          return result;
+        }
+
         return (value as any)(this.executor, ...args);
       };
 
-      Object.defineProperty(target[key], 'length', {
+      Object.defineProperty(target[name], 'length', {
         get() {
           return argsLength;
         },

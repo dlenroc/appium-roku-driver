@@ -31,8 +31,8 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@appium/base-driver": "^9.5.2",
-    "@appium/support": "^4.2.2",
+    "@appium/base-driver": "^9.6.0",
+    "@appium/support": "^4.2.5",
     "@dlenroc/roku-debug-server": "^2.0.0",
     "@dlenroc/roku-developer-server": "^2.0.0",
     "@dlenroc/roku-ecp": "^2.1.0",
@@ -40,17 +40,18 @@
     "@xmldom/xmldom": "^0.8.10",
     "css-select": "^5.1.0",
     "cssesc": "^3.0.0",
+    "hash-object": "^5.0.1",
     "jszip": "^3.10.1",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "@appium/types": "^0.16.1",
+    "@appium/types": "^0.17.0",
     "@tsconfig/node18": "^18.2.4",
     "@tsconfig/strictest": "^2.0.5",
     "@types/cssesc": "^3.0.2",
-    "tsx": "^4.7.1",
-    "typescript": "^5.4.3",
-    "webdriverio": "^8.35.1"
+    "tsx": "^4.8.1",
+    "typescript": "^5.4.5",
+    "webdriverio": "^8.36.1"
   },
   "peerDependencies": {
     "appium": "^2.3.0"
