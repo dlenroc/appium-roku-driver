@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.4](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.3...v0.11.4) (2024-05-07)
+
+
+### Bug Fixes
+
+* node search in CSS selector adapter ([62dd0f5](https://github.com/dlenroc/appium-roku-driver/commit/62dd0f5ad5aceee59a343c89ab32cef271cf7010))
+
 ## [0.11.3](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.2...v0.11.3) (2024-05-01)
 
 
