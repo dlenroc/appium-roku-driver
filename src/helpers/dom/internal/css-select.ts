@@ -7,13 +7,7 @@ export function existsOne(
   test: (elem: Element) => boolean,
   nodes: Node[] | NodeListOf<Node>
 ): boolean {
-  for (let i = 0, n = nodes.length; i < n; i++) {
-    const node = nodes[i]!;
-    if (!isTag(node)) continue;
-    return test(node) || existsOne(test, node.childNodes);
-  }
-
-  return false;
+  return !!findOne(test, nodes);
 }
 
 function getAttributeValue(elem: Element, name: string): string | undefined {
