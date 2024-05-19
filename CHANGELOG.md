@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.5](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.4...v0.11.5) (2024-05-19)
+
+
+### Features
+
+* relative element references ([e047437](https://github.com/dlenroc/appium-roku-driver/commit/e047437fa0d922608ed071f440beac89c93ab39d))
+
 ## [0.11.4](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.3...v0.11.4) (2024-05-07)
 
 
