@@ -25,8 +25,8 @@ class RokuDriver
     return false;
   }
 
-  protected pressedKey?: string | undefined;
   protected fields: Record<string, string[]> | undefined;
+  protected pressedKey?: string | undefined;
   protected sdk!: SDK;
 }
 

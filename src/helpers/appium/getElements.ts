@@ -1,11 +1,11 @@
 import * as domUtils from '../dom.js';
 import { getSelector } from './getSelector.js';
 
-export async function getElements(options: {
+export function getElements(options: {
   strategy: string;
   selector: string;
   parent: Element;
-}): Promise<Element[]> {
+}): Element[] {
   const [strategy, selector] = getSelector(options.strategy, options.selector);
 
   switch (strategy) {
