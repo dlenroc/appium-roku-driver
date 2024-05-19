@@ -1,3 +1,4 @@
+export * from './appium/fromWebDriverElement.js';
 export * from './appium/getElement.js';
 export * from './appium/getElements.js';
 export * from './appium/getSelector.js';
