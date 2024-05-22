@@ -81,7 +81,7 @@ function extend(
           const result = (value as any)(this.executor, ...args);
           if (result instanceof Promise) {
             cache.set(cacheKey, result);
-            result.finally(() => cache.delete(cacheKey));
+            result.catch(() => {}).finally(() => cache.delete(cacheKey));
           }
 
           return result;
