@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.6](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.5...v0.11.6) (2024-05-22)
+
+
+### Bug Fixes
+
+* unhandled rejection in concurrent requests ([d9e97c0](https://github.com/dlenroc/appium-roku-driver/commit/d9e97c0647cf0112d1cf53525dcb7200cabce4b5))
+
 ## [0.11.5](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.4...v0.11.5) (2024-05-19)
 
 
