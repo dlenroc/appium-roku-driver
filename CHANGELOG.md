@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.7](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.6...v0.11.7) (2024-05-23)
+
+
+### Bug Fixes
+
+* consider SDK method in commands deduplication ([7651639](https://github.com/dlenroc/appium-roku-driver/commit/7651639884e3fc20bf8e23089fd8cc614cb80b43))
+* css-selector text pseudos ([aa43a52](https://github.com/dlenroc/appium-roku-driver/commit/aa43a529230e2777b96b0f995762d689fc4a91c0))
+
 ## [0.11.6](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.5...v0.11.6) (2024-05-22)
 
 
