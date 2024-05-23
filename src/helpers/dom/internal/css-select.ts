@@ -1,6 +1,7 @@
 import type { Options } from 'css-select';
 import { getAttribute } from '../element/getAttribute.js';
 import { getTagName } from '../element/getTagName.js';
+import { getText as getTextContent } from '../element/getText.js';
 import { isTag } from '../element/isTag.js';
 
 export function existsOne(
@@ -43,7 +44,7 @@ function prevElementSibling(node: Node): Element | null {
 
 function getText(node: Node): string {
   if (!isTag(node)) return '';
-  return getAttribute(node, 'text') ?? '';
+  return getTextContent(node);
 }
 
 function hasAttrib(elem: Element, name: string): boolean {
