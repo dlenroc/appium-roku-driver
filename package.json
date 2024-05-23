@@ -49,9 +49,9 @@
     "@tsconfig/node18": "^18.2.4",
     "@tsconfig/strictest": "^2.0.5",
     "@types/cssesc": "^3.0.2",
-    "tsx": "^4.8.1",
+    "tsx": "^4.11.0",
     "typescript": "^5.4.5",
-    "webdriverio": "^8.36.1"
+    "webdriverio": "^8.37.0"
   },
   "peerDependencies": {
     "appium": "^2.3.0"
