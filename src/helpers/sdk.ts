@@ -73,7 +73,7 @@ function extend(
       target[name] = function (...args: any[]) {
         if (idempotentMethods.has(value)) {
           const cache = (this[idempotentCacheKey] ||= new Map<string, any>());
-          const cacheKey = hashObject(args);
+          const cacheKey = name + '-' + hashObject(args);
           if (cache.has(cacheKey)) {
             return cache.get(cacheKey);
           }
