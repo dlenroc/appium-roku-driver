@@ -29,3 +29,4 @@ export * from './commands/removeApp.js';
 export * from './commands/setContext.js';
 export * from './commands/setUrl.js';
 export * from './commands/setValue.js';
+export * from './commands/terminateApp.js';
