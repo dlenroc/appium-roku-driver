@@ -1,5 +1,7 @@
 export * from './commands/activateApp.js';
 export * from './commands/active.js';
+export * from './commands/bidiSubscribe.js';
+export * from './commands/bidiUnsubscribe.js';
 export * from './commands/clear.js';
 export * from './commands/click.js';
 export * from './commands/createSession.js';
