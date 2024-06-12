@@ -140,7 +140,7 @@ export class SDK {
       new DebugServerExecutor({
         signal,
         hostname: options.ip,
-        port: 8085,
+        port: 8080,
       })
     );
 

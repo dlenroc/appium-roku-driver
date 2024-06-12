@@ -217,20 +217,21 @@ driver.switchContext('ECP');
 
 ### Appium Commands
 
-| Command                                                | Description                                |
-| ------------------------------------------------------ | ------------------------------------------ |
-| [installApp](src/commands/installApp.ts)               | Install the channel if it is not installed |
-| [activateApp](src/commands/activateApp.ts)             | Launch the given channel                   |
-| [removeApp](src/commands/removeApp.ts)                 | Remove the given channel from the device   |
-| [isAppInstalled](src/commands/isAppInstalled.ts)       | Checks if a channel is installed           |
-| [queryAppState](src/commands/queryAppState.ts)         | Queries the channel state                  |
-| [pushFile](src/commands/pushFile.ts)                   | Push a file to the device                  |
-| [pullFile](src/commands/pullFile.ts)                   | Pull a file from the device                |
-| [pullFolder](src/commands/pullFolder.ts)               | Pull a folder from the device              |
-| [updateSettings](src/commands/updateSetting.ts)        | Updates current test session settings      |
-| [getCurrentContext](src/commands/getCurrentContext.ts) | Get the name of the current context        |
-| [setContext](src/commands/setContext.ts)               | Switches to the given context              |
-| [getContexts](src/commands/getContexts.ts)             | Get the names of available contexts        |
+| Command                                                | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ |
+| [installApp](src/commands/installApp.ts)               | Install the channel if it is not installed             |
+| [activateApp](src/commands/activateApp.ts)             | Launch the given channel                               |
+| [terminateApp](src/commands/terminateApp.ts)           | Terminate the channel (_Available since Roku OS 13.0_) |
+| [removeApp](src/commands/removeApp.ts)                 | Remove the given channel from the device               |
+| [isAppInstalled](src/commands/isAppInstalled.ts)       | Checks if a channel is installed                       |
+| [queryAppState](src/commands/queryAppState.ts)         | Queries the channel state                              |
+| [pushFile](src/commands/pushFile.ts)                   | Push a file to the device                              |
+| [pullFile](src/commands/pullFile.ts)                   | Pull a file from the device                            |
+| [pullFolder](src/commands/pullFolder.ts)               | Pull a folder from the device                          |
+| [updateSettings](src/commands/updateSetting.ts)        | Updates current test session settings                  |
+| [getCurrentContext](src/commands/getCurrentContext.ts) | Get the name of the current context                    |
+| [setContext](src/commands/setContext.ts)               | Switches to the given context                          |
+| [getContexts](src/commands/getContexts.ts)             | Get the names of available contexts                    |
 
 ### Roku Commands
 
