@@ -101,7 +101,7 @@ const capabilities = {
 
 ### BrightScript Logging
 
-```ts
+```js
 // Forward logs to the console
 driver.on('log.entryAdded', (entry) => console.log(entry.text));
 
@@ -196,7 +196,7 @@ The supported commands are listed in the sections below but note that they may h
 
 Example: calling the `setContext` command
 
-```typescript
+```js
 // Java
 driver.context('ECP');
 
