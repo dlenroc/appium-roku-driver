@@ -99,6 +99,21 @@ const capabilities = {
 };
 ```
 
+### BrightScript Logging
+
+```js
+// Forward logs to the console
+driver.on('log.entryAdded', (entry) => console.log(entry.text));
+
+// Subscribe to BrightScript logs
+await driver.sessionSubscribe({ events: ['log.entryAdded'] });
+
+// Unsubscribe from BrightScript logs (optional)
+await driver.sessionUnsubscribe({ events: ['log.entryAdded'] });
+```
+
+> **Note:**
+
 ### Actions
 
 The following action types are supported:
@@ -160,7 +175,8 @@ If adding a vendor prefix is a problem, [@appium/relaxed-caps-plugin](https://ww
 | ------------------------------------- | :------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------- |
 | `platformName`                        |    +     | string  | Must be `roku`                                                                                                                  |
 | `appium:automationName`               |    +     | string  | Must be `roku`                                                                                                                  |
-| `appium:deviceName`                   |   +/-    | String  | Helps webdriver clients understand that they are dealing with appium                                                            |
+| `appium:deviceName`                   |   +/-    | string  | Helps webdriver clients understand that they are dealing with appium                                                            |
+| `webSocketUrl`                        |    -     | boolean | Opt in to the use of the Bidi protocol. Defaults to `false`.                                                                    |
 | `appium:app`                          |    -     | string  | The absolute local path or remote http URL to channel                                                                           |
 | `appium:noReset`                      |    -     | boolean | Do not stop app, do not clear app data, and do not uninstall app                                                                |
 | `appium:printPageSourceOnFindFailure` |    -     | boolean | When a find operation fails, print the current page source. Defaults to `false`                                                 |
@@ -180,7 +196,7 @@ The supported commands are listed in the sections below but note that they may h
 
 Example: calling the `setContext` command
 
-```typescript
+```js
 // Java
 driver.context('ECP');
 
@@ -232,6 +248,13 @@ driver.switchContext('ECP');
 | [getCurrentContext](src/commands/getCurrentContext.ts) | Get the name of the current context                    |
 | [setContext](src/commands/setContext.ts)               | Switches to the given context                          |
 | [getContexts](src/commands/getContexts.ts)             | Get the names of available contexts                    |
+
+### BiDi Commands
+
+| Command                                            | Description                                                     |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| [bidiSubscribe](src/commands/bidiSubscribe.ts)     | Enables certain events either globally or for a set of contexts |
+| [bidiUnsubscribe](src/commands/bidiUnsubscribe.ts) | Disables events either globally or for a set of contexts        |
 
 ### Roku Commands
 

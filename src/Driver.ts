@@ -1,5 +1,6 @@
 import { BaseDriver, DeviceSettings } from '@appium/base-driver';
 import type { ExternalDriver } from '@appium/types';
+import type { Socket } from 'node:net';
 import { capabilitiesConstraints } from './CapabilitiesConstraints.js';
 import * as Commands from './commands.js';
 import { updateSetting } from './commands/internal/updateSetting.js';
@@ -10,6 +11,7 @@ class RokuDriver
   implements ExternalDriver<typeof capabilitiesConstraints>
 {
   // Configurations
+  public override doesSupportBidi = true;
   public override desiredCapConstraints = capabilitiesConstraints;
   public override settings = new DeviceSettings({}, updateSetting.bind(this));
   public override supportedLogTypes = {};
@@ -25,6 +27,7 @@ class RokuDriver
     return false;
   }
 
+  protected socket?: Socket | undefined;
   protected fields: Record<string, string[]> | undefined;
   protected pressedKey?: string | undefined;
   protected sdk!: SDK;
