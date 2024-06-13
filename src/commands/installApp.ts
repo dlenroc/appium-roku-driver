@@ -23,31 +23,18 @@ export async function installApp(this: Driver, appPath: string): Promise<void> {
 
     if (alreadyInstalled) {
       this.log.info('Channel is already installed');
+      await this.terminateApp('dev');
       return;
     }
   }
 
   this.log.info('Install channel');
-  const patchedApp = await odc.inject(source.buffer);
-
-  await this.sdk.developerServer.installChannel({
-    content: new Uint8Array(patchedApp),
-  });
+  const content = new Uint8Array(await odc.inject(source.buffer));
+  await this.sdk.developerServer.installChannel({ content });
 
   await appiumUtils.retrying({
     timeout: 1e4,
     validate: (state) => state === 4,
     command: () => this.queryAppState('dev'),
   });
-
-  await this.performActions([
-    {
-      id: 'remote',
-      type: 'key',
-      actions: [
-        { type: 'keyDown', value: 'Home' },
-        { type: 'keyUp', value: 'Home' },
-      ],
-    },
-  ]);
 }

@@ -10,16 +10,27 @@ export async function terminateApp(
     timeout: 1e4,
     validate: (state, error) => !error && state! <= 2,
     command: async () => {
-      await this.sdk.ecp.exitApp({ appId: appId as AppId });
+      await this.sdk.ecp
+        .exitApp({ appId: appId as AppId })
+        .catch(async (error) => {
+          const state = await this.queryAppState(appId);
+          if (state === 4) {
+            await this.sdk.ecp.keypress({ key: 'Home' });
+            return;
+          }
+
+          return Promise.reject(error);
+        });
+
       return this.queryAppState(appId);
     },
   });
 
-  await this.sdk.debugServer.clearLaunchCaches({
-    signal: AbortSignal.timeout(1e4),
-  });
+  if (state === 2) {
+    await this.sdk.debugServer.clearLaunchCaches({
+      signal: AbortSignal.timeout(1e4),
+    });
 
-  if (state == 2) {
     state = await appiumUtils.retrying({
       timeout: 1e4,
       validate: (state, error) => !error && state! <= 1,

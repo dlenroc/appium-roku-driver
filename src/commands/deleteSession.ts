@@ -1,25 +1,21 @@
 import { BaseDriver, errors } from '@appium/base-driver';
-import type { Driver } from '../Driver.ts';
-import * as appiumUtils from '../helpers/appium.js';
+import { Driver } from '../Driver.js';
 import { SDK } from '../helpers/sdk.js';
 
 export async function deleteSession(
   this: Driver,
   sessionId?: string | null
 ): Promise<void> {
-  try {
-    this.sdk.controller.abort(
-      new errors.UnknownError('The session was terminated!')
-    );
+  this.sdk.controller.abort(
+    new errors.UnknownError('The session was terminated!')
+  );
 
+  try {
     const sdk = new SDK(this.sdk);
     if (this.opts.shouldTerminateApp) {
-      await sdk.ecp.keypress({ key: 'Home' });
-      await appiumUtils.retrying({
-        timeout: 1e4,
-        validate: (state) => !!state && !!('id' in state.app),
-        command: () => sdk.ecp.queryActiveApp(),
-      });
+      const driver = new Driver(this.opts);
+      driver.sdk = sdk;
+      await driver.terminateApp('dev');
     } else if (this.pressedKey) {
       await sdk.ecp.keyup({ key: this.pressedKey });
     }
