@@ -24,6 +24,20 @@ export async function createSession(
   );
 
   this.opts.context ??= 'ECP';
+  this.opts.arguments ??= {};
+
+  if (this.opts.entryPoint) {
+    this.opts.arguments['odc_entry_point'] = this.opts.entryPoint;
+  }
+
+  if (!this.opts.noReset) {
+    this.opts.arguments['odc_clear_registry'] = true;
+  }
+
+  if (this.opts.registry && Object.keys(this.opts.registry).length) {
+    this.opts.arguments['odc_registry'] = this.opts.registry;
+  }
+
   this.sdk = new SDK({
     ip: this.opts.ip,
     username: this.opts.username ?? 'rokudev',
@@ -32,12 +46,7 @@ export async function createSession(
 
   if (this.opts.app) {
     await this.installApp(this.opts.app);
-    await this.activateApp('dev', {
-      odc_clear_registry: !this.opts.noReset,
-      ...(this.opts.entryPoint && { odc_entry_point: this.opts.entryPoint }),
-      ...(this.opts.registry && { odc_registry: this.opts.registry }),
-      ...this.opts.arguments,
-    });
+    await this.activateApp('dev', this.opts.arguments);
   }
 
   return session;
