@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.12.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.7...v0.12.0) (2024-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* foreground app with `activateApp`
+
+### Features
+
+* `terminateApp` command support ([ab371d3](https://github.com/dlenroc/appium-roku-driver/commit/ab371d3441f8d268dfbb05e213dfcb47f58fa27f))
+* foreground app with `activateApp` ([201bd65](https://github.com/dlenroc/appium-roku-driver/commit/201bd659df080f391493e985c7778b1b122a84ef))
+* receiving BrightScript logs via BiDi ([7da8618](https://github.com/dlenroc/appium-roku-driver/commit/7da861811c3605f4e3bd40ff35a0ade85bb4cb4b))
+
+
+### Bug Fixes
+
+* `background`/`suspended` app state detection ([66cf1fb](https://github.com/dlenroc/appium-roku-driver/commit/66cf1fbbfe9abbc8099d9909b01714ce1d7f0ed6))
+* `debugServer:&lt;command&gt;` execution ([ab371d3](https://github.com/dlenroc/appium-roku-driver/commit/ab371d3441f8d268dfbb05e213dfcb47f58fa27f))
+* app termination behavior ([262e5af](https://github.com/dlenroc/appium-roku-driver/commit/262e5af5bb47f382d5d8cb70a4e9092119a997cd))
+
 ## [0.11.7](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.6...v0.11.7) (2024-05-23)
 
 
