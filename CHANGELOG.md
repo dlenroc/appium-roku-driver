@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.13.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.12.0...v0.13.0) (2025-08-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Drop Node.js 18, 19, <22.12.0, and 23 to meet Appium requirements.
+
+### Features
+
+* support Appium v3 ([a31b42a](https://github.com/dlenroc/appium-roku-driver/commit/a31b42af3ae5d1b512e7d0d9df3255febfeb6dc7))
+
 ## [0.12.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.11.7...v0.12.0) (2024-06-13)
 
 
