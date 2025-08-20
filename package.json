@@ -20,7 +20,7 @@
     "watch": "npm run build -- --watch"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
   },
   "appium": {
     "driverName": "roku",
@@ -31,29 +31,29 @@
     "mainClass": "Driver"
   },
   "dependencies": {
-    "@appium/base-driver": "^9.10.3",
-    "@appium/support": "^5.0.3",
+    "@appium/base-driver": "^10.0.0",
+    "@appium/support": "^7.0.0",
     "@dlenroc/roku-debug-server": "^2.0.0",
     "@dlenroc/roku-developer-server": "^2.0.0",
     "@dlenroc/roku-ecp": "^2.1.1",
-    "@dlenroc/roku-odc": "^2.0.1",
-    "@xmldom/xmldom": "^0.8.10",
-    "css-select": "^5.1.0",
+    "@dlenroc/roku-odc": "^2.1.1",
+    "@xmldom/xmldom": "^0.8.11",
+    "css-select": "^6.0.0",
     "cssesc": "^3.0.0",
     "hash-object": "^5.0.1",
     "jszip": "^3.10.1",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "@appium/types": "^0.20.3",
-    "@tsconfig/node18": "^18.2.4",
+    "@appium/types": "^1.0.0",
+    "@tsconfig/node20": "^20.1.6",
     "@tsconfig/strictest": "^2.0.5",
     "@types/cssesc": "^3.0.2",
-    "tsx": "^4.15.2",
-    "typescript": "^5.4.5",
-    "webdriverio": "^8.38.2"
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
+    "webdriverio": "^9.19.1"
   },
   "peerDependencies": {
-    "appium": "^2.3.0"
+    "appium": "^2.3.0 || ^3.0.0"
   }
 }
