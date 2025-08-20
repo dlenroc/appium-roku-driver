@@ -29,7 +29,7 @@ export async function installApp(this: Driver, appPath: string): Promise<void> {
   }
 
   this.log.info('Install channel');
-  const content = new Uint8Array(await odc.inject(source.buffer));
+  const content = new Uint8Array(await odc.inject(source.buffer as ArrayBuffer));
   await this.sdk.developerServer.installChannel({ content });
 
   await appiumUtils.retrying({

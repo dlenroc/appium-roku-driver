@@ -11,7 +11,6 @@ class RokuDriver
   implements ExternalDriver<typeof capabilitiesConstraints>
 {
   // Configurations
-  public override doesSupportBidi = true;
   public override desiredCapConstraints = capabilitiesConstraints;
   public override settings = new DeviceSettings({}, updateSetting.bind(this));
   public override supportedLogTypes = {};

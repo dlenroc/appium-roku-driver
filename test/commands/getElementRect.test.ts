@@ -22,7 +22,7 @@ it('getElementRect', async (ctx) => {
     const name = await testElement.$('#name').getText();
     await ctx.test(name, async () => {
       const element = await testElement.$('#element');
-      const actual = await driver.getElementRect(element.elementId);
+      const actual = await driver.getElementRect(await element.elementId);
       const expected = JSON.parse(await testElement.$('#expected').getText());
       deepEqual(actual, expected);
     });

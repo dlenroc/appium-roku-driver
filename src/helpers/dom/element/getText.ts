@@ -21,7 +21,7 @@ export function getText(element: Element): string {
     }
 
     const node = nodes[index]!;
-    indexStack[indexStack.length - 1]++;
+    indexStack[indexStack.length - 1]!++;
 
     if (
       !isTag(node) ||
