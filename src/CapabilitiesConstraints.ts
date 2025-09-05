@@ -37,6 +37,5 @@ export const capabilitiesConstraints = {
   },
   shouldTerminateApp: {
     isBoolean: true,
-    presence: false,
   },
 } as const satisfies Constraints;
