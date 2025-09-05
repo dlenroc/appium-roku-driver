@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/dlenroc/appium-roku-driver/compare/v0.13.0...v0.13.1) (2025-09-05)
+
+
+### Bug Fixes
+
+* `shouldTerminateApp` handling in Appium 3 ([832ad00](https://github.com/dlenroc/appium-roku-driver/commit/832ad00ba0101ce719419900db9a17aba2722ac7))
+
 ## [0.13.0](https://github.com/dlenroc/appium-roku-driver/compare/v0.12.0...v0.13.0) (2025-08-20)
 
 
