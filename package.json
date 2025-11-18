@@ -1,6 +1,6 @@
 {
   "name": "@dlenroc/appium-roku-driver",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "description": "Appium Roku Driver",
   "author": "Corneliu Duplachi",
   "repository": "dlenroc/appium-roku-driver",
@@ -33,10 +33,10 @@
   "dependencies": {
     "@appium/base-driver": "^10.0.0",
     "@appium/support": "^7.0.0",
-    "@dlenroc/roku-debug-server": "^2.0.1",
-    "@dlenroc/roku-developer-server": "^2.0.1",
-    "@dlenroc/roku-ecp": "^2.1.2",
-    "@dlenroc/roku-odc": "^2.1.2",
+    "@dlenroc/roku-debug-server": "^2.0.2",
+    "@dlenroc/roku-developer-server": "^2.0.2",
+    "@dlenroc/roku-ecp": "^2.1.3",
+    "@dlenroc/roku-odc": "^2.1.3",
     "@xmldom/xmldom": "^0.8.11",
     "css-select": "^6.0.0",
     "cssesc": "^3.0.0",
